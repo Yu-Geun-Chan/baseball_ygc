@@ -11,9 +11,10 @@ html > body {
   font-family: "GmarketSansMedium";
 }
 
-.team-ranking {
+#ranking {
 	font-family : "default";
 }
+
 
 ._1,
 ._1 * {

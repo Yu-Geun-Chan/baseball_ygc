@@ -1,11 +1,12 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/resource/foot.css" />
 <link rel="stylesheet" href="/resource/common.css" />
 
 <div class="footer">
-	<div class="div27">
-		<div class="div28">
+	<div class="div26">
+		<div class="div27">
 			<div class="item-link">
 				<img class="lg-png" src="lg-png0.png" />
 			</div>
@@ -53,8 +54,3 @@
 		</div>
 	</div>
 </div>
-<!-- head.jspf에서 1920x1300을 위해 넣었던 div를 닫아주기 위해 추가 -->
-</div>
-
-</body>
-</html>

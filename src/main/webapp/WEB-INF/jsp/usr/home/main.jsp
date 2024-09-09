@@ -7,6 +7,7 @@
 
 <%@ include file="../common/head.jspf"%>
 
+
 <div class="section" id="ranking">
 	<div class="list">
 		<div class="item-heading-4-team-ranking">구단 순위</div>
@@ -472,26 +473,24 @@
 		</div>
 	</div>
 	<div class="section3" id="news">
-		<div class="link4" style="background: url(link22.png) center; background-size: cover; background-repeat: no-repeat;">
-			<div class="div13">더보기</div>
-		</div>
-		<div class="div14">
+		<img class="link4" src="link22.png" />
+		<div class="div13">
 			<div class="_1-kbo">
-				<div class="div15">
-					<div class="div16">
-						<div class="div17">두산</div>
+				<div class="div14">
+					<div class="div15">
+						<div class="div16">두산</div>
+					</div>
+					<div class="div17">
+						<div class="div16">롯데</div>
 					</div>
 					<div class="div18">
-						<div class="div17">롯데</div>
+						<div class="div16">기아</div>
 					</div>
 					<div class="div19">
-						<div class="div17">기아</div>
+						<div class="div16">삼성</div>
 					</div>
 					<div class="div20">
-						<div class="div17">삼성</div>
-					</div>
-					<div class="div21">
-						<div class="div17">한화</div>
+						<div class="div16">한화</div>
 					</div>
 				</div>
 				<div class="link2">
@@ -534,7 +533,7 @@
 			</div>
 		</div>
 		<div class="bar2">
-			<div class="div22">최근 기사</div>
+			<div class="div21">최근 기사</div>
 		</div>
 	</div>
 </div>
@@ -544,7 +543,7 @@
 			<div class="item">
 				<div class="border">
 					<div class="background">
-						<div class="div23">경기예정</div>
+						<div class="div22">경기예정</div>
 					</div>
 					<img class="emblem-lg-png" src="emblem-lg-png0.png" />
 					<div class="vs">VS</div>
@@ -552,13 +551,13 @@
 					<div class="list3">
 						<div class="item2" style="background: url(item1.png) top left; background-size: 500%; background-repeat: repeat;">
 							<div class="link5">
-								<div class="div24">예매</div>
+								<div class="div23">예매</div>
 							</div>
 						</div>
 					</div>
 					<div class="list4">
 						<div class="item3">
-							<div class="div25">수원</div>
+							<div class="div24">수원</div>
 							<div class="vertical-divider"></div>
 						</div>
 						<div class="item4">
@@ -569,7 +568,7 @@
 					</div>
 					<div class="item5" style="background: url(item4.png) top left; background-size: 500%; background-repeat: repeat;">
 						<div class="link5">
-							<div class="div26">구장 정보</div>
+							<div class="div25">구장 정보</div>
 						</div>
 					</div>
 				</div>
@@ -577,7 +576,7 @@
 			<div class="item6">
 				<div class="border">
 					<div class="background">
-						<div class="div23">경기예정</div>
+						<div class="div22">경기예정</div>
 					</div>
 					<img class="emblem-lt-png" src="emblem-lt-png0.png" />
 					<div class="vs">VS</div>
@@ -586,19 +585,19 @@
 						<div class="list6">
 							<div class="item2" style="background: url(item6.png) top left; background-size: 500%; background-repeat: repeat;">
 								<div class="link5">
-									<div class="div24">예매</div>
+									<div class="div23">예매</div>
 								</div>
 							</div>
 						</div>
 						<div class="item7" style="background: url(item7.png) top left; background-size: 500%; background-repeat: repeat;">
 							<div class="link5">
-								<div class="div26">구장 정보</div>
+								<div class="div25">구장 정보</div>
 							</div>
 						</div>
 					</div>
 					<div class="list4">
 						<div class="item3">
-							<div class="div25">고척</div>
+							<div class="div24">고척</div>
 							<div class="vertical-divider"></div>
 						</div>
 						<div class="item4">
@@ -624,6 +623,7 @@
 		<img class="material-symbols-calendar-month" src="material-symbols-calendar-month0.svg" />
 	</div>
 </div>
+
 
 
 <%@ include file="../common/foot.jspf"%>
