@@ -1,0 +1,259 @@
+@charset "UTF-8";
+
+.footer {
+  background: #f3f4f8;
+  height: 100px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  overflow: hidden;
+}
+.div27 {
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 1239px;
+  position: absolute;
+  left: calc(50% - 620px);
+  bottom: 0px;
+}
+.div28 {
+  flex-shrink: 0;
+  width: 1090px;
+  height: 59px;
+  position: relative;
+  overflow: hidden;
+}
+.item-link {
+  width: 81px;
+  height: 14px;
+  position: absolute;
+  left: 0px;
+  top: 2px;
+}
+.lg-png {
+  width: 81px;
+  height: 59px;
+  position: absolute;
+  left: calc(50% - 40.5px);
+  top: -2px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.item-link2 {
+  width: 81px;
+  height: 14px;
+  position: absolute;
+  left: 111px;
+  top: 2px;
+}
+.kt-png {
+  width: 81px;
+  height: 59px;
+  position: absolute;
+  left: calc(50% - 40.5px);
+  top: -2px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.item-link3 {
+  width: 81px;
+  height: 14px;
+  position: absolute;
+  left: 222px;
+  top: 2px;
+}
+.sk-png {
+  width: 81px;
+  height: 59px;
+  position: absolute;
+  left: calc(50% - 40.5px);
+  top: -2px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.item-link4 {
+  width: 81px;
+  height: 14px;
+  position: absolute;
+  left: 333px;
+  top: 2px;
+}
+.nc-png {
+  width: 81px;
+  height: 59px;
+  position: absolute;
+  left: calc(50% - 40.5px);
+  top: -2px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.item-link5 {
+  width: 81px;
+  height: 14px;
+  position: absolute;
+  left: 444px;
+  top: 2px;
+}
+.ob-png {
+  width: 81px;
+  height: 59px;
+  position: absolute;
+  left: calc(50% - 40.5px);
+  top: -2px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.item-link6 {
+  width: 81px;
+  height: 14px;
+  position: absolute;
+  left: 555px;
+  top: 2px;
+}
+.ht-png {
+  width: 81px;
+  height: 59px;
+  position: absolute;
+  left: calc(50% - 40.5px);
+  top: -2px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.item-link7 {
+  width: 81px;
+  height: 14px;
+  position: absolute;
+  left: 666px;
+  top: 2px;
+}
+.lt-png {
+  width: 81px;
+  height: 59px;
+  position: absolute;
+  left: calc(50% - 40.5px);
+  top: -2px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.item-link8 {
+  width: 81px;
+  height: 14px;
+  position: absolute;
+  left: 777px;
+  top: 2px;
+}
+.ss-png {
+  width: 81px;
+  height: 59px;
+  position: absolute;
+  left: calc(50% - 40.5px);
+  top: -2px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.item-link9 {
+  width: 81px;
+  height: 14px;
+  position: absolute;
+  left: 888px;
+  top: 2px;
+}
+.hh-png {
+  width: 81px;
+  height: 59px;
+  position: absolute;
+  left: calc(50% - 40.5px);
+  top: -2px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.item-link10 {
+  width: 81px;
+  height: 14px;
+  position: absolute;
+  left: 999px;
+  top: 2px;
+}
+.wo-png {
+  width: 81px;
+  height: 59px;
+  position: absolute;
+  left: calc(50% - 40.5px);
+  top: -2px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.sns {
+  flex-shrink: 0;
+  width: 136px;
+  height: 100px;
+  position: relative;
+}
+.link6 {
+  height: 50px;
+  position: absolute;
+  right: 68px;
+  left: 0px;
+  top: 0px;
+}
+.btn-insta-png {
+  width: 68px;
+  height: 50px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.link7 {
+  height: 50px;
+  position: absolute;
+  right: 0px;
+  left: 68px;
+  top: 0px;
+}
+.btn-youtube-png {
+  width: 68px;
+  height: 50px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.link8 {
+  height: 50px;
+  position: absolute;
+  right: 0px;
+  left: 68px;
+  top: 50px;
+}
+.btn-tiktok-png {
+  width: 68px;
+  height: 50px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.link9 {
+  height: 50px;
+  position: absolute;
+  right: 68px;
+  left: 0px;
+  top: 50px;
+}
+.btn-facebook-png {
+  width: 68px;
+  height: 50px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+  object-fit: cover;
+}
