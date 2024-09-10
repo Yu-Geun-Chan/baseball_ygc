@@ -19,8 +19,9 @@
 
 </head>
 <body>
-	<!-- 1920x1200을 잡아주기 위한 -->
-	<div class="_1200">
+
+	<!-- 1920x1300을 잡아주기 위한 -->
+	<div class="_1300" id="section">
 		<div class="header">
 			<div class="topbar">
 				<div class="div28">회원가입</div>
@@ -49,7 +50,7 @@
 						<div class="div38">게시판</div>
 						<div class="div39">문의사항</div>
 					</div>
-					<img class="_28" src="/images/mainLogoImage/logo.png" />
+					<img class="_28" src="/images/logo.png" />
 				</div>
 			</div>
 		</div>

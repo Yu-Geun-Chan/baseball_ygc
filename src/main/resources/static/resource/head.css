@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
+
 .header {
+	font-family: 'KBO-Dia-Gothic_bold', sans-serif;
 	display: flex;
 	flex-direction: column;
 	gap: 0px;
@@ -24,7 +26,6 @@
 .div28 {
 	color: #000000;
 	text-align: center;
-	font-family: "Inter-Regular", sans-serif;
 	font-size: 20px;
 	line-height: 130%;
 	font-weight: 400;
@@ -41,7 +42,6 @@
 .div29 {
 	color: #000000;
 	text-align: center;
-	font-family: "Inter-Regular", sans-serif;
 	font-size: 20px;
 	line-height: 130%;
 	font-weight: 400;
@@ -58,7 +58,6 @@
 .div30 {
 	color: #222222;
 	text-align: left;
-	font-family: "Inter-Regular", sans-serif;
 	font-size: 20px;
 	line-height: 12px;
 	font-weight: 400;
@@ -75,7 +74,6 @@
 .div31 {
 	color: #222222;
 	text-align: left;
-	font-family: "Inter-Regular", sans-serif;
 	font-size: 20px;
 	line-height: 12px;
 	font-weight: 400;
@@ -94,7 +92,7 @@
 	height: 36px;
 	position: absolute;
 	left: calc(50% - -683px);
-	top: 9px;
+	top: 8px;
 	overflow: visible;
 }
 
@@ -126,7 +124,7 @@
 	height: 36px;
 	position: absolute;
 	left: calc(50% - -684px);
-	top: 32px;
+	top: 27px;
 	overflow: hidden;
 }
 
@@ -137,7 +135,7 @@
 	right: 10.42%;
 	left: 10.42%;
 	bottom: 0.78%;
-	top: 14.58%;
+	top: 20%;
 	overflow: visible;
 }
 
@@ -152,7 +150,6 @@
 .div34 {
 	color: #000000;
 	text-align: center;
-	font-family: "Inter-Bold", sans-serif;
 	font-size: 20px;
 	line-height: 130%;
 	font-weight: 700;
@@ -169,7 +166,6 @@
 .div35 {
 	color: #000000;
 	text-align: center;
-	font-family: "Inter-Bold", sans-serif;
 	font-size: 20px;
 	line-height: 130%;
 	font-weight: 700;
@@ -186,7 +182,6 @@
 .div36 {
 	color: #000000;
 	text-align: center;
-	font-family: "Inter-Bold", sans-serif;
 	font-size: 20px;
 	line-height: 130%;
 	font-weight: 700;
@@ -203,7 +198,6 @@
 .div37 {
 	color: #000000;
 	text-align: center;
-	font-family: "Inter-Bold", sans-serif;
 	font-size: 20px;
 	line-height: 130%;
 	font-weight: 700;
@@ -220,7 +214,6 @@
 .div38 {
 	color: #000000;
 	text-align: center;
-	font-family: "Inter-Bold", sans-serif;
 	font-size: 20px;
 	line-height: 130%;
 	font-weight: 700;
@@ -237,7 +230,6 @@
 .div39 {
 	color: #000000;
 	text-align: center;
-	font-family: "Inter-Bold", sans-serif;
 	font-size: 20px;
 	line-height: 130%;
 	font-weight: 700;
@@ -251,6 +243,7 @@
 	justify-content: center;
 }
 
+/* mainLogo 위치맞춤 */
 ._28 {
 	width: 80px;
 	height: 80px;

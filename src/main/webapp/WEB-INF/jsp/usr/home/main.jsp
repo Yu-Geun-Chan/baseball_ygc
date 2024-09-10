@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="/resource/main.css" />
 <link rel="stylesheet" href="/resource/common.css" />
 
-<%@ include file="../common/head.jspf"%>
+<%@ include file="../common/head1300.jspf"%>
 
 
 <div class="section" id="ranking">
@@ -341,7 +341,8 @@
 	<div class="section2" id="article">
 		<div class="kbo-bar">
 			<div class="kbo">KBO 소식</div>
-			<img class="link" src="link0.png" />
+			<svg class="link" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+			<path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" /></svg>
 		</div>
 		<div class="kbo2">
 			<div class="_1-kbo">
@@ -407,7 +408,8 @@
 		</div>
 		<div class="bar">
 			<div class="div10">전체글 보기</div>
-			<img class="link3" src="link11.png" />
+			<svg class="link3" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+			<path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" /></svg>
 		</div>
 		<div class="div11">
 			<div class="_16">
@@ -473,7 +475,8 @@
 		</div>
 	</div>
 	<div class="section3" id="news">
-		<img class="link4" src="link22.png" />
+		<svg class="link4" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+			<path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" /></svg>
 		<div class="div13">
 			<div class="_1-kbo">
 				<div class="div14">
@@ -545,9 +548,9 @@
 					<div class="background">
 						<div class="div22">경기예정</div>
 					</div>
-					<img class="emblem-lg-png" src="emblem-lg-png0.png" />
+					<img class="emblem emblem-lg" src="/images/teamLogos/lg.png" />
 					<div class="vs">VS</div>
-					<img class="emblem-kt-png" src="emblem-kt-png0.png" />
+					<img class="emblem emblem-kt" src="/images/teamLogos/kt.png" />
 					<div class="list3">
 						<div class="item2" style="background: url(item1.png) top left; background-size: 500%; background-repeat: repeat;">
 							<div class="link5">
@@ -557,11 +560,13 @@
 					</div>
 					<div class="list4">
 						<div class="item3">
-							<div class="div24">수원</div>
+							<div class="game-location">수원</div>
 							<div class="vertical-divider"></div>
 						</div>
 						<div class="item4">
-							<img class="_01-n-png" src="_01-n-png0.png" />
+							<svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256">
+								<path fill="currentColor"
+									d="M122 40V16a6 6 0 0 1 12 0v24a6 6 0 0 1-12 0m68 88a62 62 0 1 1-62-62a62.07 62.07 0 0 1 62 62m-12 0a50 50 0 1 0-50 50a50.06 50.06 0 0 0 50-50M59.76 68.24a6 6 0 1 0 8.48-8.48l-16-16a6 6 0 0 0-8.48 8.48Zm0 119.52l-16 16a6 6 0 1 0 8.48 8.48l16-16a6 6 0 1 0-8.48-8.48M192 70a6 6 0 0 0 4.24-1.76l16-16a6 6 0 0 0-8.48-8.48l-16 16A6 6 0 0 0 192 70m4.24 117.76a6 6 0 0 0-8.48 8.48l16 16a6 6 0 0 0 8.48-8.48ZM46 128a6 6 0 0 0-6-6H16a6 6 0 0 0 0 12h24a6 6 0 0 0 6-6m82 82a6 6 0 0 0-6 6v24a6 6 0 0 0 12 0v-24a6 6 0 0 0-6-6m112-88h-24a6 6 0 0 0 0 12h24a6 6 0 0 0 0-12" /></svg>
 							<div class="vertical-divider"></div>
 						</div>
 						<div class="item-18-30">18:30</div>
@@ -578,9 +583,9 @@
 					<div class="background">
 						<div class="div22">경기예정</div>
 					</div>
-					<img class="emblem-lt-png" src="emblem-lt-png0.png" />
+					<img class="emblem emblem-lotte" src="/images/teamLogos/lotte.png" />
 					<div class="vs">VS</div>
-					<img class="emblem-wo-png" src="emblem-wo-png0.png" />
+					<img class="emblem emblem-kiwoom" src="/images/teamLogos/kiwoom.png" />
 					<div class="list5">
 						<div class="list6">
 							<div class="item2" style="background: url(item6.png) top left; background-size: 500%; background-repeat: repeat;">
@@ -597,11 +602,13 @@
 					</div>
 					<div class="list4">
 						<div class="item3">
-							<div class="div24">고척</div>
+							<div class="game-location">고척</div>
 							<div class="vertical-divider"></div>
 						</div>
 						<div class="item4">
-							<img class="_01-n-png" src="_01-n-png1.png" />
+							<svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256">
+								<path fill="currentColor"
+									d="M122 40V16a6 6 0 0 1 12 0v24a6 6 0 0 1-12 0m68 88a62 62 0 1 1-62-62a62.07 62.07 0 0 1 62 62m-12 0a50 50 0 1 0-50 50a50.06 50.06 0 0 0 50-50M59.76 68.24a6 6 0 1 0 8.48-8.48l-16-16a6 6 0 0 0-8.48 8.48Zm0 119.52l-16 16a6 6 0 1 0 8.48 8.48l16-16a6 6 0 1 0-8.48-8.48M192 70a6 6 0 0 0 4.24-1.76l16-16a6 6 0 0 0-8.48-8.48l-16 16A6 6 0 0 0 192 70m4.24 117.76a6 6 0 0 0-8.48 8.48l16 16a6 6 0 0 0 8.48-8.48ZM46 128a6 6 0 0 0-6-6H16a6 6 0 0 0 0 12h24a6 6 0 0 0 6-6m82 82a6 6 0 0 0-6 6v24a6 6 0 0 0 12 0v-24a6 6 0 0 0-6-6m112-88h-24a6 6 0 0 0 0 12h24a6 6 0 0 0 0-12" /></svg>
 							<div class="vertical-divider"></div>
 						</div>
 						<div class="item-18-30">18:30</div>
@@ -613,14 +620,19 @@
 	<div class="section5">
 		<div class="bar3">
 			<div class="item8">
-				<img class="btn-prev-png" src="btn-prev-png0.png" />
+				<svg class="btn-prev-png" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20">
+					<path fill="currentColor" d="m4 10l9 9l1.4-1.5L7 10l7.4-7.5L13 1z" /></svg>
 			</div>
 			<div class="item9">2024.08.30(목)</div>
 			<div class="item10">
-				<img class="btn-next-png" src="btn-next-png0.png" />
+				<svg class="btn-next-png" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20">
+					<path fill="currentColor" d="M7 1L5.6 2.5L13 10l-7.4 7.5L7 19l9-9z" /></svg>
 			</div>
 		</div>
-		<img class="material-symbols-calendar-month" src="material-symbols-calendar-month0.svg" />
+		<svg class="material-symbols-calendar-month" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+			viewBox="0 0 24 24">
+			<path fill="currentColor"
+				d="M12 14q-.425 0-.712-.288T11 13t.288-.712T12 12t.713.288T13 13t-.288.713T12 14m-4 0q-.425 0-.712-.288T7 13t.288-.712T8 12t.713.288T9 13t-.288.713T8 14m8 0q-.425 0-.712-.288T15 13t.288-.712T16 12t.713.288T17 13t-.288.713T16 14m-4 4q-.425 0-.712-.288T11 17t.288-.712T12 16t.713.288T13 17t-.288.713T12 18m-4 0q-.425 0-.712-.288T7 17t.288-.712T8 16t.713.288T9 17t-.288.713T8 18m8 0q-.425 0-.712-.288T15 17t.288-.712T16 16t.713.288T17 17t-.288.713T16 18M5 22q-.825 0-1.412-.587T3 20V6q0-.825.588-1.412T5 4h1V2h2v2h8V2h2v2h1q.825 0 1.413.588T21 6v14q0 .825-.587 1.413T19 22zm0-2h14V10H5z" /></svg>
 	</div>
 </div>
 

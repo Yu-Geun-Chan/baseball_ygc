@@ -1,28 +1,73 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
-html > body {
-  font-family: "GmarketSansMedium";
+@font-face {
+	font-family: 'GongGothicMedium';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
-#ranking {
-	font-family : "default";
+@font-face {
+	font-family: 'KBO-Dia-Gothic_bold';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/KBO-Dia-Gothic_bold.woff')
+		format('woff');
+	font-weight: 700;
+	font-style: normal;
 }
 
-
-._1,
-._1 * {
-  box-sizing: border-box;
+html>body {
+	font-family: "GongGothicMedium", sans-serif;
 }
-._1 {
-  background: #ffffff;
-  height: 1300px;
-  position: relative;
-  overflow: hidden;
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* 메인페이지 세로길이 1300px라서 */
+._1300, ._1300 * {
+	box-sizing: border-box;
+}
+
+._1300 {
+	background: #ffffff;
+	height: 1300px;
+	position: relative;
+	overflow: hidden;
+}
+
+/* 구단정보 세로길이 2700px라서 */
+._4, ._4 * {
+	box-sizing: border-box;
+}
+
+._4 {
+	background: #ffffff;
+	height: 2700px;
+	position: relative;
+	overflow: hidden;
+}
+
+/* 나머지 페이지 세로길이 1200px라서 */
+._1200, ._1200 * {
+	box-sizing: border-box;
+}
+
+._1200 {
+	background: #ffffff;
+	height: 1200px;
+	position: relative;
+	overflow: hidden;
 }
