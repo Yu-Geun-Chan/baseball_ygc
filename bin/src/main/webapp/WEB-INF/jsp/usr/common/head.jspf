@@ -19,9 +19,8 @@
 
 </head>
 <body>
-
-	<!-- 1920x2700을 잡아주기 위한 -->
-	<div class="_4">
+	<!-- 1920x1200을 잡아주기 위한 -->
+	<div class="_1200">
 		<div class="header">
 			<div class="topbar">
 				<div class="div28">회원가입</div>

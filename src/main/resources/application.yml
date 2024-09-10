@@ -1,14 +1,37 @@
+
 server:
   port: 8083
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: axdswww12@gmail.com
+#    password: 구글 계정 앱 비밀번호
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
   mvc:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/ygc_Spring?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull
+#    driver-class-name: com.mysql.jdbc.Drive
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/ygc_Spring?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
     username: root
     password: 
 mybatis:
   type-aliases-package: com.baseball.vo
+custom:
+  siteName: ygc_Spring
+  siteMainUri: http://localhost:8083
+  emailFrom: no-reply@localhost
+  emailFromName: ygc_Spring
+  genFileDirPath: C:\work_YGC\sts-4.24.0.RELEASE-workspace\baseball_ygc\images

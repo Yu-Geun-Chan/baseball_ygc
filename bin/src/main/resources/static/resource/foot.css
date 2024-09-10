@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+.footer {
+	background: #f3f4f8;
+	height: 100px;
+	position: absolute;
+	right: 0px;
+	left: 0px;
+	bottom: 0px;
+	overflow: hidden;
+}
+
+.footer-container {
+	display: flex;
+	flex-direction: row;
+	gap: 13px;
+	align-items: center;
+	justify-content: flex-start;
+	width: 1239px;
+	position: absolute;
+	left: calc(50% - 620px);
+	bottom: 0px;
+}
+
+/* 구단 메인페이지 링크 프레임창 CSS */
+.teamMainPage {
+	flex-shrink: 0;
+	width: 1090px;
+	height: 59px;
+	position: relative;
+	overflow: hidden;
+}
+
+/* 구단 로고 크기 + 위치 CSS */
+
+.item-link {
+	width: 81px;
+	height: 14px;
+	position: absolute;
+	top: 2px;
+}
+
+.item-link1 {
+	left: 0px;
+}
+
+.item-link2 {
+	left: 111px;
+}
+
+.item-link3 {
+	left: 222px;
+}
+
+.item-link4 {
+	left: 333px;
+}
+
+.item-link5 {
+	left: 444px;
+}
+
+.item-link6 {
+	left: 555px;
+}
+
+.item-link7 {
+	left: 666px;
+}
+
+.item-link8 {
+	left: 777px;
+}
+
+.item-link9 {
+	left: 888px;
+}
+
+.item-link10 {
+	left: 999px;
+}
+
+.teamLogoLink {
+	width: 81px;
+	height: 59px;
+	position: absolute;
+	left: calc(50% - 40.5px);
+	top: -2px;
+	overflow: hidden;
+	object-fit: cover;
+}
+/* 구단 로고 크기 + 위치 CSS 여기까지 */
+
+/* SNS 링크 프레임창 CSS */
+.sns {
+	flex-shrink: 0;
+	width: 136px;
+	height: 100px;
+	position: relative;
+}
+
+/* KBO SNS 로고 크기 + 위치 CSS */
+.btn-sns {
+	width: 68px;
+	height: 50px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: hidden;
+	object-fit: cover;
+}
+
+.instagram {
+	height: 50px;
+	position: absolute;
+	right: 68px;
+	left: 0px;
+	top: 0px;
+}
+
+.youtube {
+	height: 50px;
+	position: absolute;
+	right: 0px;
+	left: 68px;
+	top: 0px;
+}
+
+.tiktok {
+	height: 50px;
+	position: absolute;
+	right: 0px;
+	left: 68px;
+	top: 50px;
+}
+
+.facebook {
+	height: 50px;
+	position: absolute;
+	right: 68px;
+	left: 0px;
+	top: 50px;
+}
+/* KBO SNS 로고 크기 + 위치 CSS 여기까지 */

@@ -1,0 +1,89 @@
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" href="/resource/common.css" />
+<link rel="stylesheet" href="/resource/foot.css" />
+
+<div class="footer">
+	<div class="footer-container">
+		<div class="teamMainPage">
+			<div class="item-link">
+				<a href="https://www.lgtwins.com/service/html.ncd?view=/pc_twins/twins_main/twins_main" target="_blank">
+					<img class="teamLogoLink" src="/images/teamLogos/lg.png" />
+				</a>
+			</div>
+			<div class="item-link item-link2">
+				<a href="https://www.ktwiz.co.kr/sports/site/baseball/main.do" target="_blank">
+					<img class="teamLogoLink" src="/images/teamLogos/kt.png" />
+				</a>
+			</div>
+			<div class="item-link item-link3">
+				<a href="https://www.ssglanders.com/main" target="_blank">
+					<img class="teamLogoLink" src="/images/teamLogos/ssg.png" />
+				</a>
+			</div>
+			<div class="item-link item-link4">
+				<a href="https://www.ncdinos.com/" target="_blank">
+					<img class="teamLogoLink" src="/images/teamLogos/nc.png" />
+				</a>
+			</div>
+			<div class="item-link item-link5">
+				<a href="https://www.doosanbears.com/" target="_blank">
+					<img class="teamLogoLink" src="/images/teamLogos/doosan.png" />
+				</a>
+			</div>
+			<div class="item-link item-link6">
+				<a href="https://tigers.co.kr/" target="_blank">
+					<img class="teamLogoLink" src="/images/teamLogos/kia.png" />
+				</a>
+			</div>
+			<div class="item-link item-link7">
+				<a href="https://www.giantsclub.com/html/" target="_blank">
+					<img class="teamLogoLink" src="/images/teamLogos/lotte.png" />
+				</a>
+			</div>
+			<div class="item-link item-link8">
+				<a href="https://www.samsunglions.com/" target="_blank">
+					<img class="teamLogoLink" src="/images/teamLogos/samsung.png" />
+				</a>
+			</div>
+			<div class="item-link item-link9">
+				<a href="https://www.hanwhaeagles.co.kr/index.do" target="_blank">
+					<img class="teamLogoLink" src="/images/teamLogos/hanhwa.png" />
+				</a>
+			</div>
+			<div class="item-link item-link10">
+				<a href="https://heroesbaseball.co.kr/index.do" target="_blank">
+					<img class="teamLogoLink" src="/images/teamLogos/kiwoom.png" />
+				</a>
+			</div>
+		</div>
+		<div class="sns">
+			<div class="instagram">
+				<a href="https://www.instagram.com/kbo.official/" target="_blank">
+					<img class="btn-sns" src="/images/sns/instagram.png" />
+				</a>
+			</div>
+			<div class="youtube">
+				<a href="https://www.youtube.com/channel/UCoVz66yWHzVsXAFG8WhJK9g" target="_blank">
+					<img class="btn-sns" src="/images/sns/youtube.png" />
+				</a>
+			</div>
+			<div class="tiktok">
+				<a href="https://www.tiktok.com/@kbo.official?is_from_webapp=1&sender_device=pc" target="_blank">
+					<img class="btn-sns" src="/images/sns/tiktok.png" />
+				</a>
+			</div>
+			<div class="facebook">
+				<a href="https://www.facebook.com/kbo1982/" target="_blank">
+					<img class="btn-sns" src="/images/sns/facebook.png" />
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 1920x~~~을 잡아주기 위해 head.jspf에서 열었던거 닫아주기 위해 추가 -->
+</div>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+@charset "UTF-8";
+
+/* 컨테이너 */
+.teamInfoSection {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	align-items: flex-start;
+	justify-content: flex-start;
+	width: 1425px;
+	height: 2362px;
+	position: absolute;
+	left: calc(50% - 724px);
+	top: calc(50% - 1182px);
+}
+/* 각 구단의 큰 설명창(로고, 구단설명) CSS */
+.team {
+	display: flex;
+	flex-direction: row;
+	gap: 25px;
+	align-items: center;
+	justify-content: flex-start;
+	align-self: stretch;
+	flex-shrink: 0;
+	position: relative;
+}
+
+/* 각 구단의 설명창 CSS */
+.teamInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	align-items: flex-start;
+	justify-content: flex-start;
+	flex-shrink: 0;
+	width: 700px;
+	position: relative;
+}
+
+/* 구단 로고 이미지 설명창 CSS */
+.teamLogo {
+	flex-shrink: 0;
+	width: 220px;
+	height: 45px;
+	position: relative;
+	overflow: hidden;
+}
+
+/* 지도 이미지 위치맞춤 CSS */
+.div10 {
+	flex-shrink: 0;
+	width: 700px;
+	height: 250px;
+	position: relative;
+	object-fit: cover;
+}
+/* 구단 로고 이미지 위치맞춤 CSS */
+.image {
+	flex-shrink: 0;
+	width: 100px;
+	height: 45px;
+	position: relative;
+	object-fit: cover;
+}
+
+/* 홈구장 이미지 위치맞춤 CSS */
+.teamLogoImage {
+	width: 280px;
+	height: 180px;
+	position: absolute;
+	left: 0px;
+	top: 10px;
+	object-fit: cover;
+}
+
+.image-2 {
+	width: 280px;
+	height: 180px;
+	position: absolute;
+	left: 0px;
+	top: 10px;
+	object-fit: cover;
+}
+
+/* 각 구단의 설명컨텐츠 창 CSS */
+.info {
+	border-radius: 10px;
+	border-style: solid;
+	border-color: #999999;
+	border-width: 1px;
+	align-self: stretch;
+	flex-shrink: 0;
+	height: 200px;
+	position: relative;
+	overflow: hidden;
+}
+
+/* 찾아가기 a태그 CSS */
+.find {
+	color: #ffffff;
+	text-align: center;
+	font-size: 15px;
+	line-height: 18px;
+	font-weight: 700;
+	position: absolute;
+	left: calc(50% - 40px);
+	top: calc(50% - 15px);
+	width: 80px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.teamColor {
+	border-radius: 5px;
+	width: 80px;
+	height: 30px;
+	position: absolute;
+	left: 289px;
+	top: 135px;
+	overflow: hidden;
+}
+
+.doosan {
+	background: #0e0e2a;
+}
+
+.kiwoom {
+	background: #85001f;
+}
+
+.kt {
+	background: #000000;
+}
+
+.ssg {
+	background: #cd142c;
+}
+
+.hanhwa {
+	background: #ef8a2f;
+}
+
+.lotte {
+	background: #d31f40;
+}
+
+.kia {
+	background: #e20d28;
+}
+
+.samsung {
+	background: #0064b2;
+}
+
+.nc {
+	background: #1f468f;
+}
+
+.div12 {
+	flex-shrink: 0;
+	width: 100px;
+	height: 45px;
+	position: relative;
+	object-fit: cover;
+}
+
+.address {
+	color: #000000;
+	text-align: left;
+	font-size: 14px;
+	line-height: 130%;
+	font-weight: 700;
+	position: absolute;
+	left: 289px;
+	top: 87px;
+	width: 400px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.stadium {
+	color: #000000;
+	text-align: left;
+	font-size: 14px;
+	line-height: 130%;
+	font-weight: 700;
+	position: absolute;
+	left: 289px;
+	top: 39px;
+	width: 400px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
