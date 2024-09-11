@@ -7,8 +7,4 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class Test {
 
-	@RequestMapping("/usr/member/dojoin")
-	public String showTest() {
-		return "/usr/member/join";
-	}
 }

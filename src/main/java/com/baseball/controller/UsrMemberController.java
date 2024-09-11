@@ -29,7 +29,7 @@ public class UsrMemberController {
 
 		rq.logout();
 
-		return Ut.jsReplace("S-1", Ut.f("로그아웃 성공"), "/");
+		return Ut.jsReplace("S-1", Ut.f("로그아웃 되었습니다."), "/");
 	}
 
 	@RequestMapping("/usr/member/login")
@@ -45,35 +45,35 @@ public class UsrMemberController {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		if (Ut.isEmptyOrNull(loginId)) {
-			return Ut.jsHistoryBack("F-1", "loginId 입력 x");
+			return Ut.jsHistoryBack("F-1", "아이디를 입력하세요.");
 		}
 		if (Ut.isEmptyOrNull(loginPw)) {
-			return Ut.jsHistoryBack("F-2", "loginPw 입력 x");
+			return Ut.jsHistoryBack("F-2", "비밀번호를 입력하세요.");
 		}
 
 		Member member = memberService.getMemberByLoginId(loginId);
 
 		if (member == null) {
-			return Ut.jsHistoryBack("F-3", Ut.f("%s는(은) 존재 x", loginId));
+			return Ut.jsHistoryBack("F-3", Ut.f("%s는(은) 존재하지 않는 아이디 입니다.", loginId));
 		}
 
 		System.err.println(Ut.sha256(loginPw));
 
 		if (member.getLoginPw().equals(Ut.sha256(loginPw)) == false) {
-			return Ut.jsHistoryBack("F-4", Ut.f("비밀번호가 일치하지 않습니다!!!!!"));
+			return Ut.jsHistoryBack("F-4", Ut.f("비밀번호가 일치하지 않습니다."));
 		}
 
 		if (member.isDelStatus() == true) {
-			return Ut.jsReplace("사용정지된 계정이야", "/");
+			return Ut.jsReplace("사용이 정지된 계정입니다.", "/");
 		}
 
 		rq.login(member);
 
 		if (afterLoginUri.length() > 0) {
-			return Ut.jsReplace("S-1", Ut.f("%s님 환영합니다", member.getNickname()), afterLoginUri);
+			return Ut.jsReplace("S-1", Ut.f("[%s]님 환영합니다", member.getNickname()), afterLoginUri);
 		}
 
-		return Ut.jsReplace("S-1", Ut.f("%s님 환영합니다", member.getNickname()), "/");
+		return Ut.jsReplace("S-1", Ut.f("[%s]님 환영합니다", member.getNickname()), "/");
 	}
 
 	@RequestMapping("/usr/member/join")
@@ -88,22 +88,22 @@ public class UsrMemberController {
 			String cellphoneNum, String email) {
 
 		if (Ut.isEmptyOrNull(loginId)) {
-			return Ut.jsHistoryBack("F-1", "loginId 입력 x");
+			return Ut.jsHistoryBack("F-1", "아이디를 입력하세요.");
 		}
 		if (Ut.isEmptyOrNull(loginPw)) {
-			return Ut.jsHistoryBack("F-2", "loginPw 입력 x");
+			return Ut.jsHistoryBack("F-2", "비밀번호를 입력하세요.");
 		}
 		if (Ut.isEmptyOrNull(name)) {
-			return Ut.jsHistoryBack("F-3", "name 입력 x");
+			return Ut.jsHistoryBack("F-3", "이름을 입력하세요.");
 		}
 		if (Ut.isEmptyOrNull(nickname)) {
-			return Ut.jsHistoryBack("F-4", "nickname 입력 x");
+			return Ut.jsHistoryBack("F-4", "닉네임을 입력하세요.");
 		}
 		if (Ut.isEmptyOrNull(cellphoneNum)) {
-			return Ut.jsHistoryBack("F-5", "cellphoneNum 입력 x");
+			return Ut.jsHistoryBack("F-5", "휴대폰번호를 입력하세요.");
 		}
 		if (Ut.isEmptyOrNull(email)) {
-			return Ut.jsHistoryBack("F-6", "email 입력 x");
+			return Ut.jsHistoryBack("F-6", "이메일을 입력하세요.");
 		}
 
 		ResultData joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
@@ -117,9 +117,9 @@ public class UsrMemberController {
 		return Ut.jsReplace(joinRd.getResultCode(), joinRd.getMsg(), "../member/login");
 	}
 
-	@RequestMapping("/usr/member/myPage")
+	@RequestMapping("/usr/member/info")
 	public String showmyPage() {
-		return "usr/member/myPage";
+		return "usr/member/info";
 	}
 
 	@RequestMapping("/usr/member/checkPw")
@@ -132,11 +132,11 @@ public class UsrMemberController {
 	public String doCheckPw(String loginPw) {
 
 		if (Ut.isEmptyOrNull(loginPw)) {
-			return Ut.jsHistoryBack("F-1", "비번 써");
+			return Ut.jsHistoryBack("F-1", "비밀번호 입력해주세요.");
 		}
 
 		if (rq.getLoginedMember().getLoginPw().equals(Ut.sha256(loginPw)) == false) {
-			return Ut.jsHistoryBack("F-2", "비번 틀림");
+			return Ut.jsHistoryBack("F-2", "비밀번호가 일치하지 않습니다.");
 		}
 
 		return Ut.jsReplace("S-1", Ut.f("비밀번호 확인 성공"), "modify");
@@ -157,16 +157,16 @@ public class UsrMemberController {
 		// 비번은 안바꾸는거 가능(사용자) 비번 null 체크는 x
 
 		if (Ut.isEmptyOrNull(name)) {
-			return Ut.jsHistoryBack("F-3", "name 입력 x");
+			return Ut.jsHistoryBack("F-3", "이름을 입력하세요.");
 		}
 		if (Ut.isEmptyOrNull(nickname)) {
-			return Ut.jsHistoryBack("F-4", "nickname 입력 x");
+			return Ut.jsHistoryBack("F-4", "닉네임을 입력하세요.");
 		}
 		if (Ut.isEmptyOrNull(cellphoneNum)) {
-			return Ut.jsHistoryBack("F-5", "cellphoneNum 입력 x");
+			return Ut.jsHistoryBack("F-5", "휴대폰번호를 입력하세요.");
 		}
 		if (Ut.isEmptyOrNull(email)) {
-			return Ut.jsHistoryBack("F-6", "email 입력 x");
+			return Ut.jsHistoryBack("F-6", "이메일을 입력하세요.");
 		}
 
 		ResultData modifyRd;
@@ -191,10 +191,10 @@ public class UsrMemberController {
 		Member existsMember = memberService.getMemberByLoginId(loginId);
 
 		if (existsMember != null) {
-			return ResultData.from("F-2", "해당 아이디는 이미 사용중이야", "loginId", loginId);
+			return ResultData.from("F-2", "해당 아이디는 이미 사용중입니다.", "loginId", loginId);
 		}
 
-		return ResultData.from("S-1", "사용 가능!", "loginId", loginId);
+		return ResultData.from("S-1", "사용 가능한 아이디입니다.", "loginId", loginId);
 	}
 
 	@RequestMapping("/usr/member/findLoginId")
@@ -211,10 +211,10 @@ public class UsrMemberController {
 		Member member = memberService.getMemberByNameAndEmail(name, email);
 
 		if (member == null) {
-			return Ut.jsHistoryBack("F-1", "너는 없는 사람이야");
+			return Ut.jsHistoryBack("F-1", "존재하지 않는 사용자입니다.");
 		}
 
-		return Ut.jsReplace("S-1", Ut.f("너의 아이디는 [ %s ] 야", member.getLoginId()), afterFindLoginIdUri);
+		return Ut.jsReplace("S-1", Ut.f("아이디는 [ %s ] 입니다.", member.getLoginId()), afterFindLoginIdUri);
 	}
 
 	@RequestMapping("/usr/member/findLoginPw")
@@ -231,11 +231,11 @@ public class UsrMemberController {
 		Member member = memberService.getMemberByLoginId(loginId);
 
 		if (member == null) {
-			return Ut.jsHistoryBack("F-1", "너는 없는 사람이야");
+			return Ut.jsHistoryBack("F-1", "존재하지 않는 사용자입니다");
 		}
 
 		if (member.getEmail().equals(email) == false) {
-			return Ut.jsHistoryBack("F-2", "일치하는 이메일이 없는데?");
+			return Ut.jsHistoryBack("F-2", "일치하는 이메일이 없습니다.");
 		}
 
 		ResultData notifyTempLoginPwByEmailRd = memberService.notifyTempLoginPwByEmail(member);

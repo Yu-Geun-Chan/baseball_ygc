@@ -49,11 +49,11 @@ a {
 }
 
 /* 구단정보 세로길이 2700px라서 */
-._4, ._4 * {
+._2700, ._2700 * {
 	box-sizing: border-box;
 }
 
-._4 {
+._2700 {
 	background: #ffffff;
 	height: 2700px;
 	position: relative;

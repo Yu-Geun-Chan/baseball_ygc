@@ -552,7 +552,7 @@
 					<div class="vs">VS</div>
 					<img class="emblem emblem-kt" src="/images/teamLogos/kt.png" />
 					<div class="list3">
-						<div class="item2" style="background: url(item1.png) top left; background-size: 500%; background-repeat: repeat;">
+						<div class="item2" style="background: url(/images/kboColorImages/skyblue.png) top left; background-size: 500%; background-repeat: repeat;">
 							<div class="link5">
 								<div class="div23">예매</div>
 							</div>
@@ -571,7 +571,7 @@
 						</div>
 						<div class="item-18-30">18:30</div>
 					</div>
-					<div class="item5" style="background: url(item4.png) top left; background-size: 500%; background-repeat: repeat;">
+					<div class="item5" style="background: url(/images/kboColorImages/navy.png) top left; background-size: 500%; background-repeat: repeat;">
 						<div class="link5">
 							<div class="div25">구장 정보</div>
 						</div>
@@ -588,13 +588,13 @@
 					<img class="emblem emblem-kiwoom" src="/images/teamLogos/kiwoom.png" />
 					<div class="list5">
 						<div class="list6">
-							<div class="item2" style="background: url(item6.png) top left; background-size: 500%; background-repeat: repeat;">
+							<div class="item2" style="background: url(/images/kboColorImages/skyblue.png) top left; background-size: 500%; background-repeat: repeat;">
 								<div class="link5">
 									<div class="div23">예매</div>
 								</div>
 							</div>
 						</div>
-						<div class="item7" style="background: url(item7.png) top left; background-size: 500%; background-repeat: repeat;">
+						<div class="item7" style="background: url(/images/kboColorImages/navy.png) top left; background-size: 500%; background-repeat: repeat;">
 							<div class="link5">
 								<div class="div25">구장 정보</div>
 							</div>
