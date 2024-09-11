@@ -14,7 +14,7 @@ CREATE TABLE `member` (
 	cellPhoneNum	CHAR(20)	NOT NULL,
 	email	CHAR(50)	NOT NULL,
 	profileImage	VARCHAR(255)	NULL,
-	favoritePlayerId	INT(10) UNSIGNED	NOT NULL,
+	favoritePlayerId	INT(10) UNSIGNED	NULL,
 	messageToPlayer	TEXT	NULL,
 	authLevel	SMALLINT(2) UNSIGNED	NOT NULL	DEFAULT 3	COMMENT '권한 (관리자 = 7, 일반유저 = 3)',
 	delStatus	TINYINT(1) UNSIGNED	NOT NULL	DEFAULT 0	COMMENT '탈퇴 여부 (탈퇴 전 =  0, 탈퇴 후 = 1)',

@@ -50,13 +50,27 @@
 							<path fill="currentColor"
 								d="M20 17.5a1.5 1.5 0 0 1 .144 2.993L20 20.5H4a1.5 1.5 0 0 1-.144-2.993L4 17.5zm0-7a1.5 1.5 0 0 1 0 3H4a1.5 1.5 0 0 1 0-3zm0-7a1.5 1.5 0 0 1 0 3H4a1.5 1.5 0 1 1 0-3z" /></g></svg>
 					</div>
-					<div class="div33">
-						<div class="div34">경기정보</div>
-						<div class="div35">기록 · 순위</div>
-						<div class="div36">선수</div>
-						<div class="div37">구장정보</div>
-						<div class="div38">게시판</div>
-						<div class="div39">문의사항</div>
+					<div class="menu-box">
+						<ul>
+							<li>
+								<a href="#">경기정보</a>
+							</li>
+							<li>
+								<a href="#">기록 · 순위</a>
+							</li>
+							<li>
+								<a href="#">선수</a>
+							</li>
+							<li>
+								<a href="../home/teamInfo">구장정보</a>
+							</li>
+							<li>
+								<a href="#">게시판</a>
+							</li>
+							<li>
+								<a href="#">문의사항</a>
+							</li>
+						</ul>
 					</div>
 					<img class="_28" src="/images/mainLogoImage/logo.png" />
 				</div>

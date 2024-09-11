@@ -21,16 +21,24 @@
 <body>
 
 	<!-- 1920x2700을 잡아주기 위한 -->
-	<div class="_4">
+	<div class="_2700">
 		<div class="header">
 			<div class="topbar">
-				<div class="div28">회원가입</div>
-				<div class="div29">로그인</div>
+				<c:if test="${!rq.isLogined() }">
+					<a class="hover:underline div28" href="../member/join">회원가입</a>
+					<a class="hover:underline div29" href="../member/login">로그인</a>
+				</c:if>
+				<c:if test="${rq.isLogined() }">
+					<a class="hover:underline div28" href="../member/info">나의 정보</a>
+					<a class="hover:underline div29" href="../member/login">로그아웃</a>
+				</c:if>
 				<div class="div30">|</div>
 				<div class="div31">|</div>
-				<svg class="mdi-user" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+				<a href="../member/myPage">
+					<svg class="mdi-user" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
 					<path fill="currentColor"
-						d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4" /></svg>
+							d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4" /></svg>
+				</a>
 			</div>
 			<div class="div32">
 				<div class="menubar">
@@ -50,7 +58,7 @@
 						<div class="div38">게시판</div>
 						<div class="div39">문의사항</div>
 					</div>
-					<img class="_28" src="/images/logo.png" />
+					<img class="_28" src="/images/mainLogoImage/logo.png" />
 				</div>
 			</div>
 		</div>

@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="TEAMINFO"></c:set>
 <link rel="stylesheet" href="/resource/teamInfo.css" />
-<link rel="stylesheet" href="/resource/common.css" />
 
 <%@ include file="../common/head2700.jspf"%>
 
@@ -22,7 +21,6 @@
 						<a href="https://map.naver.com/p/entry/place/13202577?c=15.00,0,0,0,dh" target="_blank">찾아가기</a>
 					</div>
 				</div>
-				<img class="image-4" src="" />
 			</div>
 		</div>
 		<img class="div10" src="div9.png" />
