@@ -7,10 +7,10 @@
 	border-color: #cccccc;
 	border-width: 1px;
 	width: 700px;
-	height: 800px;
+	height: 400px;
 	position: absolute;
 	left: calc(50% - 350px);
-	top: 227px;
+	top: 423px;
 }
 
 .form-contents-container {
@@ -22,7 +22,7 @@
 	width: 600px;
 	position: absolute;
 	left: calc(50% - 300px);
-	top: 123px;
+	top: 146px;
 }
 
 .content-container {
@@ -35,7 +35,6 @@
 }
 
 .input {
-	color: #999999;
 	text-align: left;
 	font-size: 16px;
 	line-height: 18px;
@@ -48,19 +47,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-}
-
-.input:onclick {
-	color: black;
-}
-/* svg 아이콘 아웃라인 CSS */
-.icons-outline {
-	width: 24px;
-	height: 24px;
-	position: absolute;
-	left: 38px;
-	top: 3px;
-	overflow: visible;
 }
 /* svg 아이콘 CSS */
 .icons {
@@ -97,7 +83,40 @@
 	align-items: center;
 	justify-content: center;
 }
-/* 메인 버튼 제외 각종 버튼 크기 및 좌우 위치 고정 CSS */
+/* 찾기 버튼 CSS */
+.find-btns-container {
+	width: 420px;
+	height: 80px;
+	position: absolute;
+	left: calc(50% - 210px);
+	top: 850px;
+	overflow: hidden;
+}
+
+.find-btns {
+	color: #999999;
+	text-align: center;
+	font-size: 20px;
+	line-height: 18px;
+	position: absolute;
+	top: 0px;
+	width: 200px;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.find-btns-id {
+	left:0px;
+}
+
+.find-btns-pw {
+	left:220px;
+}
+/* 찾기 버튼 CSS 여기까지 */
+
+/* 로그인 form 메인 버튼 제외 각종 버튼 크기 및 좌우 위치 고정 CSS */
 .btns {
 	width: 120px;
 	height: 40px;
@@ -105,13 +124,13 @@
 	left: calc(50% - -230px);
 	overflow: hidden;
 }
-/* 로그인 버튼 상하 위치 고정 CSS */
-.btns-login {
+/* 회원가입 버튼 상하 위치 고정 CSS */
+.btns-join {
 	top: 46px;
 }
 /* 뒤로가기 버튼 상하 위치 고정 CSS */
 .btns-back {
-	top: 724px;
+	top: 324px;
 }
 /* 각종버튼 content CSS */
 .btns-content {
@@ -128,19 +147,19 @@
 	align-items: center;
 	justify-content: center;
 }
-/* 회원가입 버튼 크기 및 위치고정 CSS */
-.btn-join {
-	background: #1A3773; border-radius : 10px;
+/* 로그인 버튼 크기 및 위치고정 CSS */
+.btn-login {
+	background: #1A3773;
+	border-radius: 10px;
 	width: 130px;
 	height: 40px;
 	position: absolute;
 	left: calc(50% - 69px);
-	top: 600px;
+	top: 180px;
 	overflow: hidden;
-	border-radius: 10px;
 }
-/* 회원가입 버튼 content CSS */
-.btn-join-content {
+/* 로그인 버튼 content CSS */
+.btn-login-content {
 	background-color: #1A3773;
 	color: #ffffff;
 	text-align: center;

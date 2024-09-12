@@ -12,81 +12,79 @@
 	left: 0px;
 	top: 0px;
 }
+/* 각 구단별 색깔로 메뉴바가 바뀐다. */
+@keyframes colorTransition {
+    0%  { background-color: #C30037; } /* LG */
+    10% { background-color: #0E0E2A; } /* 두산 */
+    20% { background-color: #85001F; } /* 키움 */
+    30% { background-color: #1F468F; } /* NC */
+    40% { background-color: #CD142C; } /* SSG */
+    50% { background-color: #EF8A2F; } /* 한화 */
+    60% { background-color: #D31F40; } /* 롯데 */
+    70% { background-color: #0064B2; } /* 삼성 */
+    80% { background-color: #E20D28; } /* KIA */
+    90% { background-color: #000000; } /* KT */
+    100%{ background-color: #C30037; } /* LG */
+}
 
 .topbar {
-	background: #cccccc;
+    background-color: #C30037; /* 시작 컬러 */
+    height: 55px; /* 탑바 높이 */
+    animation: colorTransition 20s infinite; /* 총 20초 걸리며 무한반복 */
+    transition: background-color 2s ease-in-out; /* 색깔이 바뀌는 시간 2초 */
+}
+/* 여기까지 */
+
+.topbar {
 	align-self: stretch;
 	flex-shrink: 0;
-	height: 55px;
 	position: relative;
 	overflow: hidden;
 }
 
-.div28 {
-	color: #000000;
+/* 탑바 요소들 CSS */
+.topbar-contents {
+	color: #ffffff;
 	text-align: center;
 	font-size: 20px;
 	line-height: 130%;
-	font-weight: 400;
 	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+/* 탑바 회원가입, 내 정보 위치 고정 CSS */
+.topbar-contents-join {
 	left: calc(50% - -570px);
 	top: 15px;
 	width: 92px;
 	height: 22px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
-
-.div29 {
-	color: #000000;
-	text-align: center;
-	font-size: 20px;
-	line-height: 130%;
-	font-weight: 400;
-	position: absolute;
+/* 탑바 로그인, 로그아웃 위치 고정 CSS */
+.topbar-contents-login {
 	left: calc(50% - -470px);
 	top: 16px;
 	width: 92px;
 	height: 22px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
-
-.div30 {
-	color: #222222;
-	text-align: left;
-	font-size: 20px;
-	line-height: 12px;
-	font-weight: 400;
-	position: absolute;
+/* 탑바 | 위치 고정 CSS */
+.topbar-contents-bar1 {
 	left: calc(50% - -559px);
 	top: 20px;
 	width: 4.56px;
 	height: 14px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
 }
 
-.div31 {
-	color: #222222;
-	text-align: left;
-	font-size: 20px;
-	line-height: 12px;
-	font-weight: 400;
-	position: absolute;
+.topbar-contents-bar2 {
 	left: calc(50% - -667px);
 	top: 20px;
 	width: 4.56px;
 	height: 14px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
 }
 
+/* 내 정보 버튼 CSS */
 .mdi-user {
+	color: white;
 	width: 36px;
 	height: 36px;
 	position: absolute;
@@ -95,7 +93,7 @@
 	overflow: visible;
 }
 
-.div32 {
+.menubar-container {
 	display: flex;
 	flex-direction: column;
 	gap: 0px;
@@ -123,6 +121,61 @@
 	border-width: 0px;
 }
 
+.menu-box {
+	width: 1000px;
+	height: 100px;
+	position: absolute;
+	left: calc(50% - 460px);
+	text-align: center;
+}
+
+.menu-box>ul {
+	display: inline-block;
+	height: 100%;
+}
+
+.menu-box>ul>li {
+	display: inline-block;
+	position: relative;
+	top: 32px;
+	height: 100%;
+}
+/* 1차 메뉴 아이템 */
+.menu-box>ul>li>a {
+	padding: 5 40 5 40px;
+	display: block;
+	font-size: 20px;
+	height: 100%;
+}
+/* 2차 메뉴 아이템*/
+.menu-box>ul>li>ul>li>a {
+	padding: 10 0 10 0px;
+	display: block;
+	font-size: 18px;
+	height: 100%;
+}
+
+/* 2차 메뉴 */
+.menu-box>ul>li>ul {
+	font-family: 'GongGothicMedium', sans-serif;
+	color: white;
+	position: absolute;
+	display: none;
+	background-color: #1A3773;
+	border-style: solid;
+	border-color: #000000;
+	border-width: 3px 0px 0px 0px;
+	top: 65px;
+	z-index: 1;
+	width: 100%;
+	position: absolute;
+}
+
+/* 호버된 1차 메뉴 아이템의 자식 메뉴 */
+.menu-box>ul>li:hover>ul {
+	display: block;
+}
+
 .mingcute-menu-fill {
 	width: 36px;
 	height: 36px;
@@ -141,48 +194,6 @@
 	bottom: 0.78%;
 	top: 20%;
 	overflow: visible;
-}
-
-.menu-box {
-	width: 1000px;
-	height: 36px;
-	position: absolute;
-	left: calc(50% - 460px);
-	top: 32px;
-	text-align: center;
-}
-
-.menu-box>ul {
-	display: inline-block;
-}
-
-.menu-box>ul>li {
-	display: inline-block;
-	position: relative;
-}
-
-.menu-box ul>li>a {
-	padding: 5 40 5 40px;
-	display: block;
-	font-size: 20px;
-}
-
-/* 2차 메뉴 */
-.menu-box>ul>li>ul {
-	position: absolute;
-	display: none;
-	background-color: #afafaf;
-	border-style: solid;
-	border-color: #000000;
-	border-width: 1px 0px 0px 0px;
-	top: 70px;
-	left: 5px;
-	z-index: 1;
-}
-
-/* 호버된 1차 메뉴 아이템의 자식 메뉴 */
-.menu-box>ul>li:hover>ul {
-	display: block;
 }
 
 /* mainLogo 위치맞춤 */

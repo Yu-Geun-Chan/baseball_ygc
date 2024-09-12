@@ -149,13 +149,11 @@
 		<div class="notice-content">회원가입</div>
 	</div>
 	<div class="btns btns-login">
-		<a href="#" class="btns-content">로그인</a>
+		<a href="../member/login" class="btns-content">로그인</a>
 	</div>
 	<div class="btns btns-back">
 		<a href="javascript:history.back();" class="btns-content">뒤로가기</a>
 	</div>
-
 </div>
-
 
 <%@ include file="../common/foot.jspf"%>
