@@ -59,7 +59,7 @@
 		<div class="notice-content">마이페이지</div>
 	</div>
 	<div class="btn-modify">
-		<a href="../member/checkPw" class="btn-modify-content">뒤로가기</a>
+		<a href="javascript:history.back();" class="btn-modify-content">뒤로가기</a>
 	</div>
 	<div class="cheer-message">
 		<div class="cheer-message-content">노시환 선수 V2를 향해 힘내주세요!</div>
