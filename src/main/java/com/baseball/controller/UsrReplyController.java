@@ -30,8 +30,6 @@ public class UsrReplyController {
 	@ResponseBody
 	public String doWrite(HttpServletRequest req, String relTypeCode, int relId, String body) {
 
-		Rq rq = (Rq) req.getAttribute("rq");
-
 		if (Ut.isEmptyOrNull(body)) {
 			return Ut.jsHistoryBack("F-2", "내용을 입력해주세요");
 		}
@@ -48,7 +46,6 @@ public class UsrReplyController {
 	public String doModify(HttpServletRequest req, int id, String body) {
 		System.err.println(id);
 		System.err.println(body);
-		Rq rq = (Rq) req.getAttribute("rq");
 
 		Reply reply = replyService.getReply(id);
 

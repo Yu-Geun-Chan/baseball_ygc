@@ -46,8 +46,6 @@ public class UsrArticleController {
 
 	@RequestMapping("/usr/article/detail")
 	public String showDetail(HttpServletRequest req, Model model, int id) {
-		Rq rq = (Rq) req.getAttribute("rq");
-
 		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 
 		ResultData usersReactionRd = reactionPointService.usersReaction(rq.getLoginedMemberId(), "article", id);
@@ -93,8 +91,6 @@ public class UsrArticleController {
 	@RequestMapping("/usr/article/modify")
 	public String showModify(HttpServletRequest req, Model model, int id) {
 
-		Rq rq = (Rq) req.getAttribute("rq");
-
 		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 
 		if (article == null) {
@@ -110,8 +106,6 @@ public class UsrArticleController {
 	@RequestMapping("/usr/article/doModify")
 	@ResponseBody
 	public String doModify(HttpServletRequest req, int id, String title, String body) {
-
-		Rq rq = (Rq) req.getAttribute("rq");
 
 		Article article = articleService.getArticleById(id);
 
@@ -137,8 +131,6 @@ public class UsrArticleController {
 	@RequestMapping("/usr/article/doDelete")
 	@ResponseBody
 	public String doDelete(HttpServletRequest req, int id) {
-
-		Rq rq = (Rq) req.getAttribute("rq");
 
 		Article article = articleService.getArticleById(id);
 
@@ -174,8 +166,6 @@ public class UsrArticleController {
 	public String doWrite(HttpServletRequest req, String boardId, String title, String body, String replaceUri,
 			MultipartRequest multipartRequest) {
 
-		Rq rq = (Rq) req.getAttribute("rq");
-
 		if (Ut.isEmptyOrNull(title)) {
 			return Ut.jsHistoryBack("F-1", "제목을 입력해주세요");
 		}
@@ -194,7 +184,6 @@ public class UsrArticleController {
 
 		Article article = articleService.getArticleById(id);
 
-
 		return Ut.jsReplace(writeArticleRd.getResultCode(), writeArticleRd.getMsg(), "../article/detail?id=" + id);
 
 	}
@@ -204,8 +193,6 @@ public class UsrArticleController {
 			@RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
 			@RequestParam(defaultValue = "") String searchKeyword) throws IOException {
-
-		Rq rq = (Rq) req.getAttribute("rq");
 
 		Board board = boardService.getBoardById(boardId);
 

@@ -60,6 +60,12 @@
 	width: 92px;
 	height: 22px;
 }
+.topbar-contents-info {
+	left: calc(50% - -570px);
+	top: 16px;
+	width: 92px;
+	height: 22px;
+}
 /* 탑바 로그인, 로그아웃 위치 고정 CSS */
 .topbar-contents-login {
 	left: calc(50% - -470px);

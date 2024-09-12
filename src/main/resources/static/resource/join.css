@@ -35,7 +35,6 @@
 }
 
 .input {
-	color: #999999;
 	text-align: left;
 	font-size: 16px;
 	line-height: 18px;
@@ -50,8 +49,11 @@
 	justify-content: flex-start;
 }
 
-.input:onclick {
-	color: black;
+.checkDup-msg {
+	position:absolute;
+	left:300px;
+	top:33px;
+	color:red;
 }
 /* svg 아이콘 아웃라인 CSS */
 .icons-outline {

@@ -22,7 +22,7 @@
 	width: 600px;
 	position: absolute;
 	left: 50px;
-	top: 169px;
+	top: 110px;
 }
 
 .content-container {
@@ -47,6 +47,107 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+}
+/* 응원선수 CSS */
+.player-image-container {
+	display: flex;
+	flex-direction: row;
+	gap: 0px;
+	align-items: center;
+	justify-content: flex-start;
+	position: absolute;
+	left: calc(50% - 150px);
+	top: 469px;
+}
+
+.player-image {
+	border-style: solid;
+	border-color: #999999;
+	border-width: 1px;
+	flex-shrink: 0;
+	width: 150px;
+	height: 150px;
+	position: relative;
+	object-fit: cover;
+}
+
+.player-info-container {
+	border-style: solid;
+	border-color: #999999;
+	border-width: 1px 1px 1px 0px;
+	flex-shrink: 0;
+	width: 150px;
+	height: 150px;
+	position: relative;
+	overflow: hidden;
+}
+
+.player-info-contents {
+	color: #000000;
+	text-align: center;
+	font-size: 16px;
+	line-height: 18px;
+	position: absolute;
+	left: 0px;
+	width: 150px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.contents-1 {
+	top: 0px;
+}
+
+.contents-2 {
+	top: 50px;
+}
+
+.contents-3 {
+	top: 100px;
+}
+
+/* 응원선수 CSS 여기까지 */
+
+/* 응원메세지 CSS */
+.cheer-message {
+	background: #ffffff;
+	width: 600px;
+	height: 30px;
+	position: absolute;
+	left: calc(50% - 300px);
+	top: 653px;
+	overflow: hidden;
+}
+
+.cheer-message-content {
+	color: #000000;
+	text-align: left;
+	font-size: 16px;
+	line-height: 18px;
+	font-weight: 400;
+	position: absolute;
+	left: 200px;
+	top: 6px;
+	width: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+/* 응원메세지 CSS 여기까지 */
+
+/* 하트 아이콘 CSS */
+.mdi-heart {
+	width: 4%;
+	height: 80%;
+	position: absolute;
+	right: 89.67%;
+	left: 6.33%;
+	bottom: 16.67%;
+	top: 3.33%;
+	overflow: visible;
+	color:red;
 }
 /* svg 아이콘 아웃라인 CSS */
 .icons-outline {
@@ -87,7 +188,7 @@
 	font-size: 16px;
 	line-height: 18px;
 	position: absolute;
-	left: 340px;
+	left: 470px;
 	top: 0px;
 	width: 260px;
 	height: 30px;

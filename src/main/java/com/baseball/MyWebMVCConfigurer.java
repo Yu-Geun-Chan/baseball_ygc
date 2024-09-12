@@ -12,7 +12,6 @@ import com.baseball.interceptor.BeforeActionInterceptor;
 import com.baseball.interceptor.NeedLoginInterceptor;
 import com.baseball.interceptor.NeedLogoutInterceptor;
 
-
 @Configuration
 public class MyWebMVCConfigurer implements WebMvcConfigurer {
 

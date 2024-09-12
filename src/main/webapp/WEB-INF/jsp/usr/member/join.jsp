@@ -98,6 +98,9 @@
 					<path d="M4 41c0-8.837 8.059-16 18-16m9 17l10-10l-4-4l-10 10v4z" /></g></svg>
 				</div>
 			</div>
+			<!-- 아이디 판별 -->
+			<div class="checkDup-msg"></div>
+
 			<div class="content-container">
 				<input style="border: none" class="input" type="text" name="loginPw" autocomplete="off" placeholder="비밀번호를 입력해주세요." />
 				<svg class="icons" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
@@ -127,7 +130,7 @@
 				</div>
 			</div>
 			<div class="content-container">
-				<input style="border: none" class="input" type="text" name="cellPhoneNum" autocomplete="off"
+				<input style="border: none" class="input" type="text" name="cellphoneNum" autocomplete="off"
 					placeholder="전화번호를 입력해주세요." />
 				<svg class="icons" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256">
 					<path fill="currentColor"

@@ -42,8 +42,6 @@ public class UsrMemberController {
 	@ResponseBody
 	public String doLogin(HttpServletRequest req, String loginId, String loginPw, String afterLoginUri) {
 
-		Rq rq = (Rq) req.getAttribute("rq");
-
 		if (Ut.isEmptyOrNull(loginId)) {
 			return Ut.jsHistoryBack("F-1", "아이디를 입력하세요.");
 		}
@@ -118,8 +116,13 @@ public class UsrMemberController {
 	}
 
 	@RequestMapping("/usr/member/info")
-	public String showmyPage() {
+	public String showInfo() {
 		return "usr/member/info";
+	}
+
+	@RequestMapping("/usr/member/myPage")
+	public String showMyPage() {
+		return "usr/member/myPage";
 	}
 
 	@RequestMapping("/usr/member/checkPw")
