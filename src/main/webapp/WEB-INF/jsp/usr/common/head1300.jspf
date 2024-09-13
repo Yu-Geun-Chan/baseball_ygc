@@ -29,8 +29,8 @@
 					<a class="topbar-contents topbar-contents-login" href="../member/login">로그인</a>
 				</c:if>
 				<c:if test="${rq.isLogined() }">
-					<a class="topbar-contents topbar-contents-join" href="../member/info">나의 정보</a>
-					<a class="topbar-contents topbar-contents-login" href="../member/login">로그아웃</a>
+					<a class="topbar-contents topbar-contents-info" href="../member/info">나의 정보</a>
+					<a class="topbar-contents topbar-contents-logout" href="../member/doLogout">로그아웃</a>
 				</c:if>
 				<div class="topbar-contents topbar-contents-bar1">|</div>
 				<div class="topbar-contents topbar-contents-bar2">|</div>

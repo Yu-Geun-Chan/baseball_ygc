@@ -17,6 +17,7 @@ public class NeedLogoutInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
+		Rq rq = (Rq) req.getAttribute("rq");
 
 		if (rq.isLogined()) {
 			System.err.println("==================로그인 상태입니다====================");

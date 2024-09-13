@@ -73,6 +73,13 @@
 	width: 92px;
 	height: 22px;
 }
+
+.topbar-contents-logout {
+	left: calc(50% - -470px);
+	top: 16px;
+	width: 92px;
+	height: 22px;
+}
 /* 탑바 | 위치 고정 CSS */
 .topbar-contents-bar1 {
 	left: calc(50% - -559px);
