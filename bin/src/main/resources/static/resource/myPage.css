@@ -1,0 +1,307 @@
+@charset "UTF-8";
+
+.container {
+	background: #ffffff;
+	border-radius: 20px;
+	border-style: solid;
+	border-color: #cccccc;
+	border-width: 1px;
+	width: 700px;
+	height: 800px;
+	position: absolute;
+	left: calc(50% - 350px);
+	top: 227px;
+}
+
+.form-contents-container {
+	display: flex;
+	flex-direction: column;
+	gap: 49px;
+	align-items: flex-start;
+	justify-content: flex-start;
+	width: 600px;
+	position: absolute;
+	left: 50px;
+	top: 110px;
+}
+
+.content-container {
+	background: #ffffff;
+	align-self: stretch;
+	flex-shrink: 0;
+	height: 30px;
+	position: relative;
+	overflow: hidden;
+}
+
+.content-title {
+	color: #999999;
+	text-align: left;
+	font-size: 16px;
+	line-height: 18px;
+	position: absolute;
+	left: 200px;
+	top: 0px;
+	width: 100px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+/* 응원선수 CSS */
+.player-image-container {
+	display: flex;
+	flex-direction: row;
+	gap: 0px;
+	align-items: center;
+	justify-content: flex-start;
+	position: absolute;
+	left: calc(50% - 150px);
+	top: 469px;
+}
+
+.player-image {
+	border-style: solid;
+	border-color: #999999;
+	border-width: 1px;
+	flex-shrink: 0;
+	width: 150px;
+	height: 150px;
+	position: relative;
+	object-fit: cover;
+}
+
+.player-info-container {
+	border-style: solid;
+	border-color: #999999;
+	border-width: 1px 1px 1px 0px;
+	flex-shrink: 0;
+	width: 150px;
+	height: 150px;
+	position: relative;
+	overflow: hidden;
+}
+
+.player-info-contents {
+	color: #000000;
+	text-align: center;
+	font-size: 16px;
+	line-height: 18px;
+	position: absolute;
+	left: 0px;
+	width: 150px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.contents-1 {
+	top: 0px;
+}
+
+.contents-2 {
+	top: 50px;
+}
+
+.contents-3 {
+	top: 100px;
+}
+
+/* 응원선수 CSS 여기까지 */
+
+/* 응원메세지 CSS */
+.cheer-message {
+	background: #ffffff;
+	width: 600px;
+	height: 30px;
+	position: absolute;
+	left: calc(50% - 300px);
+	top: 653px;
+	overflow: hidden;
+}
+
+.cheer-message-content {
+	color: #000000;
+	text-align: left;
+	font-size: 16px;
+	line-height: 18px;
+	font-weight: 400;
+	position: absolute;
+	left: 200px;
+	top: 6px;
+	width: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+/* 응원메세지 CSS 여기까지 */
+
+/* 하트 아이콘 CSS */
+.mdi-heart {
+	width: 4%;
+	height: 80%;
+	position: absolute;
+	right: 89.67%;
+	left: 6.33%;
+	bottom: 16.67%;
+	top: 3.33%;
+	overflow: visible;
+	color:red;
+}
+/* svg 아이콘 아웃라인 CSS */
+.icons-outline {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	left: 38px;
+	top: 3px;
+	overflow: visible;
+}
+
+/* svg 아이콘 CSS */
+.icons {
+	width: 4%;
+	height: 80%;
+	position: absolute;
+	right: 89.67%;
+	left: 6.33%;
+	bottom: 10%;
+	top: 10%;
+	overflow: visible;
+}
+
+.icons-outline-image {
+	width: 77.08%;
+	height: 79.17%;
+	position: absolute;
+	right: 14.58%;
+	left: 8.33%;
+	bottom: 12.5%;
+	top: 8.33%;
+	overflow: visible;
+}
+
+.content-body {
+	color: #4e4e4e;
+	text-align: left;
+	font-size: 16px;
+	line-height: 18px;
+	position: absolute;
+	left: 470px;
+	top: 0px;
+	width: 260px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+/* 안내문구 창 크기 및 위치고정 CSS */
+.notice {
+	width: 120px;
+	height: 40px;
+	position: absolute;
+	left: calc(50% - 324px);
+	top: 48px;
+	overflow: hidden;
+}
+/* 안내 문구(content) CSS */
+.notice-content {
+	color: #444444;
+	text-align: center;
+	font-size: 24px;
+	line-height: 18px;
+	position: absolute;
+	left: calc(50% - 59px);
+	top: 0px;
+	width: 120px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+/* 우측 버튼 크기 및 좌우 위치 고정 CSS */
+.btns {
+	width: 120px;
+	height: 40px;
+	position: absolute;
+	left: calc(50% - -230px);
+	overflow: hidden;
+}
+
+/* 회원탈퇴 버튼 상하 위치 고정 CSS */
+.btns-leave {
+	top: 46px;
+}
+/* 뒤로가기 버튼 상하 위치 고정 CSS */
+.btns-back {
+	top: 724px;
+}
+
+/* btns of contents CSS */
+.btns-content {
+	color: #999999;
+	text-align: center;
+	font-size: 16px;
+	line-height: 18px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 120px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+/* 마이페이지 이동 버튼 크기 및 위치고정 CSS */
+.btn-myPage {
+	width: 130px;
+	height: 40px;
+	position: absolute;
+	left: 39px;
+	top: 727px;
+	overflow: hidden;
+}
+/* 마이페이지 이동 버튼 content CSS */
+.btn-myPage-content {
+	color: #999999;
+	text-align: center;
+	font-size: 16px;
+	line-height: 18px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 130px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+/* 내 정보 수정 버튼 크기 및 위치고정 CSS */
+.btn-modify {
+	background: #1A3773;
+	border-radius: 10px;
+	width: 130px;
+	height: 40px;
+	position: absolute;
+	left: 281px;
+	top: 724px;
+	overflow: hidden;
+}
+/* 내 정보 수정 버튼 content CSS */
+.btn-modify-content {
+	color: #ffffff;
+	text-align: center;
+	font-size: 20px;
+	line-height: 18px;
+	position: absolute;
+	left: calc(50% - 65px);
+	top: calc(50% - 20px);
+	width: 130px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}

@@ -34,34 +34,6 @@
 	overflow: hidden;
 }
 
-.material-symbols-calendar-month {
-	width: 4%;
-	height: 80%;
-	position: absolute;
-	right: 89.83%;
-	left: 6.17%;
-	bottom: 10%;
-	top: 10%;
-	overflow: visible;
-}
-
-._2024-08-30 {
-	color: #4e4e4e;
-	text-align: left;
-	font-size: 16px;
-	line-height: 18px;
-	position: absolute;
-	right: 0%;
-	left: 56.67%;
-	width: 43.33%;
-	bottom: 0%;
-	top: 0%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-}
-
 .content-title {
 	color: #999999;
 	text-align: left;
@@ -86,104 +58,6 @@
 	overflow: visible;
 }
 
-.icon-park-outline-edit-name {
-	width: 24px;
-	height: 24px;
-	position: absolute;
-	left: 38px;
-	top: 3px;
-	overflow: hidden;
-}
-
-.group {
-	width: 77.08%;
-	height: 79.17%;
-	position: absolute;
-	right: 14.58%;
-	left: 8.33%;
-	bottom: 12.5%;
-	top: 8.33%;
-	overflow: visible;
-}
-
-.test-1 {
-	color: #4e4e4e;
-	text-align: left;
-	font-size: 16px;
-	line-height: 18px;
-	position: absolute;
-	left: 340px;
-	top: 0px;
-	width: 260px;
-	height: 30px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-}
-
-.div6 {
-	color: #4e4e4e;
-	text-align: left;
-	font-size: 16px;
-	line-height: 18px;
-	position: absolute;
-	left: 340px;
-	top: 0px;
-	width: 260px;
-	height: 30px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-}
-
-.icon-park-outline-edit-name2 {
-	width: 4%;
-	height: 80%;
-	position: absolute;
-	right: 89.67%;
-	left: 6.33%;
-	bottom: 10%;
-	top: 10%;
-	overflow: hidden;
-}
-
-.group2 {
-	width: 77.08%;
-	height: 79.17%;
-	position: absolute;
-	right: 14.58%;
-	left: 8.33%;
-	bottom: 12.5%;
-	top: 8.33%;
-	overflow: visible;
-}
-
-.ph-phone-fill {
-	width: 4%;
-	height: 80%;
-	position: absolute;
-	right: 89.67%;
-	left: 6.33%;
-	bottom: 10%;
-	top: 10%;
-	overflow: visible;
-}
-
-._010-1234-5678 {
-	color: #4e4e4e;
-	text-align: left;
-	font-size: 16px;
-	line-height: 18px;
-	position: absolute;
-	left: 340px;
-	top: 0px;
-	width: 260px;
-	height: 30px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-}
-
 /* svg 아이콘 CSS */
 .icons {
 	width: 4%;
@@ -196,18 +70,18 @@
 	overflow: visible;
 }
 
-.ic-outline-email {
-	width: 4%;
-	height: 80%;
+.icons-outline-image {
+	width: 77.08%;
+	height: 79.17%;
 	position: absolute;
-	right: 89.67%;
-	left: 6.33%;
-	bottom: 10%;
-	top: 10%;
+	right: 14.58%;
+	left: 8.33%;
+	bottom: 12.5%;
+	top: 8.33%;
 	overflow: visible;
 }
 
-.abc-naver-com {
+.content-body {
 	color: #4e4e4e;
 	text-align: left;
 	font-size: 16px;
@@ -305,7 +179,7 @@
 }
 /* 내 정보 수정 버튼 크기 및 위치고정 CSS */
 .btn-modify {
-	background: #e1e1e1;
+	background: #1A3773;
 	border-radius: 10px;
 	width: 130px;
 	height: 40px;
@@ -316,7 +190,7 @@
 }
 /* 내 정보 수정 버튼 content CSS */
 .btn-modify-content {
-	color: #444444;
+	color: #ffffff;
 	text-align: center;
 	font-size: 20px;
 	line-height: 18px;

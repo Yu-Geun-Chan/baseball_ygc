@@ -16,19 +16,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class crawlTest {
 	public static void crawl() {
-		// Set the path to your WebDriver executable
+		// 웹드라이버 실행 파일 경로 설정
 		System.setProperty("webdriver.chrome.driver",
 				"C:/work_YGC/sts-4.24.0.RELEASE-workspace/baseball_ygc/chromedriver.exe");
 
-		// Initialize WebDriver
+		// 웹 드라이버 초기화
 		WebDriver driver = new ChromeDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // Increase timeout if needed
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // 20초 대기
 
 		try {
-			// Navigate to the player search page
+			// 크롤링할 웹 페이지 URL
 			driver.get("https://www.koreabaseball.com/Player/Search.aspx");
 
-			// Select the team "삼성"
+			// 삼성 팀 선택
 			WebElement teamDropdown = wait.until(
 					ExpectedConditions.elementToBeClickable(By.id("cphContents_cphContents_cphContents_ddlTeam")));
 			teamDropdown.click();
@@ -36,14 +36,14 @@ public class crawlTest {
 					.until(ExpectedConditions.elementToBeClickable(By.xpath("//option[text()='삼성']")));
 			samsungOption.click();
 
-			// Click the search button
+			// 검색 버튼 클릭
 			WebElement searchButton = driver.findElement(By.id("cphContents_cphContents_cphContents_btnSearch"));
 			searchButton.click();
 
-			// Function to extract player data from the table
+			// 테이블에서 선수 데이터 추출
 			extractPlayerData(driver, wait);
 
-			// Handle pagination
+			// 페이징
 			while (true) {
 				WebElement nextPageButton = driver.findElement(By.cssSelector(".paging a[title='다음 페이지로 이동']"));
 				if (nextPageButton.isEnabled()) {
@@ -51,26 +51,26 @@ public class crawlTest {
 					wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.cssSelector(".tEx"))));
 					extractPlayerData(driver, wait);
 				} else {
-					break; // Exit loop if no more pages
+					break; // 더 이상 페이지가 없는 경우 루프 종료
 				}
 			}
 
 		} finally {
-			// Close the WebDriver
+			// 웹 드라이버 종료
 			driver.quit();
 		}
 	}
 
 	private static void extractPlayerData(WebDriver driver, WebDriverWait wait) {
-		// Wait for the table to be visible
+		// 테이블이 보일때까지 대기
 		WebElement table = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("table.tEx")));
 
-		// Extract rows
+		// 행 추출
 		List<WebElement> rows = table.findElements(By.cssSelector("tbody > tr"));
 		for (WebElement row : rows) {
 			List<WebElement> cells = row.findElements(By.tagName("td"));
 			for (WebElement cell : cells) {
-				System.out.print(cell.getText() + "\t"); // Print cell text
+				System.out.print(cell.getText() + "\t");
 			}
 			System.out.println();
 		}

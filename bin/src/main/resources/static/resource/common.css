@@ -31,10 +31,18 @@ html>body {
 	font-family: "GongGothicMedium", sans-serif;
 }
 
+/* 노멀라이즈 시작 */
+body, ul, li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
 a {
 	color: inherit;
 	text-decoration: none;
 }
+/* 노멀라이즈 끝 */
 
 /* 메인페이지 세로길이 1300px라서 */
 ._1300, ._1300 * {

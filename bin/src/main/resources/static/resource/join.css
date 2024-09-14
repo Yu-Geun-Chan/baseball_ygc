@@ -35,7 +35,6 @@
 }
 
 .input {
-	color: #999999;
 	text-align: left;
 	font-size: 16px;
 	line-height: 18px;
@@ -48,6 +47,13 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+}
+
+.checkDup-msg {
+	position:absolute;
+	left:300px;
+	top:33px;
+	color:red;
 }
 /* svg 아이콘 아웃라인 CSS */
 .icons-outline {
@@ -126,18 +132,19 @@
 }
 /* 회원가입 버튼 크기 및 위치고정 CSS */
 .btn-join {
-	background: #e1e1e1;
-	border-radius: 10px;
+	background: #1A3773; border-radius : 10px;
 	width: 130px;
 	height: 40px;
 	position: absolute;
 	left: calc(50% - 69px);
 	top: 600px;
 	overflow: hidden;
+	border-radius: 10px;
 }
 /* 회원가입 버튼 content CSS */
 .btn-join-content {
-	color: #444444;
+	background-color: #1A3773;
+	color: #ffffff;
 	text-align: center;
 	font-family: "GongGothicMedium", sans-serif;
 	font-size: 20px;
