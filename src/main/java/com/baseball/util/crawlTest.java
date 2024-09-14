@@ -79,11 +79,15 @@ public class crawlTest {
 			extractPlayerData(driver, wait);
 
 			// 페이징
+			// 최초 페이지 1부터 시작
 			int currentPage = 1;
 			while (true) {
+				// 1 ~ 5번까지 각각 해당하는 페이지번호를 선택
 				WebElement nextPageButton = driver.findElement(
 						By.cssSelector(".paging a#cphContents_cphContents_cphContents_ucPager_btnNo" + currentPage));
-
+				
+				// nextPageButton이 존재하는 경우에 해당하는 다음 페이지 번호를 누르면 
+				// table의 클래스명이 tEx인 요소가 사라질때까지 기다린 후에 extractPlayerData(driver, wait); 실행
 				if (nextPageButton.isEnabled()) {
 					nextPageButton.click();
 					wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.cssSelector("table.tEx"))));
@@ -91,7 +95,7 @@ public class crawlTest {
 				} else {
 					break; // 더 이상 페이지가 없는 경우 루프 종료
 				}
-
+				// 순차적으로 1 ~ 5번까지 nextPageButton의 id값을 설정하기 위해 +1씩 해줘야한다.
 				currentPage++;
 			}
 		} finally {
