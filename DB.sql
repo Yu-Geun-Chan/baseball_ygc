@@ -24,15 +24,13 @@ CREATE TABLE `member` (
 CREATE TABLE player (
 	id	INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY,
 	`name`	CHAR(100) NOT NULL,
-	teamName	CHAR(100) UNIQUE NOT NULL,
+	teamName	CHAR(100) NOT NULL,
 	height	INT(5)	NOT NULL,
 	weight	INT(5)	NOT NULL,
-	`number`	INT(5)	NOT NULL,
+	`number`	INT(5)	NULL,
 	`position`	CHAR(10)	NOT NULL,
 	birthDate	CHAR(20)	NOT NULL,
-	nationality	CHAR(20)	NOT NULL,
 	profileImage	VARCHAR(255)	NULL	COMMENT 'NULL 허용 사진 없는 경우도 있기 때문에',
-	playerType	CHAR(10)	NOT NULL,
 	career	VARCHAR(255)	NOT NULL
 );
 
@@ -284,3 +282,4 @@ ON DELETE CASCADE;
 -- 여기까지 외래키 추가
 
 SELECT * FROM `member`;
+SELECT * FROM player;
