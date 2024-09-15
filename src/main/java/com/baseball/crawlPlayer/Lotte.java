@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 import com.baseball.service.PlayerService;
 import com.baseball.vo.Player;
 
-
 @Component
 public class Lotte {
 
@@ -90,17 +89,15 @@ public class Lotte {
 			if (cells.size() >= 7) { // 각 행이 적어도 7개의 셀을 가지고 있다고 가정
 				String numberStr = cells.get(0).getText().trim(); // 등번호
 
-				if (numberStr.isEmpty()) {
-					continue; // 등번호가 비어있으면 다음 행으로 넘어감
+				Integer number = null;
+				if (!numberStr.isEmpty()) {
+					try {
+						number = Integer.parseInt(numberStr); // 등번호
+					} catch (NumberFormatException e) {
+						// 등번호가 숫자로 변환되지 않는 경우 처리
+						number = null;
+					}
 				}
-
-				int number;
-				try {
-					number = Integer.parseInt(numberStr); // 등번호
-				} catch (NumberFormatException e) {
-					continue;
-				}
-
 				String name = cells.get(1).getText().trim(); // 이름
 				String teamName = cells.get(2).getText().trim(); // 소속 구단
 				String position = cells.get(3).getText().trim(); // 포지션

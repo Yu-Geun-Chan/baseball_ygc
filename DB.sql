@@ -27,7 +27,7 @@ CREATE TABLE player (
 	teamName	CHAR(100) NOT NULL,
 	height	INT(5)	NOT NULL,
 	weight	INT(5)	NOT NULL,
-	`number`	INT(5)	NULL,
+	`number`	INTEGER(5)	NULL,
 	`position`	CHAR(10)	NOT NULL,
 	birthDate	CHAR(20)	NOT NULL,
 	profileImage	VARCHAR(255)	NULL	COMMENT 'NULL 허용 사진 없는 경우도 있기 때문에',

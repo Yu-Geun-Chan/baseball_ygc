@@ -40,7 +40,7 @@ public class Doosan {
 			teamDropdown.click();
 			// 해당 구단 선택
 			WebElement samsungOption = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//option[text()='삼성']")));
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//option[text()='두산']"))); // '' 부분에 구단명을 넣어주면 된다.
 			samsungOption.click();
 
 			// 검색 버튼 클릭
@@ -89,15 +89,14 @@ public class Doosan {
 			if (cells.size() >= 7) { // 각 행이 적어도 7개의 셀을 가지고 있다고 가정
 				String numberStr = cells.get(0).getText().trim(); // 등번호
 
-				if (numberStr.isEmpty()) {
-					continue; // 등번호가 비어있으면 다음 행으로 넘어감
-				}
-
-				int number;
-				try {
-					number = Integer.parseInt(numberStr); // 등번호
-				} catch (NumberFormatException e) {
-					continue;
+				Integer number = null;
+				if (!numberStr.isEmpty()) {
+					try {
+						number = Integer.parseInt(numberStr); // 등번호
+					} catch (NumberFormatException e) {
+						// 등번호가 숫자로 변환되지 않는 경우 처리
+						number = null;
+					}
 				}
 
 				String name = cells.get(1).getText().trim(); // 이름

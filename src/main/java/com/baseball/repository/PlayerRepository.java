@@ -10,7 +10,7 @@ public interface PlayerRepository {
     @Insert("INSERT INTO player (number, name, teamName, height, weight, position, birthDate, profileImage, career) " +
             "VALUES (#{number}, #{name}, #{teamName}, #{height}, #{weight}, #{position}, #{birthDate}, #{profileImage}, #{career})")
     void insertPlayer(
-        @Param("number") int number,
+        @Param("number") Integer number,
         @Param("name") String name,
         @Param("teamName") String teamName,
         @Param("height") int height,
