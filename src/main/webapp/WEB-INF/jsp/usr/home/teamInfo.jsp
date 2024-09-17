@@ -46,7 +46,7 @@
 	</p>
 	<div class="map_wrap">
 		<!-- 지도 컨테이너 -->
-		<div id="map" style="width: 800px; height: 800px; position: absolute; top: 60px; left: -100px;"></div>
+		<div id="map" style="width: 800px; height: 600px; position: absolute; top: 150px; left: -100px;"></div>
 
 		<!-- 카테고리 리스트 -->
 		<ul id="category">
@@ -82,209 +82,214 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f1f9a79eb50b08adc48c36903d8e7bdc&libraries=services"></script>
 <script>
-	// 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀 오버레이입니다
-	var placeOverlay = new kakao.maps.CustomOverlay({
-		zIndex : 3
-	}), contentNode = document.createElement('div'), markers = [], currCategory = '';
+    var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 3 }), contentNode = document.createElement('div'), markers = [], currCategory = '';
 
-	// 지도를 초기화합니다
-	var mapContainer = document.getElementById('map');
-	var mapOption = {
-		center : new kakao.maps.LatLng(37.566826, 126.9786567),
-		level : 5
-	};
+    // 브라우저의 Geolocation API를 사용하여 위치 가져오기
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    initializeMap(latitude, longitude);  // 사용자 위치로 지도 중심 설정
+                },
+                function(error) {
+                    console.error('Geolocation error:', error);
+                    // 위치 정보 가져오기 실패 시 기본 좌표 설정 (서울 시청)
+                    initializeMap(37.566826, 126.9786567);
+                }
+            );
+        } else {
+            console.error('Geolocation is not supported by this browser.');
+            // Geolocation 지원 안 함 시 기본 좌표 설정 (서울 시청)
+            initializeMap(37.566826, 126.9786567);
+        }
+    }
 
-	var map = new kakao.maps.Map(mapContainer, mapOption);
-	var ps = new kakao.maps.services.Places(map);
-    var marker;
+    getLocation(); // 위치 정보 가져오기
+    
+    // 지도를 초기화하는 함수
+    function initializeMap(latitude, longitude) {
+    	console.log('User Latitude: ', latitude);  // 사용자 위도 콘솔 출력
+        console.log('User Longitude: ', longitude); // 사용자 경도 콘솔 출력
+        var mapContainer = document.getElementById('map');
+        var mapOption = {
+            center: new kakao.maps.LatLng(latitude, longitude),  // 사용자의 위치로 중심 설정
+            level: 5
+        };
 
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+        var ps = new kakao.maps.services.Places(map);
+        var marker;
 
-		// "찾아가기" 링크 클릭 시 처리
-		document.querySelector('.find-map-link').addEventListener('click', function(event) {
-				event.preventDefault();
-				var lat = parseFloat(this.getAttribute('data-lat'));
-				var lng = parseFloat(this.getAttribute('data-lng'));
-				var placeName = this.getAttribute('data-place-name');
-				var placeUrl = this.getAttribute('data-place-url');
-				var roadAddressName = this
-						.getAttribute('data-road-address-name');
-				var addressName = this.getAttribute('data-address-name');
-				var phone = this.getAttribute('data-phone');
+        // "찾아가기" 링크 클릭 시 처리
+        document.querySelector('.find-map-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            var lat = parseFloat(this.getAttribute('data-lat'));
+            var lng = parseFloat(this.getAttribute('data-lng'));
+            var placeName = this.getAttribute('data-place-name');
+            var placeUrl = this.getAttribute('data-place-url');
+            var roadAddressName = this.getAttribute('data-road-address-name');
+            var addressName = this.getAttribute('data-address-name');
+            var phone = this.getAttribute('data-phone');
 
-				// 지도 중심을 클릭한 장소로 이동
-				var newCenter = new kakao.maps.LatLng(lat, lng);
-				map.setCenter(newCenter);
+            var newCenter = new kakao.maps.LatLng(lat, lng);
+            map.setCenter(newCenter);
 
-				if (marker) {
-					marker.setMap(null);
-				}
+            if (marker) {
+                marker.setMap(null);
+            }
 
-				marker = new kakao.maps.Marker({
-					position : newCenter
-				});
-				marker.setMap(map);
+            marker = new kakao.maps.Marker({
+                position: newCenter
+            });
+            marker.setMap(map);
 
-				// 장소 정보를 오버레이로 표시
-				var place = {
-					place_name : placeName,
-					place_url : placeUrl,
-					road_address_name : roadAddressName,
-					address_name : addressName,
-					phone : phone,
-					x : lng,
-					y : lat
-				};
+            var place = {
+                place_name: placeName,
+                place_url: placeUrl,
+                road_address_name: roadAddressName,
+                address_name: addressName,
+                phone: phone,
+                x: lng,
+                y: lat
+            };
 
-				displayPlaceInfo(place);
-				map.setLevel(3);
-			
-		
+            displayPlaceInfo(place);
+            map.setLevel(3);
+        });
 
-		// 카테고리 클릭 이벤트 추가
-		addCategoryClickEvent();
-	});
+        // 카테고리 클릭 이벤트 추가
+        addCategoryClickEvent();
 
-	// 이벤트 핸들러 추가 함수
-	function addEventHandle(target, type, callback) {
-		if (target.addEventListener) {
-			target.addEventListener(type, callback);
-		} else {
-			target.attachEvent('on' + type, callback);
-		}
-	}
+        // 이벤트 핸들러 추가 함수
+        function addEventHandle(target, type, callback) {
+            if (target.addEventListener) {
+                target.addEventListener(type, callback);
+            } else {
+                target.attachEvent('on' + type, callback);
+            }
+        }
 
-	// 현재 카테고리로 장소를 검색합니다
-	function searchPlaces() {
-		if (!currCategory) {
-			return;
-		}
+        // 현재 카테고리로 장소를 검색합니다
+        function searchPlaces() {
+            if (!currCategory) {
+                return;
+            }
 
-		placeOverlay.setMap(null);
-		removeMarker();
+            placeOverlay.setMap(null);
+            removeMarker();
 
-		ps.categorySearch(currCategory, placesSearchCB, {
-			useMapBounds : true
-		});
-	}
+            ps.categorySearch(currCategory, placesSearchCB, { useMapBounds: true });
+        }
 
-	// 장소 검색 콜백 함수
-	function placesSearchCB(data, status, pagination) {
-		if (status === kakao.maps.services.Status.OK) {
-			displayPlaces(data);
-		}
-	}
+        function placesSearchCB(data, status, pagination) {
+            if (status === kakao.maps.services.Status.OK) {
+                displayPlaces(data);
+            }
+        }
 
-	// 검색된 장소들을 지도에 표시합니다
-	function displayPlaces(places) {
-		var order = document.getElementById(currCategory).getAttribute(
-				'data-order');
+        function displayPlaces(places) {
+            var order = document.getElementById(currCategory).getAttribute('data-order');
+            for (var i = 0; i < places.length; i++) {
+                var marker = addMarker(new kakao.maps.LatLng(places[i].y, places[i].x), order);
 
-		for (var i = 0; i < places.length; i++) {
-			var marker = addMarker(new kakao.maps.LatLng(places[i].y,
-					places[i].x), order);
+                (function(marker, place) {
+                    kakao.maps.event.addListener(marker, 'click', function() {
+                        displayPlaceInfo(place);
+                    });
+                })(marker, places[i]);
+            }
+        }
 
-			(function(marker, place) {
-				kakao.maps.event.addListener(marker, 'click', function() {
-					displayPlaceInfo(place);
-				});
-			})(marker, places[i]);
-		}
-	}
+        function addMarker(position, order) {
+            var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png',
+                imageSize = new kakao.maps.Size(27, 28),
+                imgOptions = {
+                    spriteSize: new kakao.maps.Size(72, 208),
+                    spriteOrigin: new kakao.maps.Point(46, (order * 36)),
+                    offset: new kakao.maps.Point(11, 28)
+                },
+                markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+                marker = new kakao.maps.Marker({
+                    position: position,
+                    image: markerImage
+                });
 
-	// 마커를 추가합니다
-	function addMarker(position, order) {
-		var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', imageSize = new kakao.maps.Size(
-				27, 28), imgOptions = {
-			spriteSize : new kakao.maps.Size(72, 208),
-			spriteOrigin : new kakao.maps.Point(46, (order * 36)),
-			offset : new kakao.maps.Point(11, 28)
-		}, markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize,
-				imgOptions), marker = new kakao.maps.Marker({
-			position : position,
-			image : markerImage
-		});
+            marker.setMap(map);
+            markers.push(marker);
+            return marker;
+        }
 
-		marker.setMap(map);
-		markers.push(marker);
+        function removeMarker() {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+            }
+            markers = [];
+        }
 
-		return marker;
-	}
+        function displayPlaceInfo(place) {
+            var content = '<div class="placeinfo">' +
+                '<a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' + place.place_name + '</a>';
+            if (place.road_address_name) {
+                content += '<span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
+                    '<span class="jibun" title="' + place.address_name + '">(지번 : ' + place.address_name + ')</span>';
+            } else {
+                content += '<span title="' + place.address_name + '">' + place.address_name + '</span>';
+            }
+            content += '<span class="tel">' + place.phone + '</span>' + '</div>' + '<div class="after"></div>';
 
-	// 모든 마커를 제거합니다
-	function removeMarker() {
-		for (var i = 0; i < markers.length; i++) {
-			markers[i].setMap(null);
-		}
-		markers = [];
-	}
+            contentNode.innerHTML = content;
+            placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
+            placeOverlay.setMap(map);
+        }
 
-	// 장소 정보를 커스텀 오버레이로 표시합니다
-	function displayPlaceInfo(place) {
-		var content = '<div class="placeinfo">'
-				+ '<a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">'
-				+ place.place_name + '</a>';
+        function addCategoryClickEvent() {
+            var category = document.getElementById('category'),
+                children = category.children;
 
-		if (place.road_address_name) {
-			content += '<span title="' + place.road_address_name + '">'
-					+ place.road_address_name
-					+ '</span>'
-					+ '<span class="jibun" title="' + place.address_name + '">(지번 : '
-					+ place.address_name + ')</span>';
-		} else {
-			content += '<span title="' + place.address_name + '">'
-					+ place.address_name + '</span>';
-		}
+            for (var i = 0; i < children.length; i++) {
+                children[i].onclick = onClickCategory;
+            }
+        }
 
-		content += '<span class="tel">' + place.phone + '</span>' + '</div>'
-				+ '<div class="after"></div>';
+        function onClickCategory() {
+            var id = this.id,
+                className = this.className;
 
-		contentNode.innerHTML = content;
-		placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
-		placeOverlay.setMap(map);
-	}
+            placeOverlay.setMap(null);
 
-	// 카테고리 클릭 이벤트를 추가합니다
-	function addCategoryClickEvent() {
-		var category = document.getElementById('category'), children = category.children;
+            if (className === 'on') {
+                currCategory = '';
+                changeCategoryClass();
+                removeMarker();
+            } else {
+                currCategory = id;
+                changeCategoryClass(this);
+                searchPlaces();
+            }
+        }
 
-		for (var i = 0; i < children.length; i++) {
-			children[i].onclick = onClickCategory;
-		}
-	}
+        function changeCategoryClass(el) {
+            var category = document.getElementById('category'),
+                children = category.children,
+                i;
 
-	// 카테고리 클릭 시 호출되는 함수
-	function onClickCategory() {
-		var id = this.id, className = this.className;
+            for (i = 0; i < children.length; i++) {
+                children[i].className = '';
+            }
 
-		placeOverlay.setMap(null);
+            if (el) {
+                el.className = 'on';
+            }
+        }
+    }
 
-		if (className === 'on') {
-			currCategory = '';
-			changeCategoryClass();
-			removeMarker();
-		} else {
-			currCategory = id;
-			changeCategoryClass(this);
-			searchPlaces();
-		}
-	}
-
-	// 카테고리 클래스 변경 함수
-	function changeCategoryClass(el) {
-		var category = document.getElementById('category'), children = category.children, i;
-
-		for (i = 0; i < children.length; i++) {
-			children[i].className = '';
-		}
-
-		if (el) {
-			el.className = 'on';
-		}
-	}
 </script>
 
 <!-- 구장정보 -->
 <script>
+<!-- 필요한 데이터를 stadiumData 객체에 저장 -->
 const stadiumData = {
 	    HH: {
 	        name: "홈구장 : 대전 한화생명 이글스파크",
@@ -388,6 +393,7 @@ const stadiumData = {
 	    }
 	};
 
+<!-- 구단 로고를 클릭했을 때 각 구장 정보가 나오게끔 하는 함수 -->
 document.querySelectorAll('.image').forEach(logo => {
     logo.addEventListener('click', function() {
         const team = this.getAttribute('data-team');
@@ -395,29 +401,29 @@ document.querySelectorAll('.image').forEach(logo => {
 
         if (stadium) {
             // 정보를 업데이트
-            document.querySelector('.stadium').textContent = stadium.name;
-            document.querySelector('.address').textContent = stadium.address;
-            document.querySelector('.stadiumImage').src = stadium.image;
+            document.querySelector('.stadium').textContent = stadium.name; // 클래스가 stadium인 곳에 stadium.name을 넣는다.
+            document.querySelector('.address').textContent = stadium.address; // 클래스가 address인 곳에 stadium.address을 넣는다.
+            document.querySelector('.stadiumImage').src = stadium.image; // 클래스가 stadiumImage인 곳에 stadium.image을 넣는다.
             
             const teamColorDiv = document.querySelector('.teamColor');
-            teamColorDiv.className = stadium.class;
+            teamColorDiv.className = stadium.class; // 클래스가 teamColor인 element를 찾아 클래스명에 stadium.class로 바꿔준다.
             
          	// "찾아가기" 에 해당하는 정보 데이터 설정
             const findLink = document.querySelector('.find-map-link');
-            findLink.setAttribute('data-lat', stadium.lat);
-            findLink.setAttribute('data-lng', stadium.lng);
+            findLink.setAttribute('data-lat', stadium.lat); // 위도값 설정
+            findLink.setAttribute('data-lng', stadium.lng); // 경도값 설정
             
             // 접두사 제거
-            const nameWithoutPrefix = stadium.name.replace('홈구장 : ', '');
-            const addressWithoutPrefix = stadium.address.replace('주소 : ', '');
+            const nameWithoutPrefix = stadium.name.replace('홈구장 : ', ''); // '홈구장 : '을 지우고 뒤에 구장명만 가져오기 위해 추가
+            const addressWithoutPrefix = stadium.address.replace('주소 : ', ''); // '주소 : ' 를 지우고 뒤에 주소에 해당하는 부분만 가져오기 위해 추가
             
-            findLink.setAttribute('data-place-name', nameWithoutPrefix);
-            findLink.setAttribute('data-place-url', stadium.url); 
-            findLink.setAttribute('data-road-address-name', addressWithoutPrefix);
-            findLink.setAttribute('data-address-name', addressWithoutPrefix);
-            findLink.setAttribute('data-phone', stadium.phone);  
+            findLink.setAttribute('data-place-name', nameWithoutPrefix); // 구장명 설정
+            findLink.setAttribute('data-place-url', stadium.url); // 누르면 새창으로 열릴 url 설정
+            findLink.setAttribute('data-road-address-name', addressWithoutPrefix); // 도로명 주소 설정
+            findLink.setAttribute('data-address-name', addressWithoutPrefix); // 주소 설정
+            findLink.setAttribute('data-phone', stadium.phone);  // 전화번호 설정
 
-            // 정보 보여주기
+            // 구장정보 보여주기 = 홈구장, 주소, 찾아가기 버튼'
             document.querySelector('.info').style.display = 'block';
         }
     });
