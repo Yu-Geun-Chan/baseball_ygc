@@ -1,6 +1,8 @@
 package com.baseball.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,7 +51,7 @@ public class UsrPlayerController {
 
 	@GetMapping("/players")
 	@ResponseBody
-	public List<Player> getPlayers(Model model, @RequestParam(defaultValue = "1") int page,
+	public Map<String, Object> getPlayers(@RequestParam(defaultValue = "1") int page,
 			@RequestParam(value = "teamName", defaultValue = "") String teamName,
 			@RequestParam(value = "position", defaultValue = "") String position,
 			@RequestParam(value = "name", defaultValue = "") String name) {
@@ -57,12 +59,16 @@ public class UsrPlayerController {
 		int playersCount = playerService.getPlayersCount(teamName, position, name);
 
 		// 한페이지에 글 10개
-		// 글 20개 -> 2page
-		// 글 25개 -> 3page
 		int itemsInAPage = 10;
-
 		int pagesCount = (int) Math.ceil(playersCount / (double) itemsInAPage);
 
-		return playerService.getForPrintPlayers(itemsInAPage, page, teamName, position, name);
+		List<Player> players = playerService.getForPrintPlayers(itemsInAPage, page, teamName, position, name);
+
+		Map<String, Object> response = new HashMap<>();
+		response.put("players", players);
+		response.put("playersCount", playersCount);
+		response.put("totalPages", pagesCount);
+
+		return response;
 	}
 }

@@ -143,6 +143,10 @@ tbody>tr {
 	text-align: center;
 }
 
+tbody>tr>td {
+	text-align: center;
+}
+
 /* 페이지네이션 CSS */
 .pagination {
 	margin-top: 20px;

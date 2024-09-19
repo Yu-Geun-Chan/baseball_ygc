@@ -70,88 +70,162 @@
 		<tbody id="player-table-body">
 		</tbody>
 	</table>
-	<!-- 	동적 페이징 -->
-	<div class="pagination">
-		<c:set var="paginationLen" value="3" />
-		<c:set var="startPage" value="${page - paginationLen >= 1 ? page - paginationLen : 1}" />
-		<c:set var="endPage" value="${page + paginationLen <= pagesCount ? page + paginationLen : pagesCount}" />
-
-		<c:if test="${startPage > 1}">
-			<a class="btn btn-sm" href="?page=1&teamName=${teamName}&position=${position}&name=${name}">1</a>
-		</c:if>
-		<c:if test="${startPage > 2}">
-			<button class="btn btn-sm btn-disabled">...</button>
-		</c:if>
-
-		<c:forEach begin="${startPage}" end="${endPage}" var="i">
-			<a class="btn btn-sm ${page == i ? 'btn-active' : ''}"
-				href="?page=${i}&teamName=${teamName}&position=${position}&name=${name}">${i}</a>
-		</c:forEach>
-
-		<c:if test="${endPage < pagesCount - 1}">
-			<button class="btn btn-sm btn-disabled">...</button>
-		</c:if>
-
-		<c:if test="${endPage < pagesCount}">
-			<a class="btn btn-sm" href="?page=${pagesCount}&teamName=${teamName}&position=${position}&name=${name}">${pagesCount}</a>
-		</c:if>
-	</div>
+	<!-- 동적 페이징 -->
+	<div id="pagination-controls" class="pagination"></div>
 </div>
 
-
 <script>
-const teamColors = {
-	    'KIA': '#F6C7C7',
-	    '삼성': '#C4D6FF',
-	    'LG': '#E1B7F6',
-	    '두산': '#F4D3A0',
-	    'KT': '#C4E1F3',
-	    'SSG': '#E0E0E0',
-	    '롯데': '#F7C4C4',
-	    '한화': '#F5B7B1',
-	    'NC': '#C8E6C9',
-	    '키움': '#B3E5FC'
-	};
+    let currentPage = 1;
+    let totalPages = 1; // 초기값은 1로 설정
 
-	// Handle search button click
-	document.getElementById('search-button').addEventListener('click', function() {
-	    var teamName = encodeURIComponent(document.getElementById('team-filter').value);
-	    var position = encodeURIComponent(document.getElementById('position-filter').value);
-	    var name = encodeURIComponent(document.getElementById('name-filter').value);
-	    var page = 1;
-	    
-	    console.log(`teamName: ${teamName}, position: ${position}, name: ${name}`);
+    const teamColors = {
+        'KIA': '#B31020',
+        '삼성': '0068B3',
+        'LG': '#BD0936',
+        '두산': '#070A32',
+        'KT': '#000000',
+        'SSG': '#F00014',
+        '롯데': '#DB042F',
+        '한화': '#F27222',
+        'NC': '#1D467A',
+        '키움': '#800121'
+    };
 
-	    fetch(`/players?teamName=${teamName}&position=${position}&name=${name}`)
-	        .then(response => response.json())
-	        .then(data => {
-	        	console.log('데이터 : ', data);
-	            var tbody = document.getElementById('player-table-body');
-	            tbody.innerHTML = ''; // 행 초기화
-	         
-	            data.forEach(player => {
-	            	console.log('선수 데이터:', player);  // 개별 player 데이터 출력
-	                var tr = document.createElement('tr');
-	                
-	                // 배경색이 구단컬러로 바뀌게 하는 코드
-	                var teamColor = teamColors[player.teamName] || '#FFFFFF'; // 기본 배경색
-	                
-	                tr.innerHTML = `
-	                    <td>${player.number || ''}</td>
-	                    <td style="background-color: ${teamColor}; border:2px solid; border-radius:5px; color:white; padding:7px;">${player.teamName || ''}</td>
-	                    <td>${player.name || ''}</td>
-	                    <td>${player.position || ''}</td>
-	                    <td>${player.birthDate || ''}</td>
-	                    <td>${player.height}cm / ${player.weight}kg</td>
-	                    <td>${player.career || ''}</td>
-	                `;
-	                
-	                tbody.appendChild(tr);
-	            });
-	            document.querySelector('.point').textContent = data.length;
-	        })
-	        .catch(error => console.error('Error:', error));
-	});
+    function renderPagination() {
+        const paginationControls = $('#pagination-controls');
+        paginationControls.empty(); // 기존 버튼 제거
+
+        if (totalPages <= 1) return; // 페이지가 1개 이하일 경우 버튼을 표시하지 않음
+
+        // 첫 페이지 버튼
+        if (currentPage > 1) {
+            paginationControls.append(`<a class="btn btn-sm" onclick="goToPage(1)">1</a>`);
+        }
+
+        // 이전 페이지 버튼
+        if (currentPage > 1) {
+            paginationControls.append(`<a class="btn btn-sm" onclick="goToPage(${currentPage - 1})">Previous</a>`);
+        }
+
+        // 페이지 버튼
+        const startPage = Math.max(1, currentPage - 3);
+        const endPage = Math.min(totalPages, currentPage + 3);
+        for (let i = startPage; i <= endPage; i++) {
+            paginationControls.append(`
+                <a class="btn btn-sm ${i == currentPage ? 'btn-active' : ''}" onclick="goToPage(${i})">${i}</a>
+            `);
+        }
+
+        // 다음 페이지 버튼
+        if (currentPage < totalPages) {
+            paginationControls.append(`<a class="btn btn-sm" onclick="goToPage(${currentPage + 1})">Next</a>`);
+        }
+
+        // 마지막 페이지 버튼
+        if (currentPage < totalPages) {
+            paginationControls.append(`<a class="btn btn-sm" onclick="goToPage(${totalPages})">${totalPages}</a>`);
+        }
+    }
+
+    function goToPage(page) {
+        if (page < 1 || page > totalPages) return; // 페이지 범위를 벗어나면 무시
+        currentPage = page;
+        sendAjaxRequest(); // 페이지 변경 시 AJAX 요청
+    }
+
+    function updatePagination(newTotalPages) {
+        totalPages = newTotalPages;
+        renderPagination(); // 페이지네이션 버튼 업데이트
+    }
+
+    function sendAjaxRequest() {
+        // 각 필드 값을 가져옴
+        var teamName = $('#team-filter').val();
+        var position = $('#position-filter').val();
+        var name = $('#name-filter').val();
+
+        console.log('AJAX 요청 - teamName:', teamName, 'position:', position, 'name:', name);
+
+        $.ajax({
+            type: 'GET',
+            url: '/players',
+            data: {
+                page: currentPage,
+                teamName: teamName,  // 팀 이름 값
+                position: position,  // 포지션 값
+                name: name           // 선수 이름 값
+            },
+            success: function(response) {
+                console.log('서버 응답:', response);
+
+                var tbody = $('#player-table-body');
+                tbody.empty(); // 기존 행 초기화
+
+                response.players.forEach(function(player) {
+                	
+                    var teamColor = teamColors[player.teamName] || '#FFFFFF';
+                    var tr = $('<tr></tr>');
+
+                    var numberCell = $('<td></td>').text(player.number || '');
+                    // 구단명에 따른 배경색 설정
+                    var teamNameCell = $('<td></td>').text(player.teamName || '');
+                    teamNameCell.css({
+                        'background-color': teamColor,
+                        'border': '2px solid',
+                        'border-radius': '5px',
+                        'padding': '7px',
+                        'color': '#FFFFFF'
+                    });
+                    var nameCell = $('<td></td>').text(player.name || '');
+                    var positionCell = $('<td></td>').text(player.position || '');
+                    var birthDateCell = $('<td></td>').text(player.birthDate || '');
+                    var physiqueCell = $('<td></td>').text(player.height +'cm / ' + player.weight +'kg');
+                    var weightCell = $('<td></td>').text(player.weight || '');
+                    var careerCell = $('<td></td>').text(player.career || '');
+
+                    // 테이블 행 생성
+                    tr.append(numberCell)
+                      .append(teamNameCell)
+                      .append(nameCell)
+                      .append(positionCell)
+                      .append(birthDateCell)
+                      .append(physiqueCell)
+                      .append(careerCell);
+
+                    tbody.append(tr); // 테이블에 추가
+                });
+
+                // 검색 결과 업데이트
+                $('.point').text(response.playersCount);
+                updatePagination(response.totalPages); // 페이지네이션 업데이트
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX 요청 실패:', status, error);
+            }
+        });
+    }
+
+    // 폼의 submit 이벤트를 막고 AJAX 요청을 보내도록 수정
+    $('#search-form').on('submit', function (event) {
+        event.preventDefault(); // 폼 제출 기본 동작 방지
+        sendAjaxRequest(); // AJAX 요청 보내기
+    });
+    
+    $('#team-filter').on('change', function() {
+        currentPage = 1; // 검색 시 첫 페이지로 이동
+        sendAjaxRequest();
+    });
+
+    $('#position-filter').on('change', function() {
+        currentPage = 1; // 검색 시 첫 페이지로 이동
+        sendAjaxRequest();
+    });
+
+    $('#name-filter').on('input', function() {
+        currentPage = 1; // 검색 시 첫 페이지로 이동
+        sendAjaxRequest();
+    });
 </script>
+
 
 <%@ include file="../common/foot.jspf"%>
