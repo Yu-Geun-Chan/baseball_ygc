@@ -68,6 +68,7 @@ public class UsrPlayerController {
 		response.put("players", players);
 		response.put("playersCount", playersCount);
 		response.put("totalPages", pagesCount);
+		response.put("currentPage", page);
 
 		return response;
 	}
