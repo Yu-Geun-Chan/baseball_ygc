@@ -75,59 +75,63 @@
 </div>
 
 <script>
-    var totalPages = 1; // 초기값은 1로 설정
-    var currentPage = 1;
+var totalPages = 1; // 초기값은 1로 설정
+var currentPage = 1;
+
+function renderPagination() {
+    const paginationControls = $('#pagination-controls');
+    paginationControls.empty(); // 기존 버튼 제거
     
-    function renderPagination() {
-        const paginationControls = $('#pagination-controls');
-        paginationControls.empty(); // 기존 버튼 제거
+    console.log('페이지네이션 렌더링 시작'); // 로그 추가
 
-        if (totalPages <= 1) return; // 페이지가 1개 이하일 경우 버튼을 표시하지 않음
+    if (totalPages <= 1) return; // 페이지가 1개 이하일 경우 버튼을 표시하지 않음
 
-        // 첫 페이지 버튼
-        if (currentPage > 1) {
-            paginationControls.append(`<a class="btn btn-sm" onclick="goToPage(1)">1</a>`);
-        }
-
-        // 이전 페이지 버튼
-        if (currentPage > 1) {
-            paginationControls.append(`<a class="btn btn-sm" onclick="goToPage(${currentPage - 1})">이전</a>`);
-        }
-
-        // 페이지 버튼
-        const startPage = Math.max(1, currentPage - 3);
-        const endPage = Math.min(totalPages, currentPage + 3);
-        console.log(`페이지 버튼 범위 : startPage=${startPage}, endPage=${endPage}`);
-        for (let i = startPage; i <= endPage; i++) {
-            paginationControls.append(`
-                <a class="btn btn-sm ${i == currentPage ? 'btn-active' : ''}" onclick="goToPage(${i})">${i}</a>
-            `);
-        }
-
-        // 다음 페이지 버튼
-        if (currentPage < totalPages) {
-            paginationControls.append(`<a class="btn btn-sm" onclick="goToPage(${currentPage - 1})">다음</a>`);
-        }
-
-        // 마지막 페이지 버튼
-        if (currentPage < totalPages) {
-            paginationControls.append(`<a class="btn btn-sm" onclick="goToPage(${totalPages})">${totalPages}</a>`);
-        }
+    // 첫 페이지 버튼
+    if (currentPage > 1) {
+        paginationControls.append('<a class="btn btn-sm" onclick="goToPage(1)">처음으로</a>');
     }
 
-    function goToPage(page) {
-        if (page < 1 || page > totalPages) return; // 페이지 범위를 벗어나면 무시
-        console.log(`현재 페이지 : ${page}`);
-        currentPage = page;
-        sendAjaxRequest(); // 페이지 변경 시 AJAX 요청
+    // 이전 페이지 버튼
+    if (currentPage > 1) {
+        paginationControls.append('<a class="btn btn-sm" onclick="goToPage(' + (currentPage - 1) + ')">이전</a>');
     }
 
-    function updatePagination(newTotalPages, page) {
-    	console.log(`업데이트 페이지네이션: newTotalPages=${newTotalPages}, newPage=${page}`);
-        totalPages = newTotalPages;
-        currentPage = page; // 현재 페이지 업데이트
-        renderPagination(); // 페이지네이션 버튼 업데이트
+    // 페이지 버튼
+    const startPage = Math.max(1, currentPage - 3);
+    const endPage = Math.min(totalPages, currentPage + 3);
+    console.log('페이지 버튼 범위 : startPage= ' + startPage + ', endPage= ' + endPage);
+    for (let i = startPage; i <= endPage; i++) {
+        paginationControls.append('<a class="btn btn-sm ' + (i === currentPage ? 'btn-active' : '') + '" onclick="goToPage(' + i + ')">' + i + '</a>');
     }
+
+    // 다음 페이지 버튼
+    if (currentPage < totalPages) {
+        paginationControls.append('<a class="btn btn-sm" onclick="goToPage(' + (currentPage + 1) + ')">다음</a>');
+    }
+
+    // 마지막 페이지 버튼
+    if (currentPage < totalPages) {
+        paginationControls.append('<a class="btn btn-sm" onclick="goToPage(' + totalPages + ')">' + '끝으로' + '</a>');
+    }
+    console.log('페이지 수:', totalPages);
+    console.log('현재 페이지:', currentPage);
+    console.log('startPage:', startPage, 'endPage:', endPage);
+}
+
+function goToPage(page) {
+    if (page < 1 || page > totalPages) return; // 페이지 범위를 벗어나면 무시
+    currentPage = page;
+    sendAjaxRequest(); // 페이지 변경 시 AJAX 요청
+}
+
+function updatePagination(newTotalPages, newCurrentPage) {
+    totalPages = newTotalPages;
+    currentPage = newCurrentPage;
+    console.log('업데이트된 totalPages:', totalPages);
+    console.log('업데이트된 currentPage:', currentPage);
+    renderPagination(); // 페이지네이션 버튼 업데이트
+}
+
 
     <!-- 선수정보  -->
     // 각 구단 대표컬러
@@ -151,7 +155,7 @@
         var name = $('#name-filter').val();
 
         console.log('AJAX 요청 - currentPage :', currentPage, 'teamName:', teamName, 'position:', position, 'name:', name);
-
+        
         $.ajax({
             type: 'GET',
             url: '/players',
@@ -163,6 +167,13 @@
             },
             success: function(response) {
                 console.log('서버 응답:', response);
+                
+                if (response.totalPages === undefined || response.currentPage === undefined) {
+                    console.error('totalPages 또는 currentPage가 정의되지 않았습니다.');
+                    return;
+                }
+
+                updatePagination(response.totalPages, response.currentPage); // 페이지네이션 업데이트
 
                 var tbody = $('#player-table-body');
                 tbody.empty(); // 기존 행 초기화
@@ -202,9 +213,7 @@
                 });
                
                 $('.point').text(response.playersCount); // 검색 결과 업데이트
-                updatePagination(response.totalPages, response.currentPage); // 페이지네이션 업데이트
-                console.log('currentPage : '+ response.currentPage);
-                console.log('totalPages : '+ response.totalPages);
+
             },
             error: function(xhr, status, error) {
                 console.error('AJAX 요청 실패:', status, error);

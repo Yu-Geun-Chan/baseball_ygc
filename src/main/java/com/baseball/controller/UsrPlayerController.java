@@ -45,6 +45,8 @@ public class UsrPlayerController {
 		model.addAttribute("page", page);
 		model.addAttribute("position", position);
 		model.addAttribute("name", name);
+		model.addAttribute("totalPages", pagesCount);
+		model.addAttribute("currentPage", page);
 
 		return "/usr/player/players";
 	}
@@ -69,6 +71,9 @@ public class UsrPlayerController {
 		response.put("playersCount", playersCount);
 		response.put("totalPages", pagesCount);
 		response.put("currentPage", page);
+
+		System.err.println("totalPages: " + pagesCount + ", currentPage: " + page);
+		System.err.println("응답 데이터: " + response);
 
 		return response;
 	}
