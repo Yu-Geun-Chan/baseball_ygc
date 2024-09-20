@@ -98,20 +98,16 @@ public class Kia {
 
 				// 셀이 7개 이상일 때만 처리
 				if (cells.size() >= 7) {
-					String numberStr = cells.get(0).getText().trim(); // 등번호 추출
+					String numberStr = cells.get(0).getText().trim(); // 등번호
 
-					// 등번호가 비어있으면 다음 행으로 넘어감
-					if (numberStr.isEmpty()) {
-						continue;
-					}
-
-					int number;
-					try {
-						// 등번호를 정수로 변환
-						number = Integer.parseInt(numberStr);
-					} catch (NumberFormatException e) {
-						// 변환할 수 없으면 다음 행으로 넘어감
-						continue;
+					Integer number = null;
+					if (!numberStr.isEmpty()) {
+						try {
+							number = Integer.parseInt(numberStr); // 등번호
+						} catch (NumberFormatException e) {
+							// 등번호가 숫자로 변환되지 않는 경우 처리
+							number = null;
+						}
 					}
 
 					// 나머지 셀 데이터 추출

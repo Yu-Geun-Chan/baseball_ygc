@@ -38,11 +38,9 @@
 	</form>
 </div>
 <p class="title">
-	<strong>
-		검색결과 :
-		<span class="point">0</span>
-		건
-	</strong>
+	<span>검색결과 :</span>
+	<span class="point">0</span>
+	<span>건</span>
 </p>
 
 <div class="player-info-container">
