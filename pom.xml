@@ -180,6 +180,13 @@
 			your project -->
 		</dependency>
 
+		<!-- OpenCSV 라이브러리 -->
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>5.5.2</version> <!-- 최신 버전 확인 후 업데이트하세요 -->
+		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -143,10 +143,6 @@ tbody>tr {
 	text-align: center;
 }
 
-tbody>tr>td {
-	text-align: center;
-}
-
 /* 페이지네이션 CSS */
 .pagination {
 	margin-top: 30px;
@@ -167,17 +163,10 @@ tbody>tr>td {
 	cursor: pointer;
 }
 
-/* 버튼 호버 스타일 */
-.pagination .btn:hover {
-	background-color: #8a8a8a; /* 호버 시 배경색 */
-	color: white; /* 호버 시 텍스트 색상 */
-}
-
 /* 버튼 선택 시 스타일 */
 /* ID 선택자를 사용하여 CSS 우선순위를 높여줌 */
 #pagination-controls .btn-active {
-	background-color: black; /* 클릭 시 배경색 */
-	border-color: black; /* 클릭 시 테두리 색상 */
+	background-color: #cccccc; /* 클릭 시 배경색 */
+	border-color: #cccccc; /* 클릭 시 테두리 색상 */
 	border-radius: 50%;
-	color: white;
 }

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Player {
-
+	
 	private Integer number;
 	private String name;
 	private String teamName;

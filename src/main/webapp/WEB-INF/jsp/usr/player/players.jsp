@@ -113,9 +113,6 @@ function renderPagination() {
     if (currentPage < totalPages) {
         paginationControls.append('<a class="btn btn-sm" onclick="goToPage(' + totalPages + ')">' + '끝으로' + '</a>');
     }
-    console.log('페이지 수:', totalPages);
-    console.log('현재 페이지:', currentPage);
-    console.log('startPage:', startPage, 'endPage:', endPage);
 }
 
 function goToPage(page) {
@@ -125,14 +122,11 @@ function goToPage(page) {
 }
 
 function updatePagination(newTotalPages, newCurrentPage) {
+	// 해당 페이지를 계속 초기화 해줘야 btn.active가 올바르게 적용된다.
     totalPages = newTotalPages;
     currentPage = newCurrentPage;
-    console.log('업데이트된 totalPages:', totalPages);
-    console.log('업데이트된 currentPage:', currentPage);
     renderPagination(); // 페이지네이션 버튼 업데이트
 }
-
-
     <!-- 선수정보  -->
     // 각 구단 대표컬러
     const teamColors = {
@@ -179,31 +173,37 @@ function updatePagination(newTotalPages, newCurrentPage) {
                 tbody.empty(); // 기존 행 초기화
 
                 response.players.forEach(function(player) {
-                	
                     var teamColor = teamColors[player.teamName] || '#FFFFFF';
                     var tr = $('<tr></tr>');
 
                     var numberCell = $('<td></td>').text(player.number || '');
                     var teamNameCell = $('<td></td>').text(player.teamName || '');
+
                     // 구단명에 따른 배경색 설정
                     teamNameCell.css({
                         'background-color': teamColor,
                         'border': '2px solid',
                         'border-radius': '5px',
-                        'padding': '7px',
+                        'padding': '6px',
                         'color': '#FFFFFF'
                     });
-                    var nameCell = $('<td></td>').text(player.name || '');
+
+                    // 선수 이름을 클릭하면 상세정보 페이지로 이동하는 링크 추가
+                    var nameCell = $('<td></td>');
+                    var playerLink = $('<a></a>')
+                        .text(player.name || '')
+                        .attr('href', '/player/details/' + player.id); // 선수 상세정보로 이동하는 URL
+                    nameCell.append(playerLink);
+
                     var positionCell = $('<td></td>').text(player.position || '');
                     var birthDateCell = $('<td></td>').text(player.birthDate || '');
-                    var physiqueCell = $('<td></td>').text(player.height +'cm / ' + player.weight +'kg');
-                    var weightCell = $('<td></td>').text(player.weight || '');
+                    var physiqueCell = $('<td></td>').text(player.height + 'cm / ' + player.weight + 'kg');
                     var careerCell = $('<td></td>').text(player.career || '');
 
                     // 테이블 행 생성
                     tr.append(numberCell)
                       .append(teamNameCell)
-                      .append(nameCell)
+                      .append(nameCell)  // 선수 이름 링크가 포함된 셀 추가
                       .append(positionCell)
                       .append(birthDateCell)
                       .append(physiqueCell)
@@ -211,6 +211,7 @@ function updatePagination(newTotalPages, newCurrentPage) {
 
                     tbody.append(tr); // 테이블에 추가
                 });
+
                
                 $('.point').text(response.playersCount); // 검색 결과 업데이트
 
