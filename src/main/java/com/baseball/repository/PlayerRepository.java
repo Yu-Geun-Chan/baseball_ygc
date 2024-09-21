@@ -14,7 +14,7 @@ public interface PlayerRepository {
 
 	@Insert("INSERT INTO player (number, name, teamName, height, weight, position, birthDate, profileImage, career) "
 			+ "VALUES (#{number}, #{name}, #{teamName}, #{height}, #{weight}, #{position}, #{birthDate}, #{profileImage}, #{career})")
-	void insertPlayer(@Param("number") Integer number, @Param("name") String name, @Param("teamName") String teamName,
+	void insertPlayer(@Param("number") String string, @Param("name") String name, @Param("teamName") String teamName,
 			@Param("height") int height, @Param("weight") int weight, @Param("position") String position,
 			@Param("birthDate") String birthDate, @Param("profileImage") String profileImage,
 			@Param("career") String career);

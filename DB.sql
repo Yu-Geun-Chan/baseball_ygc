@@ -23,7 +23,7 @@ CREATE TABLE `member` (
 
 CREATE TABLE player (
 	id	INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY,
-	`number`	INTEGER(5)	NULL,
+	`number`	TEXT	NULL DEFAULT NULL,
 	`name`	CHAR(100) NOT NULL,
 	teamName	CHAR(100) NOT NULL,
 	`position`	CHAR(10)	NOT NULL,
@@ -280,6 +280,11 @@ ON DELETE CASCADE;
 ALTER TABLE TeamSeasonStats ADD CONSTRAINT FK_TeamSeasonStats_team FOREIGN KEY (teamId) REFERENCES team(id)
 ON DELETE CASCADE;
 -- 여기까지 외래키 추가
+# player 테이블 number 칼럼 'null'을 NULL로 치환
+UPDATE player SET `number` = NULL WHERE `number` = 'null';
 
 SELECT * FROM `member`;
 SELECT * FROM player;
+SELECT COUNT(*) FROM player WHERE `position` = '포수';
+SELECT COUNT(*) FROM player WHERE teamName = '고양';
+SHOW GLOBAL VARIABLES LIKE 'local_infile';

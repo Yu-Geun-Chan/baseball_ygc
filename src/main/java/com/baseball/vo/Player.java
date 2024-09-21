@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Player {
 	
-	private Integer number;
+	private String number;
 	private String name;
 	private String teamName;
 	private int height;
