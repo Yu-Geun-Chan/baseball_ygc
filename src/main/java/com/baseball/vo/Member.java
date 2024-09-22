@@ -19,9 +19,14 @@ public class Member {
 	private String nickname;
 	private String cellphoneNum;
 	private String email;
+	private String profileImage;
 	private boolean delStatus;
 	private String delDate;
 
+	// 응원 선수
+	private int	favoritePlayerId;
+	private String messageToPlayer;
+	
 	public String getForPrintType1RegDate() {
 		return regDate.substring(2, 16).replace(" ", "<br />");
 	}

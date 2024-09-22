@@ -66,6 +66,19 @@ public class ArticleService {
 	public List<Article> getArticles() {
 		return articleRepository.getArticles();
 	}
+	
+	// 사용자가  쓴 게시글 가져오는 로작
+	public List<Article> getForPrintArticlesByUser(int boardId, int itemsInAPage, int page, String searchKeywordTypeCode, String searchKeyword, int userId) {
+        int limitFrom = (page - 1) * itemsInAPage;
+        int limitTake = itemsInAPage;
+
+        return articleRepository.getForPrintArticlesByUser(boardId, limitFrom, limitTake, searchKeywordTypeCode, searchKeyword, userId);
+    }
+
+    public int getArticlesCountByUser(int boardId, String searchKeywordTypeCode, String searchKeyword, int userId) {
+        return articleRepository.getArticlesCountByUser(boardId, searchKeywordTypeCode, searchKeyword, userId);
+    }
+    // 여기까지
 
 	public int getCurrentArticleId() {
 		return articleRepository.getCurrentArticleId();

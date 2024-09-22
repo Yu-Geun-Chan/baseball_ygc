@@ -95,18 +95,6 @@ public interface ArticleRepository {
 			String searchKeyword);
 
 	@Select("""
-			SELECT A.* , M.nickname AS extra__writer
-			FROM article AS A
-			INNER JOIN `member` AS M
-			ON A.memberId = M.id
-			ORDER BY A.id DESC
-			""")
-	public List<Article> getArticles();
-
-	@Select("SELECT LAST_INSERT_ID();")
-	public int getLastInsertId();
-
-	@Select("""
 			<script>
 				SELECT COUNT(*), A.*, M.nickname AS extra__writer
 				FROM article AS A
@@ -137,6 +125,83 @@ public interface ArticleRepository {
 			</script>
 			""")
 	public int getArticleCount(int boardId, String searchKeywordTypeCode, String searchKeyword);
+
+	@Select("""
+			<script>
+			    SELECT A.*, M.nickname AS extra__writer
+			    FROM article AS A
+			    INNER JOIN `member` AS M
+			    ON A.memberId = M.id
+			    WHERE A.memberId = #{userId}
+			    <if test="boardId != 0">
+			        AND A.boardId = #{boardId}
+			    </if>
+			    <if test="searchKeyword != ''">
+			        <choose>
+			            <when test="searchKeywordTypeCode == 'title'">
+			                AND A.title LIKE CONCAT('%', #{searchKeyword}, '%')
+			            </when>
+			            <when test="searchKeywordTypeCode == 'body'">
+			                AND A.`body` LIKE CONCAT('%', #{searchKeyword}, '%')
+			            </when>
+			            <when test="searchKeywordTypeCode == 'writer'">
+			                AND M.nickname LIKE CONCAT('%', #{searchKeyword}, '%')
+			            </when>
+			            <otherwise>
+			                AND A.title LIKE CONCAT('%', #{searchKeyword}, '%')
+			                OR A.`body` LIKE CONCAT('%', #{searchKeyword}, '%')
+			            </otherwise>
+			        </choose>
+			    </if>
+			    ORDER BY A.id DESC
+			    <if test="limitFrom >= 0">
+			        LIMIT #{limitFrom}, #{limitTake}
+			    </if>
+			</script>
+			""")
+	List<Article> getForPrintArticlesByUser(int boardId, int limitFrom, int limitTake, String searchKeywordTypeCode,
+			String searchKeyword, int userId);
+
+	@Select("""
+			<script>
+			    SELECT COUNT(*)
+			    FROM article AS A
+			    WHERE A.memberId = #{userId}
+			    <if test="boardId != 0">
+			        AND A.boardId = #{boardId}
+			    </if>
+			    <if test="searchKeyword != ''">
+			        <choose>
+			            <when test="searchKeywordTypeCode == 'title'">
+			                AND A.title LIKE CONCAT('%', #{searchKeyword}, '%')
+			            </when>
+			            <when test="searchKeywordTypeCode == 'body'">
+			                AND A.`body` LIKE CONCAT('%', #{searchKeyword}, '%')
+			            </when>
+			            <when test="searchKeywordTypeCode == 'writer'">
+			                AND M.nickname LIKE CONCAT('%', #{searchKeyword}, '%')
+			            </when>
+			            <otherwise>
+			                AND A.title LIKE CONCAT('%', #{searchKeyword}, '%')
+			                OR A.`body` LIKE CONCAT('%', #{searchKeyword}, '%')
+			            </otherwise>
+			        </choose>
+			    </if>
+			</script>
+			""")
+	int getArticlesCountByUser(int boardId, String searchKeywordTypeCode, String searchKeyword, int userId);
+
+	@Select("""
+			SELECT A.* , M.nickname AS extra__writer
+			FROM article AS A
+			INNER JOIN `member` AS M
+			ON A.memberId = M.id
+			ORDER BY A.id DESC
+			""")
+	public List<Article> getArticles();
+
+	@Select("SELECT LAST_INSERT_ID();")
+	public int getLastInsertId();
 
 	@Select("""
 			SELECT hitCount

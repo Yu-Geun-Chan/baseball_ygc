@@ -9,8 +9,6 @@
 
 <%@ include file="../common/head.jspf"%>
 
-
-
 <div class="form-container">
 	<form action="../member/doLogin" method="POST">
 		<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri }" />
@@ -48,8 +46,5 @@
 	<a class="find-btns find-btns-id" href="${rq.findLoginIdUri }">아이디 찾기</a>
 	<a class="find-btns find-btns-pw" href="${rq.findLoginPwUri }">비밀번호찾기</a>
 </div>
-
-
-
 
 <%@ include file="../common/foot.jspf"%>

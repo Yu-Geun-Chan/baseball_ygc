@@ -223,4 +223,36 @@ public class UsrArticleController {
 
 		return "usr/article/list";
 	}
+	
+	@RequestMapping("/usr/article/myList")
+    public String showMyArticles(HttpServletRequest req, Model model,
+                                  @RequestParam(defaultValue = "1") int boardId,
+                                  @RequestParam(defaultValue = "1") int page,
+                                  @RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
+                                  @RequestParam(defaultValue = "") String searchKeyword) throws IOException {
+
+        Board board = boardService.getBoardById(boardId);
+        int loginedUserId = (int) req.getAttribute("loginedMemberId");
+        int articlesCount = articleService.getArticlesCountByUser(boardId, searchKeywordTypeCode, searchKeyword, loginedUserId);
+        
+        int itemsInAPage = 10;
+        int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
+        
+        List<Article> articles = articleService.getForPrintArticlesByUser(boardId, itemsInAPage, page, searchKeywordTypeCode, searchKeyword, loginedUserId);
+
+        if (board == null) {
+            return rq.historyBackOnView("없는 게시판임");
+        }
+
+        model.addAttribute("articles", articles);
+        model.addAttribute("articlesCount", articlesCount);
+        model.addAttribute("pagesCount", pagesCount);
+        model.addAttribute("board", board);
+        model.addAttribute("page", page);
+        model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
+        model.addAttribute("searchKeyword", searchKeyword);
+        model.addAttribute("boardId", boardId);
+
+        return "usr/article/myList";
+    }
 }

@@ -33,6 +33,13 @@ CREATE TABLE player (
 	profileImage	VARCHAR(255)	NULL	COMMENT 'NULL 허용 사진 없는 경우도 있기 때문에',
 	career	VARCHAR(255)	NOT NULL
 );
+UPDATE player
+SET profileImage = 'http://localhost:8083/images/playerImages/912.png'
+WHERE `name` = '노시환';
+
+UPDATE player
+SET profileImage = 'http://localhost:8083/images/playerImages/12.png'
+WHERE `name` = '김도영';
 
 CREATE TABLE memberProfileImage (
 	id INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY, 
@@ -288,7 +295,7 @@ SELECT * FROM `member`;
 SELECT * FROM player;
 
 SELECT * FROM player
-WHERE `name` = '노시환';
+WHERE `name` = '김도영';
 
 SELECT COUNT(*) FROM player WHERE `position` = '포수';
 
