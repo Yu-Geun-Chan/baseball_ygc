@@ -60,7 +60,7 @@ public interface PlayerRepository {
 	int getPlayersCount(String teamName, String position, String name);
 
 	@Select("""
-			 SELECT `name`, teamName, position
+			 SELECT `name`, teamName, position, profileImage
 			 FROM player
 			 WHERE name = #{name}
 			""")

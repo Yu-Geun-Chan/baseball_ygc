@@ -60,42 +60,42 @@
 	top: 469px;
 }
 
-.player-image {
-	border-style: solid;
-	border-color: #999999;
-	border-width: 1px;
-	flex-shrink: 0;
-	width: 150px;
-	height: 150px;
-	position: relative;
-	object-fit: cover;
-}
-
-.player-info-container {
+.cheer-player-info-container {
 	border-style: solid;
 	border-color: #999999;
 	border-width: 1px 1px 1px 1px;
 	flex-shrink: 0;
-	width: 150px;
+	width: 300px;
 	height: 150px;
 	position: absolute;
 	overflow: hidden;
 	top: 490px;
-	left: 300px;
+	left: 200px;
 }
 
-.player-info-contents {
+.cheer-player-info-contents {
 	color: #000000;
 	text-align: center;
 	font-size: 16px;
 	line-height: 18px;
 	position: absolute;
-	left: 0px;
+	left: 150px;
 	width: 150px;
 	height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+#player-image {
+	border-style: solid;
+	border-color: #999999;
+	border-width: 0 1 0 0px;
+	flex-shrink: 0;
+	width: 150px;
+	height: 150px;
+	position: relative;
+	object-fit: cover;
 }
 
 .contents-1 {
@@ -139,6 +139,13 @@
 	height: 30px;
 }
 
+#delete-cheer-button {
+	position: absolute;
+	left: 540px;
+	top: 0px;
+	height: 30px;
+}
+
 /* 응원선수 CSS 여기까지 */
 
 /* 응원메세지 CSS */
@@ -160,7 +167,7 @@
 	font-weight: 400;
 	position: absolute;
 	left: 200px;
-	top:12px;
+	top: 12px;
 	width: 400px;
 	display: flex;
 	align-items: center;
@@ -174,6 +181,7 @@
 	width: 300px;
 	height: 40px;
 	left: 200px;
+	width: 300px;
 }
 
 #save-cheer-button {

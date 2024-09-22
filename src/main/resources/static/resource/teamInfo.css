@@ -40,6 +40,7 @@
 	width: 1200px;
 	height: 45px;
 	position: relative;
+	left: 50px;
 	overflow: hidden;
 }
 
@@ -54,16 +55,6 @@
 	cursor: pointer;
 }
 
-/* 홈구장 이미지 위치맞춤 CSS */
-.stadiumImage {
-	width: 280px;
-	height: 180px;
-	position: absolute;
-	left: 0px;
-	top: 10px;
-	object-fit: cover;
-}
-
 /* 각 구단의 설명컨텐츠 창 CSS */
 .info {
 	border-radius: 10px;
@@ -76,6 +67,17 @@
 	position: relative;
 	overflow: hidden;
 	display: none;
+	left: 65px;
+}
+
+/* 홈구장 이미지 위치맞춤 CSS */
+.stadiumImage {
+	width: 280px;
+	height: 180px;
+	position: absolute;
+	left: 0px;
+	top: 10px;
+	object-fit: cover;
 }
 
 /* 찾아가기 a태그 CSS */
@@ -103,8 +105,9 @@
 	top: 135px;
 	overflow: hidden;
 }
+
 .lg {
-	background:#C30037;
+	background: #C30037;
 }
 
 .doosan {

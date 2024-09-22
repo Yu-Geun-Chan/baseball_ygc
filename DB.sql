@@ -284,7 +284,13 @@ ON DELETE CASCADE;
 UPDATE player SET `number` = NULL WHERE `number` = 'null';
 
 SELECT * FROM `member`;
+
 SELECT * FROM player;
+
+SELECT * FROM player
+WHERE `name` = '노시환';
+
 SELECT COUNT(*) FROM player WHERE `position` = '포수';
+
 SELECT COUNT(*) FROM player WHERE teamName = '고양';
 SHOW GLOBAL VARIABLES LIKE 'local_infile';
