@@ -51,8 +51,10 @@
 			<svg class="icons" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
 				<path fill="currentColor"
 					d="m7.8 5.225l-1-3l1.4-.45l1 2.975zM11.25 4V1h1.5v3zm4.95 1.225l-1.4-.475l1-2.975l1.4.475zM21.875 23l-5.275-.8q-.85-.125-1.487-.687T14.2 20.15l-.85-2.65q-.275-.875-.025-1.737t.9-1.438l1.375 4.25l.9-.275l-2.2-6.95q-.325-1.025.063-2.012t1.312-1.513l1.25-.7l4.425 8.35q.125.25.363.388t.512.137h.725zM2.15 23l-1.075-7H1.8q.275 0 .513-.137t.362-.388L7.1 7.125l1.25.7q.925.525 1.313 1.513t.062 2.012L7.5 18.3l.9.275L9.775 14.3q.675.575.925 1.45t-.025 1.75l-.85 2.65q-.275.8-.912 1.363t-1.488.687z" /></svg>
+			<input name="name" class="cheer-select" id="name-filter">
+			<input type="button" value="검색" class="btn_search" id="search-button">
+			<input type="button" value="적용" class="btn_apply" id="apply-button">
 		</div>
-
 	</div>
 	<!-- 마이페이지라는 안내문구창 -->
 	<div class="notice">
@@ -62,20 +64,125 @@
 		<a href="javascript:history.back();" class="btn-modify-content">뒤로가기</a>
 	</div>
 	<div class="cheer-message">
-		<div class="cheer-message-content">노시환 선수 V2를 향해 힘내주세요!</div>
+		<div class="cheer-message-content" id="cheer-message-display">
+			<span id="current-cheer-message"></span>
+		</div>
+		<input type="text" id="cheer-message-input" placeholder="응원 메시지를 입력하세요" style="display: none;">
+		<button id="save-cheer-button" style="display: none;">저장</button>
 		<svg class="mdi-heart" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
 			<path fill="currentColor"
-				d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z" /></svg>
-	</div>
-	<div class="player-image-container">
-		<img class="player-image" src="https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/person/middle/2024/69737.jpg" />
-		<div class="player-info-container">
-			<div class="player-info-contents contents-1">노시환</div>
-			<div class="player-info-contents contents-2">한화</div>
-			<div class="player-info-contents contents-3">내야수</div>
-		</div>
+			d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z" />
+		</svg>
+</div>
+	<div class="player-info-container" style="display: none;">
+		<div class="player-info-contents contents-1" id="player-name"></div>
+		<div class="player-info-contents contents-2" id="player-teamName"></div>
+		<div class="player-info-contents contents-3" id="player-position"></div>
 	</div>
 </div>
+
+
+<!-- 응원선수 정보 -->
+<script>
+$(document).ready(function() {
+    // 각 구단 대표컬러
+    const teamColors = {
+            'KIA': '#B31020',
+            '삼성': '0068B3',
+            'LG': '#BD0936',
+            '두산': '#070A32',
+            'KT': '#000000',
+            'SSG': '#F00014',
+            '롯데': '#DB042F',
+            '한화': '#F27222',
+            'NC': '#1D467A',
+            '키움': '#800121'
+        };
+
+	// 검색 버튼 클릭 시 AJAX 요청
+	$('#search-button').on('click', function(event) {
+		event.preventDefault(); // 기본 폼 제출 방지
+		const playerName = $('#name-filter').val();
+
+		$.ajax({
+			url: '/searchPlayer',
+			type: 'GET',
+			data: { name: playerName },
+			success: function(data) {
+				if (data) {
+					console.log(data); // 응답 데이터 확인
+					// 선수 정보 표시
+					$('#player-name').text(data.name);
+					const teamName = data.teamName; // 팀명 변수에 저장
+					$('#player-teamName').text(teamName).css('color', teamColors[teamName] || 'black'); // 색상 적용
+					$('#player-position').text(data.position);
+				} else {
+					alert('선수를 찾을 수 없습니다.');
+				}
+			},
+			error: function() {
+				alert('검색 중 오류가 발생했습니다.');
+			}
+		});
+	});
+
+	// 적용 버튼 클릭 시 정보 저장
+	$('#apply-button').on('click', function() {
+		const playerName = $('#player-name').text();
+		const playerTeam = $('#player-teamName').text();
+		const playerPosition = $('#player-position').text();
+
+		// localStorage에 저장
+		localStorage.setItem('selectedPlayer', JSON.stringify({
+			name: playerName,
+			team: playerTeam,
+			position: playerPosition
+		}));
+
+		// 선수 정보 표시
+		$('.player-info-container').show();
+	});
+
+	// 페이지 로드 시 localStorage에서 정보 로드
+	const storedPlayer = localStorage.getItem('selectedPlayer');
+	if (storedPlayer) {
+		const playerInfo = JSON.parse(storedPlayer);
+		$('#player-name').text(playerInfo.name);
+		$('#player-teamName').text(playerInfo.team).css('color', teamColors[playerInfo.team] || 'black'); // 색상 적용
+		$('#player-position').text(playerInfo.position);
+		$('.player-info-container').show();
+	}
+});
+</script>
+
+<!-- 응원메세지 저장 -->
+<script>
+	$(document).ready(function() {
+		// 응원 메시지 클릭 시 입력 필드로 전환
+		$('#cheer-message-display').on('click', function() {
+			const currentMessage = $('#current-cheer-message').text();
+			$('#cheer-message-input').val(currentMessage).show();
+			$('#save-cheer-button').show();
+			$(this).hide();
+		});
+
+		// 저장 버튼 클릭 시 메시지 저장
+		$('#save-cheer-button').on('click', function() {
+			const newMessage = $('#cheer-message-input').val();
+			$('#current-cheer-message').text(newMessage);
+			localStorage.setItem('cheerMessage', newMessage); // 메시지를 localStorage에 저장
+			$('#cheer-message-input').hide();
+			$(this).hide();
+			$('#cheer-message-display').show();
+		});
+
+		// 페이지 로드 시 localStorage에서 메시지 로드
+		const storedMessage = localStorage.getItem('cheerMessage');
+		if (storedMessage) {
+			$('#current-cheer-message').text(storedMessage);
+		}
+	});
+</script>
 
 
 

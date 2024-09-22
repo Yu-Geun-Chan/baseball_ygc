@@ -31,4 +31,8 @@ public class PlayerService {
 		return playerRepository.getPlayersCount(teamName, position, name);
 	}
 
+	public Player findPlayerByName(String name) {
+		return playerRepository.findPlayerByName(name);
+	}
+
 }

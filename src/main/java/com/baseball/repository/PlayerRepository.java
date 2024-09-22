@@ -59,4 +59,11 @@ public interface PlayerRepository {
 			""")
 	int getPlayersCount(String teamName, String position, String name);
 
+	@Select("""
+			 SELECT `name`, teamName, position
+			 FROM player
+			 WHERE name = #{name}
+			""")
+	Player findPlayerByName(String name);
+
 }

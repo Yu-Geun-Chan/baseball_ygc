@@ -74,12 +74,14 @@
 .player-info-container {
 	border-style: solid;
 	border-color: #999999;
-	border-width: 1px 1px 1px 0px;
+	border-width: 1px 1px 1px 1px;
 	flex-shrink: 0;
 	width: 150px;
 	height: 150px;
-	position: relative;
+	position: absolute;
 	overflow: hidden;
+	top: 490px;
+	left: 300px;
 }
 
 .player-info-contents {
@@ -107,6 +109,35 @@
 .contents-3 {
 	top: 100px;
 }
+/* 응원선수 검색, 적용 CSS */
+.cheer-select {
+	color: #4e4e4e;
+	text-align: left;
+	font-size: 16px;
+	line-height: 18px;
+	position: absolute;
+	left: 300px;
+	top: 0px;
+	width: 130px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.btn_search {
+	position: absolute;
+	left: 440px;
+	top: 0px;
+	height: 30px;
+}
+
+.btn_apply {
+	position: absolute;
+	left: 490px;
+	top: 0px;
+	height: 30px;
+}
 
 /* 응원선수 CSS 여기까지 */
 
@@ -114,7 +145,7 @@
 .cheer-message {
 	background: #ffffff;
 	width: 600px;
-	height: 30px;
+	height: 40px;
 	position: absolute;
 	left: calc(50% - 300px);
 	top: 653px;
@@ -129,11 +160,26 @@
 	font-weight: 400;
 	position: absolute;
 	left: 200px;
-	top: 6px;
+	top:12px;
 	width: 400px;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+}
+
+/* 응원메세지 수정 input CSS */
+#cheer-message-input {
+	position: absolute;
+	font-size: 16px;
+	width: 300px;
+	height: 40px;
+	left: 200px;
+}
+
+#save-cheer-button {
+	position: absolute;
+	left: 510px;
+	height: 40px;
 }
 /* 응원메세지 CSS 여기까지 */
 
@@ -147,7 +193,7 @@
 	bottom: 16.67%;
 	top: 3.33%;
 	overflow: visible;
-	color:red;
+	color: red;
 }
 /* svg 아이콘 아웃라인 CSS */
 .icons-outline {

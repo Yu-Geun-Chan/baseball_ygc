@@ -77,4 +77,10 @@ public class UsrPlayerController {
 
 		return response;
 	}
+
+	@RequestMapping("/searchPlayer")
+	@ResponseBody
+	public Player searchPlayer(@RequestParam("name") String name) {
+		return playerService.findPlayerByName(name);
+	}
 }
