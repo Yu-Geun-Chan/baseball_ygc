@@ -56,14 +56,15 @@
 								<ul>
 									<li><a href="#">게임 센터</a></li>
 									<li><a href="#">일정 · 결과</a></li>
-								</ul></li>
+									<li><a href="../home/weather">야구장 날씨</a></li>
+							</ul></li>
 							<li><a href="#">기록 · 순위</a>
 								<ul>
 									<li><a href="#">타자 기록</a></li>
 									<li><a href="#">투수 기록</a></li>
 									<li><a href="#">구단 순위</a></li>
-								</ul></li>
-							<li><a href="#">선수</a></li>
+							</ul></li>
+							<li><a href="../player/players">선수</a></li>
 							<li><a href="../home/teamInfo">구장정보</a></li>
 							<li><a href="#">게시판</a>
 								<ul>
@@ -71,7 +72,7 @@
 									<li><a href="#">KBO 소식</a></li>
 									<li><a href="#">구단별 기사</a></li>
 									<li><a href="#">자유 게시판</a></li>
-								</ul></li>
+							</ul></li>
 							<li><a href="#">문의사항</a></li>
 						</ul>
 					</div>

@@ -149,10 +149,18 @@
 /* 응원선수 CSS 여기까지 */
 
 /* 응원메세지 CSS */
+#warning-message {
+	color: red;
+	display: none; /* 처음에는 보이지 않음 */
+	position: absolute;
+	top: 37px;
+	left: 200px;
+}
+
 .cheer-message {
 	background: #ffffff;
 	width: 600px;
-	height: 40px;
+	height: 60px;
 	position: absolute;
 	left: calc(50% - 300px);
 	top: 653px;
@@ -161,7 +169,6 @@
 
 .cheer-message-content {
 	color: #000000;
-	text-align: left;
 	font-size: 16px;
 	line-height: 18px;
 	font-weight: 400;
@@ -172,6 +179,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+	text-align: center;
 }
 
 /* 응원메세지 수정 input CSS */
@@ -199,7 +207,7 @@
 	right: 89.67%;
 	left: 6.33%;
 	bottom: 16.67%;
-	top: 3.33%;
+	top: -4px;
 	overflow: visible;
 	color: red;
 }
