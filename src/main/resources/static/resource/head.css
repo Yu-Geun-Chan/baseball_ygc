@@ -7,10 +7,25 @@
 	gap: 0px;
 	align-items: flex-start;
 	justify-content: flex-start;
-	position: absolute;
+	position: relative;
 	right: 0px;
 	left: 0px;
 	top: 0px;
+}
+
+/* 각 구단별 색깔로 메뉴바가 바뀐다. */
+@keyframes colorTransition {
+    0%  { background-color: #C30037; } /* LG */
+    10% { background-color: #0E0E2A; } /* 두산 */
+    20% { background-color: #85001F; } /* 키움 */
+    30% { background-color: #1F468F; } /* NC */
+    40% { background-color: #CD142C; } /* SSG */
+    50% { background-color: #EF8A2F; } /* 한화 */
+    60% { background-color: #D31F40; } /* 롯데 */
+    70% { background-color: #0064B2; } /* 삼성 */
+    80% { background-color: #E20D28; } /* KIA */
+    90% { background-color: #000000; } /* KT */
+    100%{ background-color: #C30037; } /* LG */
 }
 
 .topbar {
@@ -112,13 +127,12 @@
 	flex-shrink: 0;
 	height: 100px;
 	position: relative;
-	overflow: hidden;
 }
 
 .menu-box {
 	width: 1000px;
 	height: 100px;
-	position: absolute;
+	position: relative;
 	left: calc(50% - 460px);
 	text-align: center;
 }
@@ -154,14 +168,16 @@
 .menu-box>ul>li>ul {
     font-family: 'GongGothicMedium', sans-serif;
     color: white;
-    position: fixed;
+    position: absolute;
     display: none;
     background-color: #1A3773;
     border-style: solid;
     border-color: #000000;
     border-width: 3px 0px 0px 0px;
     width: 155px;
-    top:154px;
+    top:67%;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 3; /* 지도 필터 z-index가 2라서 그거보다 높은 3으로 설정 */
 }
 
