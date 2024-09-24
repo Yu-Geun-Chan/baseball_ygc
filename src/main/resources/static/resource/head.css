@@ -12,29 +12,14 @@
 	left: 0px;
 	top: 0px;
 }
-/* 각 구단별 색깔로 메뉴바가 바뀐다. */
-@keyframes colorTransition {
-    0%  { background-color: #C30037; } /* LG */
-    10% { background-color: #0E0E2A; } /* 두산 */
-    20% { background-color: #85001F; } /* 키움 */
-    30% { background-color: #1F468F; } /* NC */
-    40% { background-color: #CD142C; } /* SSG */
-    50% { background-color: #EF8A2F; } /* 한화 */
-    60% { background-color: #D31F40; } /* 롯데 */
-    70% { background-color: #0064B2; } /* 삼성 */
-    80% { background-color: #E20D28; } /* KIA */
-    90% { background-color: #000000; } /* KT */
-    100%{ background-color: #C30037; } /* LG */
-}
 
 .topbar {
-    background-color: #C30037; /* 시작 컬러 */
-    height: 55px; /* 탑바 높이 */
-    animation: colorTransition 20s infinite; /* 총 20초 걸리며 무한반복 */
-    transition: background-color 2s ease-in-out; /* 색깔이 바뀌는 시간 2초 */
+	background-color: #C30037; /* 시작 컬러 */
+	height: 55px; /* 탑바 높이 */
+	animation: colorTransition 20s infinite; /* 총 20초 걸리며 무한반복 */
+	transition: background-color 2s ease-in-out; /* 색깔이 바뀌는 시간 2초 */
 }
 /* 여기까지 */
-
 .topbar {
 	align-self: stretch;
 	flex-shrink: 0;
@@ -60,6 +45,7 @@
 	width: 92px;
 	height: 22px;
 }
+
 .topbar-contents-info {
 	left: calc(50% - -570px);
 	top: 16px;
@@ -129,11 +115,6 @@
 	overflow: hidden;
 }
 
-.menubar:hover {
-	height: 300px;
-	border-width: 0px;
-}
-
 .menu-box {
 	width: 1000px;
 	height: 100px;
@@ -141,26 +122,27 @@
 	left: calc(50% - 460px);
 	text-align: center;
 }
-
+/* 1차 메뉴 */
 .menu-box>ul {
 	display: inline-block;
 	height: 100%;
 }
-
+/* 1차 메뉴 아이템 */
 .menu-box>ul>li {
 	display: inline-block;
 	position: relative;
 	top: 32px;
 	height: 100%;
 }
-/* 1차 메뉴 아이템 */
+
+/* 1차 메뉴 아이템 컨텐츠 */
 .menu-box>ul>li>a {
 	padding: 5 40 5 40px;
 	display: block;
 	font-size: 20px;
 	height: 100%;
 }
-/* 2차 메뉴 아이템*/
+/* 2차 메뉴 아이템 컨텐츠*/
 .menu-box>ul>li>ul>li>a {
 	padding: 10 0 10 0px;
 	display: block;
@@ -170,23 +152,32 @@
 
 /* 2차 메뉴 */
 .menu-box>ul>li>ul {
-	font-family: 'GongGothicMedium', sans-serif;
-	color: white;
-	position: absolute;
-	display: none;
-	background-color: #1A3773;
-	border-style: solid;
-	border-color: #000000;
-	border-width: 3px 0px 0px 0px;
-	top: 65px;
-	z-index: 3; /* 지도 필터 z-index가 2라서 그거보다 높은 3으로 설정 */
-	width: 100%;
-	position: absolute;
+    font-family: 'GongGothicMedium', sans-serif;
+    color: white;
+    position: fixed;
+    display: none;
+    background-color: #1A3773;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 3px 0px 0px 0px;
+    width: 155px;
+    top:154px;
+    z-index: 3; /* 지도 필터 z-index가 2라서 그거보다 높은 3으로 설정 */
 }
 
 /* 호버된 1차 메뉴 아이템의 자식 메뉴 */
 .menu-box>ul>li:hover>ul {
 	display: block;
+}
+
+/* mainLogo 위치맞춤 */
+._28 {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	left: calc(50% - 727px);
+	top: 10px;
+	object-fit: cover;
 }
 
 .mingcute-menu-fill {
@@ -207,14 +198,4 @@
 	bottom: 0.78%;
 	top: 20%;
 	overflow: visible;
-}
-
-/* mainLogo 위치맞춤 */
-._28 {
-	width: 80px;
-	height: 80px;
-	position: absolute;
-	left: calc(50% - 727px);
-	top: 10px;
-	object-fit: cover;
 }
