@@ -7,10 +7,13 @@
 	gap: 0px;
 	align-items: flex-start;
 	justify-content: flex-start;
-	position: relative;
-	right: 0px;
-	left: 0px;
-	top: 0px;
+	/* 헤더를 스크롤을 내려도 상단고정시키기 위한 CSS */
+	position: fixed;
+    top: 0;      /* 화면의 맨 위에 고정 */
+    left: 0;     /* 화면의 왼쪽에 고정 */
+    right: 0;    /* 화면의 오른쪽에 고정 */
+	z-index:999; /* 헤더바를 다른 요소들 위에 있게 만들기 위해 설정 */
+	/* 여기까지 */
 }
 
 /* 각 구단별 색깔로 메뉴바가 바뀐다. */
