@@ -55,7 +55,7 @@
 							<li><a href="#">경기정보</a>
 								<ul>
 									<li><a href="#">게임 센터</a></li>
-									<li><a href="#">일정 · 결과</a></li>
+									<li><a href="../game/schedule">일정 · 결과</a></li>
 									<li><a href="../home/weather">야구장 날씨</a></li>
 							</ul></li>
 							<li><a href="#">기록 · 순위</a>
