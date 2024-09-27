@@ -56,18 +56,6 @@ a {
 	overflow: hidden;
 }
 
-/* 구단정보 세로길이 2700px라서 */
-._2700, ._2700 * {
-	box-sizing: border-box;
-}
-
-._2700 {
-	background: #ffffff;
-	height: 2700px;
-	position: relative;
-	overflow: hidden;
-}
-
 /* 나머지 페이지 세로길이 1200px라서 */
 ._1200, ._1200 * {
 	box-sizing: border-box;
@@ -77,5 +65,4 @@ a {
 	background: #ffffff;
 	height: 1200px;
 	position: relative;
-	overflow: hidden;
 }
