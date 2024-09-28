@@ -8,9 +8,9 @@
 <%@ include file="../common/head.jspf"%>
 
 <div class="main-title">
-<h1 class="main-title-content">일정 · 결과</h1>
+	<h1 class="main-title-content">일정 · 결과</h1>
 </div>
-
+<!-- 월 드롭다운 메뉴 -->
 <div class="search-container">
 	<select class="month-select" id="month" name="month">
 		<option value="01">1월</option>
@@ -29,6 +29,7 @@
 	<button class="search-btn" id="fetchSchedule">조회</button>
 </div>
 
+<!-- 경기 일정 · 결과 테이블 -->
 <div class="table-container">
 	<table id="scheduleTable" class="game_table" border="1" >
 		<colgroup>
@@ -73,7 +74,9 @@ $(document).ready(function() {
     // AJAX를 통해 데이터를 가져오는 함수
     function fetchScheduleData(month) {
         $.ajax({
-            url: "${pageContext.request.contextPath}/getSchedule", // 컨텍스트 경로에 따라 수정
+        	// 컨텍스트 경로에 따라 수정
+        	// 컨텍스트 경로 : 웹 애플리케이션이 서버 내에서 어디에 위치하는지 나타내는 루트 경로
+            url: "${pageContext.request.contextPath}/getSchedule", 
             type: "GET",
             data: { month: month },
             success: function(data) {
@@ -94,6 +97,7 @@ $(document).ready(function() {
                         // 경기 정보 포맷팅 (띄어쓰기 추가)
                         var formattedGame = gameInfo.replace(/([가-힣A-Za-z]+)\s*(\d*)\s*vs\s*(\d*)\s*([가-힣A-Za-z]+)/, function(match, team1, score1, score2, team2) {
                             // 점수를 정수로 변환
+                            // 변환 이유 :  두 숫자를 크기를 비교하여 색을 입힐거기 때문에
                             var score1Int = parseInt(score1);
                             var score2Int = parseInt(score2);
 

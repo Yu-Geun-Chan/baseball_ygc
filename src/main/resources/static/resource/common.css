@@ -29,6 +29,7 @@
 
 html>body {
 	font-family: "GongGothicMedium", sans-serif;
+	
 }
 
 /* 노멀라이즈 시작 */
@@ -62,7 +63,7 @@ a {
 }
 
 ._1200 {
-	background: #ffffff;
-	height: 1200px;
-	position: relative;
+    background: #ffffff;
+    height: 1200px;
+    position: relative;
 }
