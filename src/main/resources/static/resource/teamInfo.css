@@ -5,7 +5,7 @@
 	width: 800px;
 	margin-right: auto;
 	margin-left: auto;
-	margin-top: 100px;
+	margin-top: 50px;
 }
 /* 각 구단의 큰 설명창(로고, 구단설명) CSS */
 .team {
@@ -34,9 +34,10 @@
 /* 구단 로고 이미지 설명창 CSS */
 .teamLogo {
 	height: 45px;
-	position: relative;
-	left: 50px;
+	width: 800px;
 	overflow: hidden;
+	display:flex;
+	justify-content:center;
 }
 
 /* 구단 로고 이미지 위치맞춤 CSS */
@@ -63,10 +64,7 @@
 	position: relative;
 	overflow: hidden;
 	display: none;
-	position: relative;
-	overflow: hidden;
-	display: none;
-	left: 70px;
+	left: 50px;
 }
 
 /* 홈구장 이미지 위치맞춤 CSS */
