@@ -9,67 +9,68 @@
 <div class="main-title">
 	<div class="main-title-content">선수 조회</div>
 </div>
-<div class="search-container">
-	<form action="/players" method="get" id="search-form">
-		<select name="teamName" class="option" id="team-filter">
-			<option value="">팀</option>
-			<option value="KIA">KIA</option>
-			<option value="삼성">삼성</option>
-			<option value="LG">LG</option>
-			<option value="두산">두산</option>
-			<option value="KT">KT</option>
-			<option value="SSG">SSG</option>
-			<option value="롯데">롯데</option>
-			<option value="한화">한화</option>
-			<option value="NC">NC</option>
-			<option value="키움">키움</option>
-		</select>
-		<select name="position" class="option" id="position-filter">
-			<option value="">포지션</option>
-			<option value="투수">투수</option>
-			<option value="포수">포수</option>
-			<option value="내야수">내야수</option>
-			<option value="외야수">외야수</option>
-		</select>
-		<input name="name" class="search" id="name-filter">
-		<div class="btn_search-container">
-			<input type="submit" value="검색" class="btn_search" id="search-button">
-		</div>
-	</form>
-</div>
-<p class="title">
-	<span>검색결과 :</span>
-	<span class="point">0</span>
-	<span>건</span>
-</p>
+<div class="main-content">
+	<div class="search-container">
+		<form action="/players" method="get" id="search-form">
+			<select name="teamName" class="option" id="team-filter">
+				<option value="">팀</option>
+				<option value="KIA">KIA</option>
+				<option value="삼성">삼성</option>
+				<option value="LG">LG</option>
+				<option value="두산">두산</option>
+				<option value="KT">KT</option>
+				<option value="SSG">SSG</option>
+				<option value="롯데">롯데</option>
+				<option value="한화">한화</option>
+				<option value="NC">NC</option>
+				<option value="키움">키움</option>
+			</select> <select name="position" class="option" id="position-filter">
+				<option value="">포지션</option>
+				<option value="투수">투수</option>
+				<option value="포수">포수</option>
+				<option value="내야수">내야수</option>
+				<option value="외야수">외야수</option>
+			</select>
+			<input name="name" class="search" id="name-filter">
+			<div class="btn_search-container">
+				<input type="submit" value="검색" class="btn_search" id="search-button">
+			</div>
+		</form>
+	</div>
+	<p class="title">
+		<span>검색결과 :</span>
+		<span class="point">0</span>
+		<span>건</span>
+	</p>
 
-<div class="player-info-container">
-	<table cellpadding="0" cellspacing="0">
-		<colgroup>
-			<col width="75">
-			<col width="75">
-			<col width="75">
-			<col width="75">
-			<col width="150">
-			<col width="150">
-			<col width="400">
-		</colgroup>
-		<thead>
-			<tr>
-				<th>등번호</th>
-				<th>구단명</th>
-				<th>선수명</th>
-				<th>포지션</th>
-				<th>생년월일</th>
-				<th>체격</th>
-				<th>출신교</th>
-			</tr>
-		</thead>
-		<tbody id="player-table-body">
-		</tbody>
-	</table>
-	<!-- 동적 페이징 -->
-	<div id="pagination-controls" class="pagination"></div>
+	<div class="player-info-container">
+		<table cellpadding="0" cellspacing="0">
+			<colgroup>
+				<col width="75">
+				<col width="75">
+				<col width="75">
+				<col width="75">
+				<col width="150">
+				<col width="150">
+				<col width="400">
+			</colgroup>
+			<thead>
+				<tr>
+					<th>등번호</th>
+					<th>구단명</th>
+					<th>선수명</th>
+					<th>포지션</th>
+					<th>생년월일</th>
+					<th>체격</th>
+					<th>출신교</th>
+				</tr>
+			</thead>
+			<tbody id="player-table-body">
+			</tbody>
+		</table>
+		<!-- 동적 페이징 -->
+		<div id="pagination-controls" class="pagination"></div>
+	</div>
 </div>
 
 <script>
