@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="GAMESCHEDULE"></c:set>
+<c:set var="pageTitle" value="TEAMRANK"></c:set>
 <link rel="stylesheet" href="/resource/common.css" />
 
 <%@ include file="../common/head.jspf"%>
