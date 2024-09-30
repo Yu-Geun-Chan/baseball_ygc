@@ -50,7 +50,7 @@
 				<li id="CS2" data-order="5"><span class="category_bg store"></span> 편의점</li>
 			</ul>
 			<!-- 지도 컨테이너 -->
-			<div id="map" style="width: 700px; height: 700px; margin-right: auto; margin-left: auto;"></div>
+			<div id="map" style="width: 900px; height: 600px; margin-right: auto; margin-left: auto;"></div>
 		</div>
 	</div>
 </div>

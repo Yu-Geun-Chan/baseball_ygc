@@ -8,21 +8,21 @@
 	border-width: 1px;
 	width: 700px;
 	height: 700px;
-	position: absolute;
-	left: calc(50% - 350px);
-	top: 227px;
+	margin-top: 200px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .form-contents-container {
 	display: flex;
 	flex-direction: column;
-	gap:40px;
+	gap: 40px;
 	align-items: flex-start;
-	justify-content: flex-start;
+	justify-content: flex- start;
 	width: 600px;
-	position: absolute;
-	left: calc(50% - 300px);
-	top: 123px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 100px;
 }
 
 .content-container {
@@ -50,10 +50,10 @@
 }
 
 .checkDup-msg {
-	position:absolute;
-	left:300px;
-	top:33px;
-	color:red;
+	position: absolute;
+	left: 300px;
+	top: 33px;
+	color: red;
 }
 /* svg 아이콘 아웃라인 CSS */
 .icons-outline {
@@ -80,8 +80,8 @@
 	width: 120px;
 	height: 40px;
 	position: absolute;
-	left: calc(50% - 324px);
-	top: 48px;
+	top: 240px;
+	left: calc(50% - 320px);
 	overflow: hidden;
 }
 /* 안내 문구(content) CSS */
@@ -90,9 +90,6 @@
 	text-align: center;
 	font-size: 24px;
 	line-height: 18px;
-	position: absolute;
-	left: calc(50% - 59px);
-	top: 0px;
 	width: 120px;
 	height: 40px;
 	display: flex;
@@ -103,17 +100,18 @@
 .btns {
 	width: 120px;
 	height: 40px;
-	position: absolute;
-	left: calc(50% - -230px);
 	overflow: hidden;
+	position: absolute;
 }
 /* 로그인 버튼 상하 위치 고정 CSS */
 .btns-login {
-	top: 46px;
+	top: 240px;
+	left: calc(50% + 220px);
 }
 /* 뒤로가기 버튼 상하 위치 고정 CSS */
 .btns-back {
-	top: 624px;
+	top: 823px;
+	left: calc(50% + 215px);
 }
 /* 각종버튼 content CSS */
 .btns-content {
@@ -121,7 +119,6 @@
 	text-align: center;
 	font-size: 16px;
 	line-height: 18px;
-	position: absolute;
 	left: 0px;
 	top: 0px;
 	width: 120px;
@@ -132,14 +129,15 @@
 }
 /* 회원가입 버튼 크기 및 위치고정 CSS */
 .btn-join {
-	background: #1A3773; border-radius : 10px;
+	background: #1A3773;
+	border-radius: 10px;
 	width: 130px;
 	height: 40px;
-	position: absolute;
-	left: calc(50% - 69px);
-	top: 500px;
 	overflow: hidden;
 	border-radius: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 30px;
 }
 /* 회원가입 버튼 content CSS */
 .btn-join-content {
@@ -149,8 +147,6 @@
 	font-family: "GongGothicMedium", sans-serif;
 	font-size: 20px;
 	line-height: 18px;
-	position: absolute;
-	left: calc(50% - 65px);
 	width: 130px;
 	height: 40px;
 	display: flex;

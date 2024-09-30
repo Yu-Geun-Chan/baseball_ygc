@@ -8,9 +8,9 @@
 	border-width: 1px;
 	width: 700px;
 	height: 700px;
-	position: absolute;
-	left: calc(50% - 350px);
-	top: 227px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 228px;
 }
 
 .form-contents-container {
@@ -20,9 +20,9 @@
 	align-items: flex-start;
 	justify-content: flex-start;
 	width: 600px;
-	position: absolute;
-	left: 50px;
-	top: 149px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 130px;
 }
 
 .content-container {
@@ -102,7 +102,7 @@
 	height: 40px;
 	position: absolute;
 	left: calc(50% - 324px);
-	top: 48px;
+	top: 280px;
 	overflow: hidden;
 }
 /* 안내 문구(content) CSS */
@@ -111,10 +111,7 @@
 	text-align: center;
 	font-size: 24px;
 	line-height: 18px;
-	position: absolute;
-	left: calc(50% - 59px);
 	top: 0px;
-	width: 120px;
 	height: 40px;
 	display: flex;
 	align-items: center;
@@ -131,11 +128,11 @@
 
 /* 회원탈퇴 버튼 상하 위치 고정 CSS */
 .btns-leave {
-	top: 46px;
+	top: 280px;
 }
 /* 뒤로가기 버튼 상하 위치 고정 CSS */
 .btns-back {
-	top: 633px;
+	top: 850px;
 }
 
 /* btns of contents CSS */
@@ -158,8 +155,8 @@
 	width: 130px;
 	height: 40px;
 	position: absolute;
-	left: 39px;
-	top: 633px;
+	left: calc(50% - 330px);
+	top: 850px;
 	overflow: hidden;
 }
 /* 마이페이지 이동 버튼 content CSS */
@@ -168,9 +165,6 @@
 	text-align: center;
 	font-size: 16px;
 	line-height: 18px;
-	position: absolute;
-	left: 0px;
-	top: 0px;
 	width: 130px;
 	height: 40px;
 	display: flex;
@@ -184,8 +178,8 @@
 	width: 130px;
 	height: 40px;
 	position: absolute;
-	left: 281px;
-	top: 630px;
+	left: calc(50% - 50px);
+	top: 850px;
 	overflow: hidden;
 }
 /* 내 정보 수정 버튼 content CSS */
@@ -194,8 +188,6 @@
 	text-align: center;
 	font-size: 20px;
 	line-height: 18px;
-	position: absolute;
-	left: calc(50% - 65px);
 	width: 130px;
 	height: 40px;
 	display: flex;
