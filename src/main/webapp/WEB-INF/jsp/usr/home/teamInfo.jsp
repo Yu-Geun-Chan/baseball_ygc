@@ -40,9 +40,6 @@
 			</em>
 		</p>
 		<div class="map_wrap">
-			<!-- 지도 컨테이너 -->
-			<div id="map" style="width: 800px; height: 600px; position: absolute; top: 150px; left: -100px;"></div>
-
 			<!-- 카테고리 리스트 -->
 			<ul id="category">
 				<li id="BK9" data-order="0"><span class="category_bg bank"></span> 은행</li>
@@ -52,9 +49,12 @@
 				<li id="CE7" data-order="4"><span class="category_bg cafe"></span> 카페</li>
 				<li id="CS2" data-order="5"><span class="category_bg store"></span> 편의점</li>
 			</ul>
+			<!-- 지도 컨테이너 -->
+			<div id="map" style="width: 700px; height: 700px; margin-right: auto; margin-left: auto;"></div>
 		</div>
 	</div>
 </div>
+
 
 <!-- 카카오 지도 API를 포함합니다 -->
 <script type="text/javascript"

@@ -107,6 +107,7 @@
 	align-items: center;
 	justify-content: center;
 }
+
 .point {
 	color: red;
 }
@@ -119,9 +120,10 @@
 	align-items: flex-start;
 	justify-content: flex-start;
 	width: 1000px;
-	position: absolute;
 	left: calc(50% - 508px);
-	top: 370px;
+	margin-top: 370px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 thead {

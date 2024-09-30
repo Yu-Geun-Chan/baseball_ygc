@@ -74,4 +74,5 @@ html, body {
 /* 메인 컨텐츠는 빈 공간을 채우도록 설정 */
 .main-content {
 	flex-grow: 1; /* 빈 공간을 채움 */
+	padding-bottom: 100px;
 }

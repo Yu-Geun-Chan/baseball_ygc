@@ -8,7 +8,7 @@
 	border-width: 1px;
 	width: 700px;/* 원하는 고정 너비 */
 	height:700px;
-	margin-top: 220px;
+	margin-top: 227px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -22,7 +22,7 @@
 	width: 600px;
 	position: relative;
 	left: 50px;
-	top:70px;
+	top:100px;
 }
 
 .content-container {
@@ -76,7 +76,7 @@
 	text-align: center;
 	font-size: 16px;
 	line-height: 18px;
-	position: absolute;
+	position: relative;
 	left: 150px;
 	width: 150px;
 	height: 50px;
@@ -252,7 +252,7 @@
 	position: relative;
 	left: calc(50% - 324px);
 	overflow: hidden;
-	top:-250px;
+	top:-223px;
 }
 /* 안내 문구(content) CSS */
 .notice-content {
@@ -267,10 +267,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-/* 뒤로가기 버튼 상하 위치 고정 CSS */
-.btns-back {
-	top: 724px;
 }
 
 /* btns of contents CSS */
@@ -297,7 +293,7 @@
 	height: 40px;
 	position: relative;
 	left: 281px;
-	top:330px;
+	top:320px;
 	overflow: hidden;
 }
 /* 내 정보 수정 버튼 content CSS */
