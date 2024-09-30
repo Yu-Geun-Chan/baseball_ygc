@@ -29,7 +29,6 @@
 
 html>body {
 	font-family: "GongGothicMedium", sans-serif;
-	
 }
 
 /* 노멀라이즈 시작 */
@@ -44,6 +43,11 @@ a {
 	text-decoration: none;
 }
 /* 노멀라이즈 끝 */
+html, body {
+	height: 100%; /* 전체 높이 100% */
+	margin: 0;
+	padding: 0;
+}
 
 /* 메인페이지 세로길이 1300px라서 */
 ._1300, ._1300 * {
@@ -51,10 +55,9 @@ a {
 }
 
 ._1300 {
-	background: #ffffff;
-	height: 1300px;
-	position: relative;
-	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh; /* 최소 높이를 100vh로 설정하여 화면 전체를 차지하도록 함 */
 }
 
 /* 나머지 페이지 세로길이 1200px라서 */
@@ -63,7 +66,12 @@ a {
 }
 
 ._1200 {
-    background: #ffffff;
-    height: 1200px;
-    position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh; /* 최소 높이를 100vh로 설정하여 화면 전체를 차지하도록 함 */
+}
+
+/* 메인 컨텐츠는 빈 공간을 채우도록 설정 */
+.main-content {
+	flex-grow: 1; /* 빈 공간을 채움 */
 }

@@ -30,14 +30,14 @@
 	align-items: flex-start;
 	justify-content: flex-start;
 	flex-shrink: 0;
-	width: 700px;
+	width: 800px;
 	position: relative;
 }
 
 /* 구단 로고 이미지 설명창 CSS */
 .teamLogo {
 	flex-shrink: 0;
-	width: 1200px;
+	width: 800px;
 	height: 45px;
 	position: relative;
 	left: 50px;
@@ -179,10 +179,10 @@
 /* 지도 CSS */
 .mapContainer {
 	width: 800px;
-	height: 950px;
+	height: 800px;
 	position: absolute;
 	left: calc(50% - -17px);
-	top: 200px;
+	top: 150px;
 	overflow: hidden;
 }
 

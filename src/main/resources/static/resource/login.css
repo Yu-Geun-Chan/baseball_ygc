@@ -10,7 +10,7 @@
 	height: 400px;
 	position: absolute;
 	left: calc(50% - 350px);
-	top: 423px;
+	top: 323px;
 }
 
 .form-contents-container {
@@ -89,7 +89,7 @@
 	height: 80px;
 	position: absolute;
 	left: calc(50% - 210px);
-	top: 850px;
+	top: 750px;
 	overflow: hidden;
 }
 

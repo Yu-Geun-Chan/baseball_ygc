@@ -3,11 +3,9 @@
 .footer {
     background: #f3f4f8;
     height: 100px;
-    position: absolute; /* 절대 위치 유지 */
+    position: relative; /* 상대 위치로 변경 */
     left: 0;
     right: 0;
-    bottom: 0; /* 부모 컨테이너의 맨 아래에 위치 */
-    overflow: hidden;
 }
 
 .footer-container {

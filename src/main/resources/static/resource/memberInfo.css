@@ -7,7 +7,7 @@
 	border-color: #cccccc;
 	border-width: 1px;
 	width: 700px;
-	height: 800px;
+	height: 700px;
 	position: absolute;
 	left: calc(50% - 350px);
 	top: 227px;
@@ -22,7 +22,7 @@
 	width: 600px;
 	position: absolute;
 	left: 50px;
-	top: 169px;
+	top: 149px;
 }
 
 .content-container {
@@ -135,7 +135,7 @@
 }
 /* 뒤로가기 버튼 상하 위치 고정 CSS */
 .btns-back {
-	top: 724px;
+	top: 633px;
 }
 
 /* btns of contents CSS */
@@ -159,7 +159,7 @@
 	height: 40px;
 	position: absolute;
 	left: 39px;
-	top: 727px;
+	top: 633px;
 	overflow: hidden;
 }
 /* 마이페이지 이동 버튼 content CSS */
@@ -185,7 +185,7 @@
 	height: 40px;
 	position: absolute;
 	left: 281px;
-	top: 724px;
+	top: 630px;
 	overflow: hidden;
 }
 /* 내 정보 수정 버튼 content CSS */
@@ -196,7 +196,6 @@
 	line-height: 18px;
 	position: absolute;
 	left: calc(50% - 65px);
-	top: calc(50% - 20px);
 	width: 130px;
 	height: 40px;
 	display: flex;

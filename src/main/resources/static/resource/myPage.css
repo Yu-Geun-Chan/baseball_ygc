@@ -6,23 +6,23 @@
 	border-style: solid;
 	border-color: #cccccc;
 	border-width: 1px;
-	width: 700px;
-	height: 800px;
-	position: absolute;
-	left: calc(50% - 350px);
-	top: 227px;
+	width: 700px;/* 원하는 고정 너비 */
+	height:700px;
+	margin-top: 220px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .form-contents-container {
 	display: flex;
 	flex-direction: column;
-	gap: 49px;
+	gap: 30px;
 	align-items: flex-start;
 	justify-content: flex-start;
 	width: 600px;
-	position: absolute;
+	position: relative;
 	left: 50px;
-	top: 110px;
+	top:70px;
 }
 
 .content-container {
@@ -39,7 +39,7 @@
 	text-align: left;
 	font-size: 16px;
 	line-height: 18px;
-	position: absolute;
+	position: relative;
 	left: 200px;
 	top: 0px;
 	width: 100px;
@@ -55,9 +55,8 @@
 	gap: 0px;
 	align-items: center;
 	justify-content: flex-start;
-	position: absolute;
+	position: relative;
 	left: calc(50% - 150px);
-	top: 469px;
 }
 
 .cheer-player-info-container {
@@ -67,9 +66,8 @@
 	flex-shrink: 0;
 	width: 300px;
 	height: 150px;
-	position: absolute;
+	position: relative;
 	overflow: hidden;
-	top: 490px;
 	left: 200px;
 }
 
@@ -98,17 +96,6 @@
 	object-fit: cover;
 }
 
-.contents-1 {
-	top: 0px;
-}
-
-.contents-2 {
-	top: 50px;
-}
-
-.contents-3 {
-	top: 100px;
-}
 /* 응원선수 검색, 적용 CSS */
 .cheer-select {
 	color: #4e4e4e;
@@ -152,18 +139,17 @@
 #warning-message {
 	color: red;
 	display: none; /* 처음에는 보이지 않음 */
-	position: absolute;
-	top: 37px;
+	position: relative;
 	left: 200px;
 }
 
 .cheer-message {
 	background: #ffffff;
 	width: 600px;
-	height: 60px;
-	position: absolute;
+	height: 30px;
+	position: relative;
+	top:220px;
 	left: calc(50% - 300px);
-	top: 653px;
 	overflow: hidden;
 }
 
@@ -187,7 +173,7 @@
 	position: absolute;
 	font-size: 16px;
 	width: 300px;
-	height: 40px;
+	height: 30px;
 	left: 200px;
 	width: 300px;
 }
@@ -195,7 +181,7 @@
 #save-cheer-button {
 	position: absolute;
 	left: 510px;
-	height: 40px;
+	height: 30px;
 }
 /* 응원메세지 CSS 여기까지 */
 
@@ -207,7 +193,7 @@
 	right: 89.67%;
 	left: 6.33%;
 	bottom: 16.67%;
-	top: -4px;
+	top: 10px;
 	overflow: visible;
 	color: red;
 }
@@ -263,10 +249,10 @@
 .notice {
 	width: 120px;
 	height: 40px;
-	position: absolute;
+	position: relative;
 	left: calc(50% - 324px);
-	top: 48px;
 	overflow: hidden;
+	top:-250px;
 }
 /* 안내 문구(content) CSS */
 .notice-content {
@@ -274,27 +260,13 @@
 	text-align: center;
 	font-size: 24px;
 	line-height: 18px;
-	position: absolute;
+	position: relative;
 	left: calc(50% - 59px);
-	top: 0px;
 	width: 120px;
 	height: 40px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-/* 우측 버튼 크기 및 좌우 위치 고정 CSS */
-.btns {
-	width: 120px;
-	height: 40px;
-	position: absolute;
-	left: calc(50% - -230px);
-	overflow: hidden;
-}
-
-/* 회원탈퇴 버튼 상하 위치 고정 CSS */
-.btns-leave {
-	top: 46px;
 }
 /* 뒤로가기 버튼 상하 위치 고정 CSS */
 .btns-back {
@@ -316,39 +288,16 @@
 	align-items: center;
 	justify-content: center;
 }
-/* 마이페이지 이동 버튼 크기 및 위치고정 CSS */
-.btn-myPage {
-	width: 130px;
-	height: 40px;
-	position: absolute;
-	left: 39px;
-	top: 727px;
-	overflow: hidden;
-}
-/* 마이페이지 이동 버튼 content CSS */
-.btn-myPage-content {
-	color: #999999;
-	text-align: center;
-	font-size: 16px;
-	line-height: 18px;
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 130px;
-	height: 40px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+
 /* 내 정보 수정 버튼 크기 및 위치고정 CSS */
 .btn-modify {
 	background: #1A3773;
 	border-radius: 10px;
 	width: 130px;
 	height: 40px;
-	position: absolute;
+	position: relative;
 	left: 281px;
-	top: 724px;
+	top:330px;
 	overflow: hidden;
 }
 /* 내 정보 수정 버튼 content CSS */
@@ -357,9 +306,8 @@
 	text-align: center;
 	font-size: 20px;
 	line-height: 18px;
-	position: absolute;
+	position: relative;
 	left: calc(50% - 65px);
-	top: calc(50% - 20px);
 	width: 130px;
 	height: 40px;
 	display: flex;

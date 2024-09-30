@@ -7,7 +7,7 @@
 	border-color: #cccccc;
 	border-width: 1px;
 	width: 700px;
-	height: 800px;
+	height: 700px;
 	position: absolute;
 	left: calc(50% - 350px);
 	top: 227px;
@@ -16,7 +16,7 @@
 .form-contents-container {
 	display: flex;
 	flex-direction: column;
-	gap: 49px;
+	gap:40px;
 	align-items: flex-start;
 	justify-content: flex-start;
 	width: 600px;
@@ -113,7 +113,7 @@
 }
 /* 뒤로가기 버튼 상하 위치 고정 CSS */
 .btns-back {
-	top: 724px;
+	top: 624px;
 }
 /* 각종버튼 content CSS */
 .btns-content {
@@ -137,7 +137,7 @@
 	height: 40px;
 	position: absolute;
 	left: calc(50% - 69px);
-	top: 600px;
+	top: 500px;
 	overflow: hidden;
 	border-radius: 10px;
 }
@@ -151,7 +151,6 @@
 	line-height: 18px;
 	position: absolute;
 	left: calc(50% - 65px);
-	top: calc(50% - 20px);
 	width: 130px;
 	height: 40px;
 	display: flex;

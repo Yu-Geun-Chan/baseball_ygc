@@ -66,9 +66,10 @@
 	gap: 0px;
 	align-items: flex-start;
 	justify-content: flex-start;
-	position: absolute;
-	left: calc(50% - 320px);
-	top: 330px;
+	width: 800px; /* 원하는 고정 너비 */
+	margin-top: 330px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 thead {
@@ -84,7 +85,7 @@ thead>tr {
 
 tbody>tr {
 	text-align: center;
-	border:0;
+	border: 0;
 }
 
 tbody>tr>td {
@@ -99,6 +100,6 @@ table {
 
 /* 날짜에 해당하는 td는 border 삭제 */
 tbody>tr>td:first-child {
-	border:0;
+	border: 0;
 	text-align: center;
 }
