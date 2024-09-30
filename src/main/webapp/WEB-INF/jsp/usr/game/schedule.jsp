@@ -7,12 +7,13 @@
 
 <%@ include file="../common/head.jspf"%>
 
-<div class="main-title">
-	<h1 class="main-title-content">일정 · 결과</h1>
-</div>
+
 <!-- 월 드롭다운 메뉴 -->
 
 <div class="main-content">
+	<div class="main-title">
+		<h1 class="main-title-content">경기일정 · 결과</h1>
+	</div>
 	<div class="search-container">
 		<select class="month-select" id="month" name="month">
 			<option value="01">1월</option>
@@ -80,9 +81,7 @@
 						function fetchScheduleData(month) {
 							$
 									.ajax({
-										// 컨텍스트 경로에 따라 수정
-										// 컨텍스트 경로 : 웹 애플리케이션이 서버 내에서 어디에 위치하는지 나타내는 루트 경로
-										url : "${pageContext.request.contextPath}/getSchedule",
+										url : "${pageContext.request.contextPath}/getSchedule", // 컨텍스트 경로에 따라 수정
 										type : "GET",
 										data : {
 											month : month
@@ -114,7 +113,6 @@
 																			score2,
 																			team2) {
 																		// 점수를 정수로 변환
-																		// 변환 이유 :  두 숫자를 크기를 비교하여 색을 입힐거기 때문에
 																		var score1Int = parseInt(score1);
 																		var score2Int = parseInt(score2);
 
@@ -160,12 +158,11 @@
 
 													// 날짜가 같으면 빈칸으로 설정, 다르면 날짜 표시
 													var row = "<tr>"
-															+
-															// 날짜가 같으면 빈칸
-															"<td class='" + dateClass + "'>"
+															+ "<td class='" + dateClass + "' style='text-align: center;'>"
 															+ (prevDate === currentDate ? ""
 																	: currentDate)
-															+ "</td>" + "<td>"
+															+ "</td>" + // 날짜를 가운데 정렬
+															"<td>"
 															+ data[i].time
 															+ "</td>" + // 시간
 															"<td>"

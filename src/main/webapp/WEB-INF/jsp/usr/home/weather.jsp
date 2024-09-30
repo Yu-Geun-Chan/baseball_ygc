@@ -7,7 +7,9 @@
 
 <%@ include file="../common/head.jspf"%>
 
-<div id="weather-container"></div>
+<div class="main-content">
+	<div id="weather-container"></div>
+</div>
 
 <script>
 const stadiums = [

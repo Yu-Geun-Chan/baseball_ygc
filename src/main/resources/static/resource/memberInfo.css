@@ -10,7 +10,7 @@
 	height: 700px;
 	margin-right: auto;
 	margin-left: auto;
-	margin-top: 228px;
+	margin-top: 50px;
 }
 
 .form-contents-container {
@@ -102,7 +102,7 @@
 	height: 40px;
 	position: absolute;
 	left: calc(50% - 324px);
-	top: 280px;
+	top: 223px;
 	overflow: hidden;
 }
 /* 안내 문구(content) CSS */
@@ -128,7 +128,7 @@
 
 /* 회원탈퇴 버튼 상하 위치 고정 CSS */
 .btns-leave {
-	top: 280px;
+	top: 230px;
 }
 /* 뒤로가기 버튼 상하 위치 고정 CSS */
 .btns-back {
@@ -178,7 +178,7 @@
 	width: 130px;
 	height: 40px;
 	position: absolute;
-	left: calc(50% - 50px);
+	left: calc(50% - 65px);
 	top: 850px;
 	overflow: hidden;
 }
