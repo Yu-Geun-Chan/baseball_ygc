@@ -19,7 +19,7 @@ public class GameScheduleCrawl {
 	private static final String URL = "https://www.koreabaseball.com/Schedule/Schedule.aspx";
 
 	// 크롤링 메서드
-	public List<GameSchedule> crawl(String month) {
+	public List<GameSchedule> crawl(String month, String series) {
 		// ChromeDriver 경로 설정 (경로를 본인의 환경에 맞게 수정해야 함)
 		System.setProperty("webdriver.chrome.driver",
 				"C:/work_YGC/sts-4.24.0.RELEASE-workspace/baseball_ygc/chromedriver.exe");
@@ -32,6 +32,10 @@ public class GameScheduleCrawl {
 
 		// 지정한 URL로 이동
 		driver.get(URL);
+		
+		// 리그 선택 드롭다운에서 선택
+		Select selectLeague = new Select(driver.findElement(By.id("ddlSeries")));
+		selectLeague.selectByValue(series);
 
 		// 월 선택 드롭다운에서 선택
 		Select select = new Select(driver.findElement(By.id("ddlMonth")));

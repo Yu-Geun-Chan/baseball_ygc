@@ -76,7 +76,7 @@
 										<a href="#">투수 기록</a>
 									</li>
 									<li>
-										<a href="#">구단 순위</a>
+										<a href="../game/rank">구단 순위</a>
 									</li>
 								</ul>
 							</li>

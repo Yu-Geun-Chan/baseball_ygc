@@ -20,11 +20,17 @@
 	justify-content: center;
 }
 
-.search-container {
+.month-container {
 	gap: 15px;
 	position:absolute;
 	top:280px;
 	left:calc(50% - 72px);
+}
+
+.league-container {
+	position:absolute;
+	top:320px;
+	left:calc(50% + 245px);	
 }
 
 .month-select {
@@ -62,7 +68,7 @@
 	width: 800px; /* 원하는 고정 너비 */
 	margin-right: auto;
 	margin-left: auto;
-	margin-top: 100px;
+	margin-top: 150px;
 }
 
 .game_table {

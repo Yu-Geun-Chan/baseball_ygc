@@ -25,8 +25,8 @@ public class UsrScheduleController {
 
     @GetMapping("/getSchedule")
     @ResponseBody
-    public List<GameSchedule> getSchedule(@RequestParam String month) {
-        return gameScheduleCrawl.crawl(month); // 크롤링된 일정 반환
+    public List<GameSchedule> getSchedule(@RequestParam String month, @RequestParam String series) {
+        return gameScheduleCrawl.crawl(month, series); // 크롤링된 일정 반환
     }
 	
 }
