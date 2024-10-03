@@ -7,8 +7,6 @@
 
 <%@ include file="../common/head.jspf"%>
 
-
-
 <div class="main-content">
 	<div class="main-title">
 		<h1 class="main-title-content">경기일정 · 결과</h1>
@@ -64,7 +62,11 @@
 			</tbody>
 		</table>
 	</div>
+	<div class="loading-spinner" id="loadingSpinner" style="display: none;">
+    	<div class="spinner"></div>
+	</div>
 </div>
+
 
 <!-- 경기일정/결과 함수 -->
 <script>
@@ -93,72 +95,79 @@ $(document).ready(function() {
 	});
 
 	// AJAX를 통해 데이터를 가져오는 함수
-	function fetchScheduleData(month, league) {
-		$.ajax({
-			url: "${pageContext.request.contextPath}/getSchedule", // 컨텍스트 경로에 따라 수정
-			type: "GET",
-			data: {
-				month: month,
-				series: league // 리그 데이터를 함께 보냄
-			},
-			success: function(data) {
-				// 테이블 내용을 초기화
-				$("#scheduleTable tbody").empty();
+    function fetchScheduleData(month, league) {
+        // 로딩중 스피너 표시
+        $("#loadingSpinner").show();
 
-				// 데이터가 없을 경우 '데이터가 없습니다' 메시지 표시
-				if (data.length === 0) {
-					var noDataRow = "<tr><td colspan='5' style='text-align: center;'>데이터가 없습니다</td></tr>";
-					$("#scheduleTable tbody").append(noDataRow);
-				} else {
-					var prevDate = ""; // 이전 행의 날짜를 저장할 변수
+        $.ajax({
+            url: "${pageContext.request.contextPath}/getSchedule",
+            type: "GET",
+            data: {
+                month: month,
+                series: league
+            },
+            success: function(data) {
+                // 테이블 내용을 초기화
+                $("#scheduleTable tbody").empty();
 
-					// 데이터로 테이블 업데이트
-					for (var i = 0; i < data.length; i++) {
-						var gameInfo = data[i].game;
+                // 데이터가 없을 경우 '데이터가 없습니다' 메시지 표시
+                if (data.length === 0) {
+                    var noDataRow = "<tr><td colspan='5' style='text-align: center;'>데이터가 없습니다</td></tr>";
+                    $("#scheduleTable tbody").append(noDataRow);
+                } else {
+                    var prevDate = ""; 
 
-						// 경기 정보 포맷팅 (띄어쓰기 추가)
-						var formattedGame = gameInfo.replace(/([가-힣A-Za-z]+)\s*(\d*)\s*vs\s*(\d*)\s*([가-힣A-Za-z]+)/,
-							function(match, team1, score1, score2, team2) {
-								var score1Int = parseInt(score1);
-								var score2Int = parseInt(score2);
+                    // 데이터로 테이블 업데이트
+                    for (var i = 0; i < data.length; i++) {
+                        var gameInfo = data[i].game;
 
-								if (score1Int > score2Int) {
-									score1 = "<span style='color: #cc0000;'>" + score1 + "</span>";
-									score2 = "<span style='color: #000099;'>" + score2 + "</span>";
-								} else if (score1Int < score2Int) {
-									score1 = "<span style='color: #000099;'>" + score1 + "</span>";
-									score2 = "<span style='color: #cc0000;'>" + score2 + "</span>";
-								} else {
-									score1 = "<span>" + score1 + "</span>";
-									score2 = "<span>" + score2 + "</span>";
-								}
+                        // 경기 정보 포맷팅
+                        var formattedGame = gameInfo.replace(/([가-힣A-Za-z]+)\s*(\d*)\s*vs\s*(\d*)\s*([가-힣A-Za-z]+)/,
+                            function(match, team1, score1, score2, team2) {
+                                var score1Int = parseInt(score1);
+                                var score2Int = parseInt(score2);
 
-								return team1 + " " + score1 + " vs " + score2 + " " + team2;
-							});
+                                if (score1Int > score2Int) {
+                                    score1 = "<span style='color: #cc0000;'>" + score1 + "</span>";
+                                    score2 = "<span style='color: #000099;'>" + score2 + "</span>";
+                                } else if (score1Int < score2Int) {
+                                    score1 = "<span style='color: #000099;'>" + score1 + "</span>";
+                                    score2 = "<span style='color: #cc0000;'>" + score2 + "</span>";
+                                } else {
+                                    score1 = "<span>" + score1 + "</span>";
+                                    score2 = "<span>" + score2 + "</span>";
+                                }
 
-						var currentDate = data[i].gameDay; // 현재 행의 날짜
-						var dateClass = (prevDate === currentDate) ? "same-date" : "new-date";
+                                return team1 + " " + score1 + " vs " + score2 + " " + team2;
+                            });
 
-						var row = "<tr>"
-							+ "<td class='" + dateClass + "' style='text-align: center;'>"
-							+ (prevDate === currentDate ? "" : currentDate)
-							+ "</td>"
-							+ "<td>" + data[i].time + "</td>"
-							+ "<td>" + formattedGame + "</td>"
-							+ "<td>" + data[i].location + "</td>"
-							+ "<td>" + data[i].etc + "</td>"
-							+ "</tr>";
+                        var currentDate = data[i].gameDay;
+                        var dateClass = (prevDate === currentDate) ? "same-date" : "new-date";
 
-						$("#scheduleTable tbody").append(row);
-						prevDate = currentDate;
-					}
-				}
-			},
-			error: function() {
-				alert("경기 일정 로드 실패.");
-			}
-		});
-	}
+                        var row = "<tr>"
+                            + "<td class='" + dateClass + "' style='text-align: center;'>"
+                            + (prevDate === currentDate ? "" : currentDate)
+                            + "</td>"
+                            + "<td>" + data[i].time + "</td>"
+                            + "<td>" + formattedGame + "</td>"
+                            + "<td>" + data[i].location + "</td>"
+                            + "<td>" + data[i].etc + "</td>"
+                            + "</tr>";
+
+                        $("#scheduleTable tbody").append(row);
+                        prevDate = currentDate;
+                    }
+                }
+            },
+            error: function() {
+                alert("경기 일정 로드 실패.");
+            },
+            complete: function() {
+                // 로딩 스피너 숨기기
+                $("#loadingSpinner").hide();
+            }
+        });
+    }
 });
 </script>
 
