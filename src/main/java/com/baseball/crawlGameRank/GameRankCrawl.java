@@ -20,11 +20,11 @@ public class GameRankCrawl {
 		List<GameRank> rankings = new ArrayList<>();
 
 		// 크롬 드라이버 경로 설정
-		System.setProperty("webdriver.chrome.driver", "C:/path/to/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver",
+				"C:/work_YGC/sts-4.24.0.RELEASE-workspace/baseball_ygc/chromedriver.exe");
 
 		// 크롬 옵션 설정 (headless 모드)
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless");
 
 		// 크롬 드라이버 생성
 		WebDriver driver = new ChromeDriver(options);
@@ -48,16 +48,20 @@ public class GameRankCrawl {
 			}
 
 			// 하루 전날 기준으로 구단 순위 데이터 크롤링
-			List<WebElement> rows = driver.findElements(By.cssSelector("table.tData > tbody > tr"));
+			// tData라는 클래스명을 가진 테이블 중에서 처음으로 등장하는 테이블 선택
+			WebElement firstTable = driver.findElement(By.cssSelector("table.tData:first-of-type"));
+			List<WebElement> rows = firstTable.findElements(By.cssSelector("table.tData > tbody > tr"));
 			for (WebElement row : rows) {
-				String rank = row.findElement(By.cssSelector("td:first-child")).getText();
-				String teamName = row.findElement(By.cssSelector("td:nth-child(2)")).getText();
-				String games = row.findElement(By.cssSelector("td:nth-child(3)")).getText();
-				String wins = row.findElement(By.cssSelector("td:nth-child(4)")).getText();
-				String losses = row.findElement(By.cssSelector("td:nth-child(5)")).getText();
-				String gamesBehind = row.findElement(By.cssSelector("td:nth-child(6)")).getText(); // 게임차 요소 추가
+				String rank = row.findElement(By.cssSelector("td:first-child")).getText(); // 순위(ex : 1, 2, 3 ...)
+				String teamName = row.findElement(By.cssSelector("td:nth-child(2)")).getText(); // 구단명
+				String games = row.findElement(By.cssSelector("td:nth-child(3)")).getText(); // 총 진행한 게임 수
+				String wins = row.findElement(By.cssSelector("td:nth-child(4)")).getText();	// 승리한 횟수
+				String losses = row.findElement(By.cssSelector("td:nth-child(5)")).getText(); // 패배한 횟수
+				String draws = row.findElement(By.cssSelector("td:nth-child(6)")).getText(); // 무승부한 횟수
+				String winningPercentage = row.findElement(By.cssSelector("td:nth-child(7)")).getText(); // 승률
+				String gamesBehind = row.findElement(By.cssSelector("td:nth-child(8)")).getText(); // 1위와의 게임차
 
-				rankings.add(new GameRank(rank, teamName, games, wins, losses, gamesBehind));
+				rankings.add(new GameRank(rank, teamName, games, wins, losses, draws, winningPercentage, gamesBehind));
 			}
 
 		} catch (Exception e) {

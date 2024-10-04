@@ -14,6 +14,8 @@ public class GameRank {
 	private String games;
 	private String wins;
 	private String losses;
+	private String draws;
+	private String winningPercentage;
 	private String gamesBehind;
 
 }

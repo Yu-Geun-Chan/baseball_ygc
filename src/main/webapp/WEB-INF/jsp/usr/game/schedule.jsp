@@ -76,7 +76,7 @@ $(document).ready(function() {
     // 현재 달을 기본 선택값으로 설정
     $("#month").val(currentMonth);
 
-    // 리그 선택의 기본값 설정 (예: "KBO 정규시즌 일정"이 기본값일 경우)
+    // 리그 선택의 기본값 설정 : KBO 정규시즌 일정을 기본값으로
     var defaultLeague = "0,9,6"; // 기본값을 원하는 리그 값으로 설정
     $("#league").val(defaultLeague);
 
@@ -96,7 +96,7 @@ $(document).ready(function() {
 
 	// AJAX를 통해 데이터를 가져오는 함수
     function fetchScheduleData(month, league) {
-        // 로딩중 스피너 표시
+        // 스피너 표시
         $("#loadingSpinner").show();
 
         $.ajax({
@@ -163,7 +163,7 @@ $(document).ready(function() {
                 alert("경기 일정 로드 실패.");
             },
             complete: function() {
-                // 로딩 스피너 숨기기
+                // 스피너 숨기기
                 $("#loadingSpinner").hide();
             }
         });

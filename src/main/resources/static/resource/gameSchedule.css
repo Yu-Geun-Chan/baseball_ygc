@@ -30,7 +30,7 @@
 .league-container {
 	position:absolute;
 	top:320px;
-	left:calc(50% + 245px);	
+	left:calc(50% + 253px);	
 }
 
 .month-select {
@@ -68,7 +68,7 @@
 	width: 800px; /* 원하는 고정 너비 */
 	margin-right: auto;
 	margin-left: auto;
-	margin-top: 150px;
+	margin-top: 100px;
 }
 
 .game_table {
@@ -97,7 +97,14 @@ tbody>tr>td {
 table {
 	border-collapse: collapse;
 	width: 100%;
+	border-left:none;
+	border-right:none;
 }
+
+table th {
+	border-top: 1px solid black; /* 위쪽 테두리 */
+	border-bottom: 1px solid black; /* 아래쪽 테두리 */
+
 
 /* 날짜에 해당하는 td는 border 삭제 */
 tbody>tr>td:first-child {
@@ -119,7 +126,7 @@ th, td {
 	border-top: none;
 }
 
-/* 로딩중 스피너 스타일 */
+/* 로딩 스피너 CSS */
 .spinner {
     border: 8px solid #f3f3f3;
     border-top: 8px solid #3498db;
@@ -136,4 +143,5 @@ th, td {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
 }
