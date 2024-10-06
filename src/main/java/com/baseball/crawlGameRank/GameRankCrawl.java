@@ -23,7 +23,7 @@ public class GameRankCrawl {
 		System.setProperty("webdriver.chrome.driver",
 				"C:/work_YGC/sts-4.24.0.RELEASE-workspace/baseball_ygc/chromedriver.exe");
 
-		// 크롬 옵션 설정 (headless 모드)
+		// 크롬 옵션 설정
 		ChromeOptions options = new ChromeOptions();
 
 		// 크롬 드라이버 생성
