@@ -43,6 +43,7 @@ a {
 	text-decoration: none;
 }
 /* 노멀라이즈 끝 */
+
 html, body {
 	height: 100%; /* 전체 높이 100% */
 	margin: 0;
