@@ -55,16 +55,15 @@
 	font-family: "GongGothicMedium", sans-serif;
 }
 .total-news {
-	display:flex;
-	width:150px;
-	margin-left: auto;
-	margin-right: 50px;
-	margin-top: 20px;
+	position:absolute;
+	top:360px;
+	left:calc(50% + 500px);	
 }
 .total-news-btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border-bottom:1px solid gray;
 }
 .news-list-container {
 	display: flex;
@@ -75,5 +74,5 @@
 	width: 1000px; /* 원하는 고정 너비 */
 	margin-right: auto;
 	margin-left: auto;
-	margin-top: 30px;
+	margin-top: 70px;
 }
