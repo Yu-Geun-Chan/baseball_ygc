@@ -91,7 +91,7 @@ $(document).ready(function() {
                     newsHtml += '<div style="flex-grow: 1;">'; // 이미지와 설명을 감싸는 div 추가
                     newsHtml += '<h2 style="margin: 0; font-size: 1.2em;"><a href="' + news.link + '" target="_blank">' + news.title + '</a></h2>'; // 제목 스타일 조정
                     newsHtml += '<p style="margin: 5px 0;">' + news.desc + '</p>'; // 설명 추가 및 여백 조정
-                    newsHtml += '<span style="font-size: 0.9em; color: gray;">' + news.press + '</span> | <span style="font-size: 0.9em; color: gray;">' + news.time + '</span>';
+                    newsHtml += '<span style="font-size: 0.9em; color: #578CE1;">' + news.press + '</span> <span style="color: #E3E3E3;"> | </span> <span style="font-size: 0.9em; color: gray;">' + news.time + '</span>';
                     newsHtml += '</div>'; // div 닫기
                     newsHtml += '</li>'; // 리스트 항목 닫기
                     newsHtml += '<hr style="color:gray; margin-bottom:10px;">'; // 밑줄 추가

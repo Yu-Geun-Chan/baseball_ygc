@@ -76,7 +76,11 @@ public class NewsCrawl {
                         String desc = item.findElement(By.cssSelector("div.text p.desc")).getText(); // 요약 텍스트
                         String press = item.findElement(By.cssSelector("div.source span.press")).getText(); // 언론사
                         String time = ""; // 시간 요소가 없으면 빈 문자열로 처리
-
+                        try {
+                        	time = item.findElement(By.cssSelector("div.source span.time")).getText(); // 시간
+                        } catch (NoSuchElementException e) {
+                        	// 시간이 없을 경우 예외 발생, time은 빈 문자열로 설정됨
+                        }
                         // 뉴스 객체 생성 후 리스트에 추가
                         newsList.add(new News(title, link, imgUrl, desc, press, time));
 
