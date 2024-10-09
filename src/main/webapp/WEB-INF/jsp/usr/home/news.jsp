@@ -9,7 +9,7 @@
 
 <div class="main-content">
     <div class="main-title">
-        <h1 class="main-title-content">오늘자 KBO 뉴스</h1>
+        <h1 class="main-title-content">금일 KBO 기사</h1>
     </div>
 
     <!-- 팀 선택 목록 -->

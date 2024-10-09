@@ -64,6 +64,10 @@
 	align-items: center;
 	justify-content: center;
 	border-bottom:1px solid gray;
+	transition: transform 0.3s ease; /* 크기 변화에 애니메이션 추가 */
+}
+.total-news-btn:hover {
+    transform: scale(1.1); /* 마우스를 올렸을 때 10% 확대 */
 }
 .news-list-container {
 	display: flex;
