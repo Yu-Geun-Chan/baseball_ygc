@@ -11,13 +11,16 @@
 		<div class="team">
 			<div class="teamInfo">
 				<div class="teamLogo">
-					<img class="image" src="/images/teamLogos/doosan.png" data-team="DS" /> <img class="image"
-						src="/images/teamLogos/lg.png" data-team="LG" /> <img class="image" src="/images/teamLogos/kia.png"
-						data-team="KIA" /> <img class="image" src="/images/teamLogos/kt.png" data-team="KT" /> <img class="image"
-						src="/images/teamLogos/samsung.png" data-team="SS" /> <img class="image" src="/images/teamLogos/hanhwa.png"
-						data-team="HH" /> <img class="image" src="/images/teamLogos/ssg.png" data-team="SSG" /> <img class="image"
-						src="/images/teamLogos/nc.png" data-team="NC" /> <img class="image" src="/images/teamLogos/lotte.png"
-						data-team="LT" /> <img class="image" src="/images/teamLogos/kiwoom.png" data-team="KW" />
+					<img class="image" src="/images/teamLogos/doosan.png" data-team="DS" />
+					<img class="image" src="/images/teamLogos/lg.png" data-team="LG" />
+					<img class="image" src="/images/teamLogos/kia.png" data-team="KIA" />
+					<img class="image" src="/images/teamLogos/kt.png" data-team="KT" />
+					<img class="image" src="/images/teamLogos/samsung.png" data-team="SS" />
+					<img class="image" src="/images/teamLogos/hanhwa.png" data-team="HH" />
+					<img class="image" src="/images/teamLogos/ssg.png" data-team="SSG" />
+					<img class="image" src="/images/teamLogos/nc.png" data-team="NC" />
+					<img class="image" src="/images/teamLogos/lotte.png" data-team="LT" />
+					<img class="image" src="/images/teamLogos/kiwoom.png" data-team="KW" />
 				</div>
 				<div class="info">
 					<img class="stadiumImage" src="" />
@@ -36,18 +39,37 @@
 	<!-- 지도 및 카테고리 -->
 	<div class="mapContainer">
 		<p>
-			<em class="link"> <a href="/web/documentation/#CategoryCode" target="_blank"></a>
+			<em class="link">
+				<a href="/web/documentation/#CategoryCode" target="_blank"></a>
 			</em>
 		</p>
 		<div class="map_wrap">
 			<!-- 카테고리 리스트 -->
 			<ul id="category">
-				<li id="BK9" data-order="0"><span class="category_bg bank"></span> 은행</li>
-				<li id="MT1" data-order="1"><span class="category_bg mart"></span> 마트</li>
-				<li id="PM9" data-order="2"><span class="category_bg pharmacy"></span> 약국</li>
-				<li id="OL7" data-order="3"><span class="category_bg oil"></span> 주유소</li>
-				<li id="CE7" data-order="4"><span class="category_bg cafe"></span> 카페</li>
-				<li id="CS2" data-order="5"><span class="category_bg store"></span> 편의점</li>
+				<li id="BK9" data-order="0">
+					<span class="category_bg bank"></span>
+					은행
+				</li>
+				<li id="MT1" data-order="1">
+					<span class="category_bg mart"></span>
+					마트
+				</li>
+				<li id="PM9" data-order="2">
+					<span class="category_bg pharmacy"></span>
+					약국
+				</li>
+				<li id="OL7" data-order="3">
+					<span class="category_bg oil"></span>
+					주유소
+				</li>
+				<li id="CE7" data-order="4">
+					<span class="category_bg cafe"></span>
+					카페
+				</li>
+				<li id="CS2" data-order="5">
+					<span class="category_bg store"></span>
+					편의점
+				</li>
 			</ul>
 			<!-- 지도 컨테이너 -->
 			<div id="map" style="width: 900px; height: 600px; margin-right: auto; margin-left: auto;"></div>

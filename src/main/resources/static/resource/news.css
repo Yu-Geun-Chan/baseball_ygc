@@ -72,14 +72,8 @@
 	gap: 0px;
 	align-items: flex-start;
 	justify-content: flex-start;
-	width: 800px; /* 원하는 고정 너비 */
+	width: 1000px; /* 원하는 고정 너비 */
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 30px;
-}
-/* 뉴스 항목에 대한 스타일 */
-div#_newsList ul li {
-    border-bottom: 1px solid #ccc; /* 밑줄 추가 */
-    padding-bottom: 10px; /* 밑줄과 내용 사이의 여백 */
-    margin-bottom: 10px; /* 각 뉴스 항목 사이의 간격 */
 }
