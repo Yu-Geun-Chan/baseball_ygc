@@ -24,9 +24,11 @@ public class UsrNewsController {
 	public String getNews(Model model) {
 		return "usr/home/news"; // JSP 파일 경로
 	}
+	
     @GetMapping("/getNews")
     @ResponseBody
     public List<News> getNews(@RequestParam(required = false, defaultValue = "kbo") String teamId) {
+    	System.err.println("teamId : " + teamId);
         return newsCrawl.crawl(teamId); // 뉴스 크롤링
     }
 }

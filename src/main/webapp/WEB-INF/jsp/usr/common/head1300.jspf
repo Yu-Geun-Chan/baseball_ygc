@@ -69,8 +69,7 @@
 							<li><a href="#">게시판</a>
 								<ul>
 									<li><a href="#">공지사항</a></li>
-									<li><a href="#">KBO 소식</a></li>
-									<li><a href="#">구단별 기사</a></li>
+									<li><a href="../home/news">최근 KBO 기사</a></li>
 									<li><a href="#">자유 게시판</a></li>
 							</ul></li>
 							<li><a href="#">문의사항</a></li>
