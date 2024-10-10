@@ -32,7 +32,7 @@ h1 {
 
 .item {
 	display: inline-block;
-	width: 380px;
+	width: 300px;
 	margin: 0 10px;
 	height: 380px;
 	background: rgba(0, 0, 0, 0.05) no-repeat center center;
@@ -57,7 +57,7 @@ h1 {
 	color: white;
 	text-align: center;
 	width: 100%;
-	font-size: 4em;
+	font-size: 3.5em;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); /* 텍스트 그림자 추가 */ padding :
 	10px; /* 패딩 추가 */
 	border-radius: 20px;
