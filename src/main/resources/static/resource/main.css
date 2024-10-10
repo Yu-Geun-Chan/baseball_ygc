@@ -2,6 +2,8 @@
 
 body {
 	font-family: sans-serif;
+	background-image: url(/images/mainPage3.png);
+	background-position: center;
 }
 
 h1 {
@@ -58,8 +60,8 @@ h1 {
 	text-align: center;
 	width: 100%;
 	font-size: 3.5em;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); /* 텍스트 그림자 추가 */ padding :
-	10px; /* 패딩 추가 */
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); /* 텍스트 그림자 추가 */
+	padding: 10px; /* 패딩 추가 */
 	border-radius: 20px;
 	padding: 10px; /* 모서리 둥글게 처리 */
 }
