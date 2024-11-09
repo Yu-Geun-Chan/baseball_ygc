@@ -23,23 +23,19 @@ CREATE TABLE `member` (
 
 CREATE TABLE player (
 	id	INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY,
-	`number`	TEXT	NULL DEFAULT NULL,
+	`number`	INTEGER(5)	NULL DEFAULT NULL,
 	`name`	CHAR(100) NOT NULL,
 	teamName	CHAR(100) NOT NULL,
 	`position`	CHAR(10)	NOT NULL,
 	birthDate	CHAR(20)	NOT NULL,
-	height	INT(5)	NOT NULL,
-	weight	INT(5)	NOT NULL,
+	height	INTEGER(5)	NULL DEFAULT NULL,
+	weight	INTEGER(5)	NULL DEFAULT NULL,
 	profileImage	VARCHAR(255)	NULL	COMMENT 'NULL 허용 사진 없는 경우도 있기 때문에',
 	career	VARCHAR(255)	NOT NULL
 );
-UPDATE player
-SET profileImage = 'http://localhost:8083/images/playerImages/912.png'
-WHERE `name` = '노시환';
-
-UPDATE player
-SET profileImage = 'http://localhost:8083/images/playerImages/12.png'
-WHERE `name` = '김도영';
+ALTER TABLE player 
+ADD COLUMN profileCardImage VARCHAR(255) NULL COMMENT 'NULL 허용 사진 없는 경우도 있기 때문에' 
+AFTER profileImage;
 
 CREATE TABLE memberProfileImage (
 	id INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY, 
@@ -287,8 +283,65 @@ ON DELETE CASCADE;
 ALTER TABLE TeamSeasonStats ADD CONSTRAINT FK_TeamSeasonStats_team FOREIGN KEY (teamId) REFERENCES team(id)
 ON DELETE CASCADE;
 -- 여기까지 외래키 추가
+
+######## init 끝
+
 # player 테이블 number 칼럼 'null'을 NULL로 치환
 UPDATE player SET `number` = NULL WHERE `number` = 'null';
+UPDATE player SET `height` = NULL WHERE `height` = 'null';
+UPDATE player SET `weight` = NULL WHERE `weight` = 'null';
+
+# 각 구단별 대표선수 프로필사진, 선수정보 사진 테스트
+UPDATE player
+SET profileImage = 'http://localhost:8083/images/playerImages/662.png',
+profileCardImage = 'http://localhost:8083/images/playerCardImages/662.png'
+WHERE `name` = '노시환';
+
+UPDATE player
+SET profileImage = 'http://localhost:8083/images/playerImages/100.png',
+profileCardImage = 'http://localhost:8083/images/playerCardImages/100.png'
+WHERE `name` = '김도영';
+
+UPDATE player
+SET profileImage = 'http://localhost:8083/images/playerImages/25.png',
+profileCardImage = 'http://localhost:8083/images/playerCardImages/25.png'
+WHERE `name` = '김현수';
+
+UPDATE player
+SET profileImage = 'http://localhost:8083/images/playerImages/185.png',
+profileCardImage = 'http://localhost:8083/images/playerCardImages/185.png'
+WHERE `name` = '구자욱';
+
+UPDATE player
+SET profileImage = 'http://localhost:8083/images/playerImages/418.png',
+profileCardImage = 'http://localhost:8083/images/playerCardImages/418.png'
+WHERE `name` = '양의지';
+
+UPDATE player
+SET profileImage = 'http://localhost:8083/images/playerImages/271.png',
+profileCardImage = 'http://localhost:8083/images/playerCardImages/271.png'
+WHERE `name` = '강백호';
+
+UPDATE player
+SET profileImage = 'http://localhost:8083/images/playerImages/538.png',
+profileCardImage = 'http://localhost:8083/images/playerCardImages/538.png'
+WHERE `name` = '최정';
+
+UPDATE player
+SET profileImage = 'http://localhost:8083/images/playerImages/614.png',
+profileCardImage = 'http://localhost:8083/images/playerCardImages/614.png'
+WHERE `name` = '전준우';
+
+UPDATE player
+SET profileImage = 'http://localhost:8083/images/playerImages/788.png',
+profileCardImage = 'http://localhost:8083/images/playerCardImages/788.png'
+WHERE `name` = '손아섭';
+
+UPDATE player
+SET profileImage = 'http://localhost:8083/images/playerImages/874.png',
+profileCardImage = 'http://localhost:8083/images/playerCardImages/874.png'
+WHERE `name` = '송성문';
+# 여기까지 선수 사진 테스트 데이터
 
 SELECT * FROM `member`;
 
@@ -296,6 +349,14 @@ SELECT * FROM player;
 
 SELECT * FROM player
 WHERE `name` = '김도영';
+
+SELECT * FROM player
+WHERE `name` = '노시환';
+
+SELECT * FROM player
+WHERE teamName = 'KIA';
+
+DROP TABLE player;
 
 SELECT COUNT(*) FROM player WHERE `position` = '포수';
 

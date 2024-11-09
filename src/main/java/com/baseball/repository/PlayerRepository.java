@@ -66,4 +66,18 @@ public interface PlayerRepository {
 			""")
 	Player findPlayerByName(String name);
 
+	@Select("""
+			SELECT * FROM player WHERE id = #{id}
+			""")
+	Player findById(int id);
+	
+    // 이름을 기준으로 선수 존재 여부 확인
+    @Select("SELECT COUNT(*) FROM player WHERE name = #{name} AND teamName = #{teamName}")
+    boolean isPlayerExist(String name, String teamName);
+
+    // 새로운 선수 저장
+    @Insert("INSERT INTO player (number, name, teamName, height, weight, position, birthDate, career) " +
+            "VALUES (#{number}, #{name}, #{teamName}, #{height}, #{weight}, #{position}, #{birthDate}, #{career})")
+    void save(Player player);
+
 }

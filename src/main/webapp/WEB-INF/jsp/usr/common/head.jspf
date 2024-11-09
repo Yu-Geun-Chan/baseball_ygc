@@ -27,16 +27,16 @@
 		<div class="header">
 			<div class="topbar">
 				<c:if test="${!rq.isLogined() }">
-					<a class="topbar-contents topbar-contents-join" href="../member/join">회원가입</a>
-					<a class="topbar-contents topbar-contents-login" href="../member/login">로그인</a>
+					<a class="topbar-contents topbar-contents-join" href="/usr/member/join">회원가입</a>
+					<a class="topbar-contents topbar-contents-login" href="/usr/member/login">로그인</a>
 				</c:if>
 				<c:if test="${rq.isLogined() }">
-					<a class="topbar-contents topbar-contents-info" href="../member/info">나의 정보</a>
-					<a class="topbar-contents topbar-contents-logout" href="../member/doLogout">로그아웃</a>
+					<a class="topbar-contents topbar-contents-info" href="/usr/member/info">나의 정보</a>
+					<a class="topbar-contents topbar-contents-logout" href="/usr/member/doLogout">로그아웃</a>
 				</c:if>
 				<div class="topbar-contents topbar-contents-bar1">|</div>
 				<div class="topbar-contents topbar-contents-bar2">|</div>
-				<a href="../member/myPage">
+				<a href="/usr/member/myPage">
 					<svg class="mdi-user" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
 					<path fill="currentColor"
 							d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4" /></svg>
@@ -53,10 +53,10 @@
 										<a href="#">게임 센터</a>
 									</li>
 									<li>
-										<a href="../game/schedule">일정 · 결과</a>
+										<a href="/usr/game/schedule">일정 · 결과</a>
 									</li>
 									<li>
-										<a href="../home/weather">야구장 날씨</a>
+										<a href="/usr/home/weather">야구장 날씨</a>
 									</li>
 								</ul>
 							</li>
@@ -70,15 +70,15 @@
 										<a href="#">투수 기록</a>
 									</li>
 									<li>
-										<a href="../game/rank">구단 순위</a>
+										<a href="/usr/game/rank">구단 순위</a>
 									</li>
 								</ul>
 							</li>
 							<li>
-								<a href="../player/players">선수</a>
+								<a href="/usr/player/players">선수</a>
 							</li>
 							<li>
-								<a href="../home/teamInfo">구장정보</a>
+								<a href="/usr/home/teamInfo">구장정보</a>
 							</li>
 							<li>
 								<a href="#">게시판</a>
@@ -87,7 +87,7 @@
 										<a href="#">공지사항</a>
 									</li>
 									<li>
-										<a href="../home/news">금일 KBO 기사</a>
+										<a href="/usr/home/news">금일 KBO 기사</a>
 									</li>
 									<li>
 										<a href="#">자유 게시판</a>
@@ -99,7 +99,7 @@
 							</li>
 						</ul>
 					</div>
-					<a href="../home/main">
+					<a href="/usr/home/main">
 						<img class="_28" src="/images/mainLogoImage/logo.png" />
 					</a>
 				</div>

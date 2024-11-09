@@ -1,13 +1,9 @@
 package com.baseball.crawlPlayer;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,10 +14,12 @@ import org.springframework.stereotype.Component;
 
 import com.baseball.service.PlayerService;
 import com.baseball.vo.Player;
-import com.opencsv.CSVWriter;
 
 @Component
 public class Kiwoom {
+
+	@Autowired
+	private PlayerService playerService;
 
 	public void crawl() {
 		// 웹드라이버 실행 파일 경로 설정
@@ -50,7 +48,7 @@ public class Kiwoom {
 			WebElement searchButton = driver.findElement(By.id("cphContents_cphContents_cphContents_btnSearch"));
 			searchButton.click();
 
-			extractPlayerDataToCSV(driver, wait);
+			extractPlayerData(driver, wait);
 
 			// 페이징
 			// 최초 페이지 1부터 시작
@@ -66,7 +64,7 @@ public class Kiwoom {
 				if (nextPageButton.isEnabled()) {
 					nextPageButton.click();
 					wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.cssSelector("table.tEx"))));
-					extractPlayerDataToCSV(driver, wait);
+					extractPlayerData(driver, wait);
 				} else {
 					break; // 더 이상 페이지가 없는 경우 루프 종료
 				}
@@ -79,59 +77,70 @@ public class Kiwoom {
 		}
 	}
 
-	private void extractPlayerDataToCSV(WebDriver driver, WebDriverWait wait) {
-		// CSV 파일을 작성할 준비 - 파일명을 "players.csv"로 지정
-		String filePath = "C:/work_YGC/sts-4.24.0.RELEASE-workspace/baseball_ygc/playersKW.csv";
-		File file = new File(filePath);
-		try (CSVWriter writer = new CSVWriter(new FileWriter(file, true))) { // append 모드로 열기
-			System.out.println("CSV 파일이 생성된 경로: " + file.getAbsolutePath());
-			// 테이블이 화면에 보일 때까지 대기
-			WebElement table = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("table.tEx")));
+	private void extractPlayerData(WebDriver driver, WebDriverWait wait) {
+		// 테이블이 화면에 보일 때까지 대기
+		WebElement table = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("table.tEx")));
 
-			// 테이블의 모든 행을 가져옴
-			List<WebElement> rows = table.findElements(By.cssSelector("tbody > tr"));
+		// 테이블의 모든 행을 가져옴
+		List<WebElement> rows = table.findElements(By.cssSelector("tbody > tr"));
 
-			// 각 행에 대해 처리
-			for (WebElement row : rows) {
-				// 각 행의 셀 데이터를 가져옴
-				List<WebElement> cells = row.findElements(By.tagName("td"));
+		// 각 행에 대해 처리
+		for (WebElement row : rows) {
+			// 각 행의 셀 데이터를 가져옴
+			List<WebElement> cells = row.findElements(By.tagName("td"));
 
-				// 셀이 7개 이상일 때만 처리
-				if (cells.size() >= 7) {
-					String numberStr = cells.get(0).getText().trim(); // 등번호
+			// 셀이 7개 이상일 때만 처리
+			if (cells.size() >= 7) {
+				String numberStr = cells.get(0).getText().trim(); // 등번호
 
-					Integer number = null;
-					if (!numberStr.isEmpty()) {
-						try {
-							number = Integer.parseInt(numberStr); // 등번호
-						} catch (NumberFormatException e) {
-							// 등번호가 숫자로 변환되지 않는 경우 처리
-							number = null;
-						}
+				Integer number = null;
+				if (!numberStr.isEmpty()) {
+					try {
+						number = Integer.parseInt(numberStr); // 등번호
+					} catch (NumberFormatException e) {
+						// 등번호가 숫자로 변환되지 않는 경우 처리
+						number = null;
 					}
-
-					// 나머지 셀 데이터 추출
-					String name = cells.get(1).getText().trim(); // 이름
-					String teamName = cells.get(2).getText().trim(); // 소속 구단
-					String position = cells.get(3).getText().trim(); // 포지션
-					String birthDate = cells.get(4).getText().trim(); // 생년월일
-
-					// 키, 몸무게는 "185cm, 100kg" 형식이므로 쉼표로 분리
-					String[] heightWeight = cells.get(5).getText().split(", ");
-					int height = Integer.parseInt(heightWeight[0].replace("cm", "").trim()); // 키
-					int weight = Integer.parseInt(heightWeight[1].replace("kg", "").trim()); // 몸무게
-
-					String career = cells.get(6).getText().trim(); // 경력
-
-					// 플레이어 데이터를 CSV 파일에 추가
-					String[] playerData = { String.valueOf(number), name, teamName, position, birthDate,
-							String.valueOf(height), String.valueOf(weight), career };
-					writer.writeNext(playerData); // CSV 파일에 한 줄 추가
 				}
+
+				// 나머지 셀 데이터 추출
+				String name = cells.get(1).getText().trim(); // 이름
+				String teamName = cells.get(2).getText().trim(); // 소속 구단
+				String position = cells.get(3).getText().trim(); // 포지션
+				String birthDate = cells.get(4).getText().trim(); // 생년월일
+
+				// 키, 몸무게는 "185cm, 100kg" 형식이므로 쉼표로 분리
+				String[] heightWeight = cells.get(5).getText().split(", ");
+				
+				// 배열 크기 체크
+				String heightStr = (heightWeight.length > 0) ? heightWeight[0].replace("cm", "").trim() : "";
+				String weightStr = (heightWeight.length > 1) ? heightWeight[1].replace("kg", "").trim() : "";
+				
+				Integer height = null;
+				if (!heightStr.isEmpty()) {
+					try {
+						height = Integer.parseInt(heightStr); // 키 
+					} catch (NumberFormatException e) {
+						// 키가 숫자로 변환되지 않는 경우 처리
+						height = null;
+					}
+				}
+				
+				Integer weight = null;
+				if (!weightStr.isEmpty()) {
+					try {
+						weight = Integer.parseInt(weightStr); // 몸무게
+					} catch (NumberFormatException e) {
+						// 몸무게가 숫자로 변환되지 않는 경우 처리
+						weight = null;
+					}
+				}
+
+				String career = cells.get(6).getText().trim(); // 경력
+
+				Player player = new Player(number, name, teamName, height, weight, position, birthDate, career);
+				playerService.saveIfNotExist(player);
 			}
-		} catch (IOException e) {
-			// 파일 작성 중 에러 발생 시 출력
-			e.printStackTrace();
 		}
 	}
 }

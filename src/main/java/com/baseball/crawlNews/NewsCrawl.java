@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import com.baseball.vo.News;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.By;
@@ -27,8 +28,15 @@ public class NewsCrawl {
         System.setProperty("webdriver.chrome.driver",
                 "C:/work_YGC/sts-4.24.0.RELEASE-workspace/baseball_ygc/chromedriver.exe");
 
-        WebDriver driver = new ChromeDriver();
+        // ChromeDriver 옵션 설정
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless"); // 헤드리스 모드 추가
+        options.addArguments("--no-sandbox"); // 추가 안정성 옵션
+        options.addArguments("--disable-dev-shm-usage");
+
+        WebDriver driver = new ChromeDriver(options);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // WebDriverWait 객체 생성
+
 
         try {
             driver.get("https://sports.news.naver.com/kbaseball/news/index?isphoto=N");

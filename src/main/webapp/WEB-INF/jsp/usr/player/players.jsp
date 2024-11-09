@@ -138,7 +138,8 @@ function updatePagination(newTotalPages, newCurrentPage) {
             '롯데': '#DB042F',
             '한화': '#F27222',
             'NC': '#1D467A',
-            '키움': '#800121'
+            '키움': '#800121',
+            '고양': '#800121'
         };
     
     function sendAjaxRequest() {
@@ -191,9 +192,9 @@ function updatePagination(newTotalPages, newCurrentPage) {
                     var nameCell = $('<td></td>');
                     var playerLink = $('<a></a>')
                         .text(player.name || '')
-                        .attr('href', '/player/details/' + player.id); // 선수 상세정보로 이동하는 URL
+                        .attr('href', '/usr/player/detail/' + player.id); // 선수 상세정보로 이동하는 URL
                     nameCell.append(playerLink);
-
+                        
                     var positionCell = $('<td></td>').text(player.position || '');
                     var birthDateCell = $('<td></td>').text(player.birthDate || '');
                     var physiqueCell = $('<td></td>').text(player.height + 'cm / ' + player.weight + 'kg');

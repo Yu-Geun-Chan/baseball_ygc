@@ -24,8 +24,11 @@ public class GameScheduleCrawl {
 		System.setProperty("webdriver.chrome.driver",
 				"C:/work_YGC/sts-4.24.0.RELEASE-workspace/baseball_ygc/chromedriver.exe");
 
-		// ChromeOptions 객체 생성 및 설정
-		ChromeOptions options = new ChromeOptions();
+        // ChromeDriver 옵션 설정
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless"); // 헤드리스 모드 추가
+        options.addArguments("--no-sandbox"); // 추가 안정성 옵션
+        options.addArguments("--disable-dev-shm-usage");
 
 		// WebDriver 객체 생성
 		WebDriver driver = new ChromeDriver(options);
