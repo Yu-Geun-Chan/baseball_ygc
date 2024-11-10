@@ -2,8 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="WRITE"></c:set>
-<%@ include file="../common/head.jspf"%>
 <%@ include file="../common/toastUiEditorLib.jspf"%>
+<!-- daisyUI -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.12.10/full.css" />
+<%@ include file="../common/head.jspf"%>
 <hr />
 
 <script type="text/javascript">
@@ -52,7 +54,7 @@
 								<select name="boardId">
 									<option value="" selected disabled>게시판을 선택해주세요.</option>
 									<option value="1">공지사항</option>
-									<option value="2">자유</option>
+									<option value="2">자유게시판</option>
 									<option value="3">질의응답</option>
 								</select>
 							</td>
@@ -76,8 +78,6 @@
 						<tr>
 							<th>내용</th>
 							<td style="text-align: center;">
-								<!-- 							<input class="input input-bordered input-primary input-sm w-full max-w-xs" name="body" autocomplete="off" -->
-								<!-- 								type="text" placeholder="내용을 입력해" /> -->
 								<div class="toast-ui-editor">
 									<script type="text/x-template"></script>
 								</div>
@@ -86,21 +86,37 @@
 						</tr>
 						<tr>
 							<th></th>
-							<td style="text-align: center;">
-								<button class="btn btn-primary">작성</button>
-								<!-- 						<input class="btn btn-primary" -->
-								<!-- 							type="submit" value="작성" />  -->
+							<td style="text-align: center; margin-left: calc(50% - 250px);">
+								<button class="btn-write">등록</button>
+								<button class="btn-back" type="button" onclick="history.back()">뒤로가기</button>
 							</td>
-
 						</tr>
 					</tbody>
 				</table>
 			</form>
-			<div class="btns">
-				<button class="btn" type="button" onclick="history.back()">뒤로가기</button>
-			</div>
 		</div>
 	</section>
 </div>
+<style>
+.btn-write {
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	width: 70px;
+	height: 40px;
+	color: 444444;
+	background: #e1e1e1;
+}
+
+.btn-back {
+	border: 0px;
+	color: 999999;
+	width: 120px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 16px;
+	margin-left: calc(50%);
+}
+</style>
 
 <%@ include file="../common/foot.jspf"%>

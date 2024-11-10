@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="DETAIL"></c:set>
-<%@ include file="../common/head.jspf"%>
 <%@ include file="../common/toastUiEditorLib.jspf"%>
+<%@ include file="../common/head.jspf"%>
 <!-- daisyUI -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.12.10/full.css" />
 <hr />
@@ -231,100 +231,99 @@ function doModifyReply(replyId) {
 }
 </script>
 
-<section class="mt-24 text-xl px-4">
-	<div class="mx-auto">
-		<table class="table" border="1" cellspacing="0" cellpadding="5" style="width: 100%; border-collapse: collapse;">
-			<tbody>
-				<tr>
-					<th style="text-align: center;">ID</th>
-					<td style="text-align: center;">${article.id}</td>
-				</tr>
-				<tr>
-					<th style="text-align: center;">Registration Date</th>
-					<td style="text-align: center;">${article.regDate.substring(0,10)}</td>
-				</tr>
-				<tr>
-					<th style="text-align: center;">Modified date</th>
-					<td style="text-align: center;">${article.updateDate}</td>
-				</tr>
-				<tr>
-					<th style="text-align: center;">BoardId</th>
-					<td style="text-align: center;">${article.boardId}</td>
-				</tr>
-				<tr>
-					<th style="text-align: center;">Writer</th>
-					<td style="text-align: center;">${article.extra__writer}</td>
-				</tr>
-				<tr>
-					<th class="reaction" style="text-align: center;">Like</th>
-					<td id="likeCount" style="text-align: center;">${article.goodReactionPoint}</td>
-				</tr>
-				<tr>
-					<th style="text-align: center;">Dislike</th>
-					<td id="DislikeCount" style="text-align: center;">${article.badReactionPoint}</td>
-				</tr>
-				<tr>
-					<th style="text-align: center;">LIKE / Dislike / ${usersReaction }</th>
-					<td style="text-align: center;">
+<div class="main-content">
+	<section class="mt-24 text-xl px-4">
+		<div class="mx-auto">
+			<table class="table" border="1" cellspacing="0" cellpadding="5" style="width: 100%; border-collapse: collapse;">
+				<tbody>
+					<tr>
+						<th style="text-align: center;">번호</th>
+						<td style="text-align: center;">${article.id}</td>
+					</tr>
+					<tr>
+						<th style="text-align: center;">작성일</th>
+						<td style="text-align: center;">${article.regDate.substring(0,10)}</td>
+					</tr>
+					<tr>
+						<th style="text-align: center;">수정일</th>
+						<td style="text-align: center;">${article.updateDate}</td>
+					</tr>
+					<tr>
+						<th style="text-align: center;">게시판 번호</th>
+						<td style="text-align: center;">${article.boardId}</td>
+					</tr>
+					<tr>
+						<th style="text-align: center;">작성자</th>
+						<td style="text-align: center;">${article.extra__writer}</td>
+					</tr>
+					<tr>
+						<th class="reaction" style="text-align: center;">좋아요</th>
+						<td id="likeCount" style="text-align: center;">${article.goodReactionPoint}</td>
+					</tr>
+					<tr>
+						<th style="text-align: center;">싫어요</th>
+						<td id="DislikeCount" style="text-align: center;">${article.badReactionPoint}</td>
+					</tr>
+					<tr>
+						<th style="text-align: center;">좋아요 / 싫어요 ${usersReaction }</th>
+						<td style="text-align: center;">
 
-						<button id="likeButton" class="btn btn-outline btn-success" onclick="doGoodReaction(${param.id})">
-							👍 LIKE
-							<span class="likeCount">${article.goodReactionPoint}</span>
-						</button>
-						<button id="DislikeButton" class="btn btn-outline btn-error" onclick="doBadReaction(${param.id})">
-							👎 DISLIKE
-							<span class="DislikeCount">${article.badReactionPoint}</span>
-						</button>
-						<%-- 						<a href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}" --%>
-						<%-- 							class="btn btn-outline btn-success">👍 LIKE ${article.goodReactionPoint}</a> --%>
-						<%-- 						<a href="/usr/reactionPoint/doBadReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}" --%>
-						<%-- 							class="btn btn-outline btn-error">👎 DISLIKE ${article.badReactionPoint}</a> --%>
-					</td>
-				</tr>
+							<button id="likeButton" class="btn btn-outline btn-success" onclick="doGoodReaction(${param.id})">
+								👍 LIKE
+								<span class="likeCount">${article.goodReactionPoint}</span>
+							</button>
+							<button id="DislikeButton" class="btn btn-outline btn-error" onclick="doBadReaction(${param.id})">
+								👎 DISLIKE
+								<span class="DislikeCount">${article.badReactionPoint}</span>
+							</button>
+						</td>
+					</tr>
 
-				<tr>
-					<th style="text-align: center;">Views</th>
+					<tr>
+						<th style="text-align: center;">조회수</th>
 
-					<td style="text-align: center;">
-						<span class="article-detail__hit-count">${article.hitCount}</span>
-					</td>
-				</tr>
-				<tr>
-					<th style="text-align: center;">Title</th>
-					<td style="text-align: center;">${article.title}</td>
-				</tr>
-				<tr>
-					<th style="text-align: center;">Attached Image</th>
-					<td style="text-align: center;">
-						<div style="text-align: center;">
-							<img class="mx-auto rounded-xl" src="${rq.getImgUri(article.id)}" onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
-						</div>
-						<div>${rq.getImgUri(article.id)}</div>
-					</td>
-				</tr>
-				<tr>
-					<th style="text-align: center;">Body</th>
-					<td>
-						<div class="toast-ui-viewer">
-							<script type="text/x-template">${article.body}</script>
-						</div>
-					</td>
-				</tr>
+						<td style="text-align: center;">
+							<span class="article-detail__hit-count">${article.hitCount}</span>
+						</td>
+					</tr>
+					<tr>
+						<th style="text-align: center;">제목</th>
+						<td style="text-align: center;">${article.title}</td>
+					</tr>
+					<tr>
+						<th style="text-align: center;">등록 이미지</th>
+						<td style="text-align: center;">
+							<div style="text-align: center;">
+								<img class="mx-auto rounded-xl" src="${rq.getImgUri(article.id)}" onerror="${rq.profileFallbackImgOnErrorHtml}"
+									alt="" />
+							</div>
+							<div>${rq.getImgUri(article.id)}</div>
+						</td>
+					</tr>
+					<tr>
+						<th style="text-align: center;">내용</th>
+						<td>
+							<div class="toast-ui-viewer">
+								<script type="text/x-template">${article.body}</script>
+							</div>
+						</td>
+					</tr>
 
-			</tbody>
-		</table>
-		<div class="btns">
-			<button class="btn" type="button" onclick="history.back()">뒤로가기</button>
-			<c:if test="${article.userCanModify }">
-				<a class="btn" href="../article/modify?id=${article.id }">수정</a>
-			</c:if>
-			<c:if test="${article.userCanDelete }">
-				<a class="btn" href="../article/doDelete?id=${article.id }">삭제</a>
-			</c:if>
+				</tbody>
+			</table>
+			<div class="btns">
+				<button class="btn" type="button" onclick="history.back()">뒤로가기</button>
+				<c:if test="${article.userCanModify }">
+					<a class="btn" href="../article/modify?id=${article.id }">수정</a>
+				</c:if>
+				<c:if test="${article.userCanDelete }">
+					<a class="btn" href="../article/doDelete?id=${article.id }">삭제</a>
+				</c:if>
 
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
+</div>
 
 <script>
 	function ReplyWrite__submit(form) {
@@ -379,13 +378,13 @@ function doModifyReply(replyId) {
 		<table class="table" border="1" cellspacing="0" cellpadding="5" style="width: 100%; border-collapse: collapse;">
 			<thead>
 				<tr>
-					<th style="text-align: center;">Registration Date</th>
-					<th style="text-align: center;">Writer</th>
-					<th style="text-align: center;">Body</th>
-					<th style="text-align: center;">Like</th>
-					<th style="text-align: center;">Dislike</th>
-					<th style="text-align: center;">Edit</th>
-					<th style="text-align: center;">Delete</th>
+					<th style="text-align: center;">등록일</th>
+					<th style="text-align: center;">작성자</th>
+					<th style="text-align: center;">내용</th>
+					<th style="text-align: center;">좋아요</th>
+					<th style="text-align: center;">싫어요</th>
+					<th style="text-align: center;">수정</th>
+					<th style="text-align: center;">삭제</th>
 				</tr>
 			</thead>
 			<tbody>
