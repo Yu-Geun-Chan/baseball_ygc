@@ -18,7 +18,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <!-- 폰트어썸 FREE 아이콘 리스트 : https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free -->
 
-
 </head>
 <body>
 
@@ -81,16 +80,16 @@
 								<a href="/usr/home/teamInfo">구장정보</a>
 							</li>
 							<li>
-								<a href="#">게시판</a>
+								<a href="/usr/article/freeList">게시판</a>
 								<ul>
 									<li>
-										<a href="#">공지사항</a>
+										<a href="/usr/article/noticeList">공지사항</a>
 									</li>
 									<li>
 										<a href="/usr/home/news">금일 KBO 기사</a>
 									</li>
 									<li>
-										<a href="#">자유 게시판</a>
+										<a href="/usr/article/freeList">자유 게시판</a>
 									</li>
 								</ul>
 							</li>

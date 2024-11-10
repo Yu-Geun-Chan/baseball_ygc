@@ -20,6 +20,7 @@ import com.baseball.service.ReplyService;
 import com.baseball.util.Ut;
 import com.baseball.vo.Article;
 import com.baseball.vo.Board;
+import com.baseball.vo.Member;
 import com.baseball.vo.Reply;
 import com.baseball.vo.ResultData;
 import com.baseball.vo.Rq;
@@ -148,7 +149,7 @@ public class UsrArticleController {
 			articleService.deleteArticle(id);
 		}
 
-		return Ut.jsReplace(userCanDeleteRd.getResultCode(), userCanDeleteRd.getMsg(), "../article/list");
+		return Ut.jsReplace(userCanDeleteRd.getResultCode(), userCanDeleteRd.getMsg(), "../article/freeList");
 	}
 
 	@RequestMapping("/usr/article/write")
@@ -188,14 +189,16 @@ public class UsrArticleController {
 
 	}
 
-	@RequestMapping("/usr/article/list")
-	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,
+	@RequestMapping("/usr/article/freeList")
+	public String showFreeList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "2") int boardId,
 			@RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
 			@RequestParam(defaultValue = "") String searchKeyword) throws IOException {
 
 		Board board = boardService.getBoardById(boardId);
-
+		
+		System.out.println("board : " + board);
+		
 		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 
 		// 한페이지에 글 10개
@@ -221,7 +224,52 @@ public class UsrArticleController {
 		model.addAttribute("searchKeyword", searchKeyword);
 		model.addAttribute("boardId", boardId);
 
-		return "usr/article/list";
+		return "usr/article/freeList";
+	}
+	
+	@RequestMapping("/usr/article/noticeList")
+	public String showNoticeList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,
+			@RequestParam(defaultValue = "1") int page,
+			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
+			@RequestParam(defaultValue = "") String searchKeyword) throws IOException {
+		
+	    Member loginedMember = rq.getLoginedMember();  // 로그인 상태 확인
+	    if (loginedMember != null) {
+	        model.addAttribute("loginedMember", loginedMember);  // 로그인한 경우 Model에 추가
+	    }
+	    
+	    System.out.println("레벨 : " + loginedMember.getAuthLevel());
+
+		Board board = boardService.getBoardById(boardId);
+		
+		System.out.println("board : " + board);
+		
+		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
+
+		// 한페이지에 글 10개
+		// 글 20개 -> 2page
+		// 글 25개 -> 3page
+		int itemsInAPage = 10;
+
+		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
+
+		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page, searchKeywordTypeCode,
+				searchKeyword);
+
+		if (board == null) {
+			return rq.historyBackOnView("없는 게시판임");
+		}
+
+		model.addAttribute("articles", articles);
+		model.addAttribute("articlesCount", articlesCount);
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("board", board);
+		model.addAttribute("page", page);
+		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
+		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("boardId", boardId);
+
+		return "usr/article/noticeList";
 	}
 	
 	@RequestMapping("/usr/article/myList")

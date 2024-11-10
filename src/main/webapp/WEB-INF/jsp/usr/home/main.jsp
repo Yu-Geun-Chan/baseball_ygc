@@ -66,7 +66,7 @@
 					<a href="../game/rank" id="teamRank" class="item">
 						<h1>구단 순위</h1>
 					</a>
-					<a href="../article/list" id="article" class="item">
+					<a href="../article/freeList" id="article" class="item">
 						<h1>자유게시판</h1>
 					</a>
 					<a href="#" id="ask" class="item">
