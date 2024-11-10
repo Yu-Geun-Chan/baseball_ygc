@@ -9,6 +9,9 @@
 
 <%@ include file="../common/head.jspf"%>
 
+<!-- daisyUI -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.12.10/full.css" />
+
 <div class="main-content">
 	<div class="container">
 		<div class="form-contents-container">
@@ -79,9 +82,5 @@
 		</div>
 	</div>
 </div>
-
-
-
-
 
 <%@ include file="../common/foot.jspf"%>

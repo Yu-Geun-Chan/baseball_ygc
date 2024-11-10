@@ -2,12 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="LOGIN"></c:set>
 
-<link rel="stylesheet" href="/resource/login.css" />
-
 <!-- lodash debounce -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-
 <%@ include file="../common/head.jspf"%>
+<!-- daisyUI -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.12.10/full.css" />
+<link rel="stylesheet" href="/resource/login.css" />
 
 <div class="main-content">
 	<div class="form-container">
