@@ -292,12 +292,12 @@ function doModifyReply(replyId) {
 				<input type="hidden" name="relTypeCode" value="article" />
 				<input type="hidden" name="relId" value="${article.id }" />
 
-				<div style="width:800px;">댓글 작성</div>
-				<div style="width:800px;">
-					<textarea style="margin-top:10px; width:800px; min-height:100px;"class="input input-bordered input-sm" name="body" autocomplete="off" type="text"
-						placeholder="내용을 입력하세요."></textarea>
+				<div style="width: 800px;">댓글 작성</div>
+				<div style="width: 800px;">
+					<textarea style="margin-top: 10px; width: 800px; min-height: 100px;" class="input input-bordered input-sm"
+						name="body" autocomplete="off" type="text" placeholder="내용을 입력하세요."></textarea>
 				</div>
-				<div style="margin-top:10px;">
+				<div style="margin-top: 10px;">
 					<button class="btns">등록</button>
 				</div>
 
@@ -305,11 +305,16 @@ function doModifyReply(replyId) {
 		</c:if>
 
 		<c:if test="${!rq.isLogined() }">
-		댓글 작성을 위해 
-		<div class="btns" style="width: 70px; height: 40px; display: inline-block; text-align: center; line-height: 40px;">
-				<a href="${rq.loginUri }">로그인</a>
-			</div>이 필요합니다
-	</c:if>
+			<div style="font-size:16px;">
+				댓글 작성을 위해
+				<div class="btns" style="width: 70px; height: 40px; display: inline-block; text-align: center; line-height: 40px;">
+					<a href="${rq.loginUri }">로그인</a>
+				</div>
+				이 필요합니다
+
+			</div>
+		</c:if>
+
 		<!-- 	댓글 리스트 -->
 		<div class="replyList-container">
 			<table class="table" border="1" cellspacing="0" cellpadding="5" style="width: 800px; border-collapse: collapse;">
