@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="WRITE"></c:set>
@@ -59,7 +58,7 @@
 			</div>
 			<div style="margin-bottom: 20px;">
 				제목
-				<input class="input input-bordered input-sm w-full" style="margin-left: 30px; width: 800px;" name="title"
+				<input class="input input-bordered input-sm w-full" style="margin-left: 29px; width: 800px;" name="title"
 					autocomplete="off" type="text" placeholder="제목을 입력하세요." maxlength="20" />
 			</div>
 			<div>
@@ -78,26 +77,5 @@
 		</form>
 	</div>
 </div>
-
-<style>
-.btn-write {
-	border: 1px solid #e1e1e1;
-	border-radius: 5px;
-	width: 70px;
-	height: 40px;
-	color: 444444;
-	background: #e1e1e1;
-}
-
-.btn-back {
-	border: 0px;
-	color: 999999;
-	width: 120px;
-	height: 40px;
-	line-height: 40px;
-	text-align: center;
-	font-size: 16px;
-}
-</style>
 
 <%@ include file="../common/foot.jspf"%>

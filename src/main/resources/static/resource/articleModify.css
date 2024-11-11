@@ -1,5 +1,26 @@
 @charset "UTF-8";
 
+.main-title {
+	width: 250px;
+	height: 40px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+}
+
+.main-title-content {
+	color: #000000;
+	text-align: center;
+	line-height: 18px;
+	font-weight: 700;
+	font-size:35px;
+	width: 250px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .btns {
 	border: 1px solid #e1e1e1;
 	border-radius: 5px;
