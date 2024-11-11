@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+.btns {
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	width: 70px;
+	height: 40px;
+	color: 444444;
+	background: #e1e1e1;
+	font-size: 16px;
+}
+
+.btn-modify {
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	width: 70px;
+	height: 40px;
+	color: 444444;
+	background: #e1e1e1;
+	font-size: 16px;
+}
+
+.btn-delete {
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	width: 70px;
+	height: 40px;
+	color: 444444;
+	background: #e1e1e1;
+	font-size: 16px;
+}
+
+.btn-back {
+	border: 0px;
+	color: 999999;
+	width: 70px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.detail-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0px;
+	align-items: flex-start;
+	justify-content: flex-start;
+	width: 1000px;
+	margin-top: 100px;
+	margin-left: calc(50% - 375px);
+}
+
+.reply-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0px;
+	align-items: flex-start;
+	justify-content: flex-start;
+	width: 1000px;
+	margin-top: 50px;
+	margin-left: calc(50% - 375px);
+}
+
+.replyList-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0px;
+	align-items: flex-start;
+	justify-content: flex-start;
+	width: 1000px;
+	margin-top: 50px;
+}
+
+hr {
+	border-color: 999999;
+}

@@ -99,7 +99,7 @@
 	line-height: 18px;
 	font-weight: 700;
 	position: absolute;
-	left: calc(50% - 400px);
+	left: calc(50% - 375px);
 	top: 311px;
 	width: 120px;
 	height: 20px;
@@ -128,7 +128,7 @@
 	justify-content: flex-start;
 	width: 1000px;
 	margin-top: 200px;
-	margin-left: calc(50% - 400px);
+	margin-left: calc(50% - 375px);
 }
 
 thead {

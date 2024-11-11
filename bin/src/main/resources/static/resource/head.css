@@ -7,11 +7,15 @@
 	gap: 0px;
 	align-items: flex-start;
 	justify-content: flex-start;
-	position: absolute;
-	right: 0px;
-	left: 0px;
-	top: 0px;
+	/* 헤더를 스크롤을 내려도 상단고정시키기 위한 CSS */
+	position: fixed;
+    top: 0;      /* 화면의 맨 위에 고정 */
+    left: 0;     /* 화면의 왼쪽에 고정 */
+    right: 0;    /* 화면의 오른쪽에 고정 */
+	z-index:999; /* 헤더바를 다른 요소들 위에 있게 만들기 위해 설정 */
+	/* 여기까지 */
 }
+
 /* 각 구단별 색깔로 메뉴바가 바뀐다. */
 @keyframes colorTransition {
     0%  { background-color: #C30037; } /* LG */
@@ -28,13 +32,12 @@
 }
 
 .topbar {
-    background-color: #C30037; /* 시작 컬러 */
-    height: 55px; /* 탑바 높이 */
-    animation: colorTransition 20s infinite; /* 총 20초 걸리며 무한반복 */
-    transition: background-color 2s ease-in-out; /* 색깔이 바뀌는 시간 2초 */
+	background-color: #C30037; /* 시작 컬러 */
+	height: 55px; /* 탑바 높이 */
+	animation: colorTransition 20s infinite; /* 총 20초 걸리며 무한반복 */
+	transition: background-color 2s ease-in-out; /* 색깔이 바뀌는 시간 2초 */
 }
 /* 여기까지 */
-
 .topbar {
 	align-self: stretch;
 	flex-shrink: 0;
@@ -60,6 +63,7 @@
 	width: 92px;
 	height: 22px;
 }
+
 .topbar-contents-info {
 	left: calc(50% - -570px);
 	top: 16px;
@@ -126,41 +130,35 @@
 	flex-shrink: 0;
 	height: 100px;
 	position: relative;
-	overflow: hidden;
-}
-
-.menubar:hover {
-	height: 300px;
-	border-width: 0px;
 }
 
 .menu-box {
 	width: 1000px;
 	height: 100px;
-	position: absolute;
+	position: relative;
 	left: calc(50% - 460px);
 	text-align: center;
 }
-
+/* 1차 메뉴 */
 .menu-box>ul {
 	display: inline-block;
 	height: 100%;
 }
-
+/* 1차 메뉴 아이템 */
 .menu-box>ul>li {
 	display: inline-block;
 	position: relative;
 	top: 32px;
-	height: 100%;
 }
-/* 1차 메뉴 아이템 */
+
+/* 1차 메뉴 아이템 컨텐츠 */
 .menu-box>ul>li>a {
 	padding: 5 40 5 40px;
 	display: block;
 	font-size: 20px;
-	height: 100%;
+	height: 68px;
 }
-/* 2차 메뉴 아이템*/
+/* 2차 메뉴 아이템 컨텐츠*/
 .menu-box>ul>li>ul>li>a {
 	padding: 10 0 10 0px;
 	display: block;
@@ -170,23 +168,34 @@
 
 /* 2차 메뉴 */
 .menu-box>ul>li>ul {
-	font-family: 'GongGothicMedium', sans-serif;
-	color: white;
-	position: absolute;
-	display: none;
-	background-color: #1A3773;
-	border-style: solid;
-	border-color: #000000;
-	border-width: 3px 0px 0px 0px;
-	top: 65px;
-	z-index: 1;
-	width: 100%;
-	position: absolute;
+    font-family: 'GongGothicMedium', sans-serif;
+    color: white;
+    position: absolute;
+    display: none;
+    background-color: #1A3773;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 2px 0px 0px 0px;
+    width: 155px;
+    top:98%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3; /* 지도 필터 z-index가 2라서 그거보다 높은 3으로 설정 */
 }
 
 /* 호버된 1차 메뉴 아이템의 자식 메뉴 */
 .menu-box>ul>li:hover>ul {
 	display: block;
+}
+
+/* mainLogo 위치맞춤 */
+._28 {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	left: calc(50% - 727px);
+	top: 10px;
+	object-fit: cover;
 }
 
 .mingcute-menu-fill {
@@ -207,14 +216,4 @@
 	bottom: 0.78%;
 	top: 20%;
 	overflow: visible;
-}
-
-/* mainLogo 위치맞춤 */
-._28 {
-	width: 80px;
-	height: 80px;
-	position: absolute;
-	left: calc(50% - 727px);
-	top: 10px;
-	object-fit: cover;
 }

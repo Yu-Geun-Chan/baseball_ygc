@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.12.10/full.css" />
 
 <%@ include file="../common/head.jspf"%>
-<hr />
 
 <script type="text/javascript">
 	function ArticleModify__submit(form) {

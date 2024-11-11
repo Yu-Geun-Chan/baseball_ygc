@@ -5,8 +5,6 @@
 
 <%@ include file="../common/head.jspf"%>
 
-<hr />
-
 <div class="main-title">
 	<div class="main-title-content">${board.name}</div>
 </div>

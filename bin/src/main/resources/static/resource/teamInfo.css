@@ -2,16 +2,10 @@
 
 /* 컨테이너 */
 .teamInfoSection {
-	display: flex;
-	flex-direction: column;
-	gap: 14px;
-	align-items: flex-start;
-	justify-content: flex-start;
-	width: 1425px;
-	height: 2362px;
-	position: absolute;
-	left: calc(50% - 724px);
-	top: calc(50% - 1182px);
+	width: 800px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
 }
 /* 각 구단의 큰 설명창(로고, 구단설명) CSS */
 .team {
@@ -22,7 +16,6 @@
 	justify-content: flex-start;
 	align-self: stretch;
 	flex-shrink: 0;
-	position: relative;
 }
 
 /* 각 구단의 설명창 CSS */
@@ -33,53 +26,29 @@
 	align-items: flex-start;
 	justify-content: flex-start;
 	flex-shrink: 0;
-	width: 700px;
-	position: relative;
+	width: 800px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 /* 구단 로고 이미지 설명창 CSS */
 .teamLogo {
-	flex-shrink: 0;
-	width: 220px;
 	height: 45px;
-	position: relative;
+	width: 800px;
 	overflow: hidden;
+	display:flex;
+	justify-content:center;
 }
 
-/* 지도 이미지 위치맞춤 CSS */
-.div10 {
-	flex-shrink: 0;
-	width: 700px;
-	height: 250px;
-	position: relative;
-	object-fit: cover;
-}
 /* 구단 로고 이미지 위치맞춤 CSS */
 .image {
 	flex-shrink: 0;
-	width: 100px;
-	height: 45px;
+	width: 70px;
+	height: 42px;
 	position: relative;
 	object-fit: cover;
-}
-
-/* 홈구장 이미지 위치맞춤 CSS */
-.teamLogoImage {
-	width: 280px;
-	height: 180px;
-	position: absolute;
-	left: 0px;
-	top: 10px;
-	object-fit: cover;
-}
-
-.image-2 {
-	width: 280px;
-	height: 180px;
-	position: absolute;
-	left: 0px;
-	top: 10px;
-	object-fit: cover;
+	flex-shrink: 0;
+	cursor: pointer;
 }
 
 /* 각 구단의 설명컨텐츠 창 CSS */
@@ -91,8 +60,21 @@
 	align-self: stretch;
 	flex-shrink: 0;
 	height: 200px;
+	width: calc(100% - 100px);
 	position: relative;
 	overflow: hidden;
+	display: none;
+	left: 50px;
+}
+
+/* 홈구장 이미지 위치맞춤 CSS */
+.stadiumImage {
+	width: 280px;
+	height: 180px;
+	position: absolute;
+	left: 0px;
+	top: 10px;
+	object-fit: cover;
 }
 
 /* 찾아가기 a태그 CSS */
@@ -121,48 +103,44 @@
 	overflow: hidden;
 }
 
-.doosan {
+.LG {
+	background: #C30037;
+}
+
+.DS {
 	background: #0e0e2a;
 }
 
-.kiwoom {
+.KW {
 	background: #85001f;
 }
 
-.kt {
+.KT {
 	background: #000000;
 }
 
-.ssg {
+.SSG {
 	background: #cd142c;
 }
 
-.hanhwa {
+.HH {
 	background: #ef8a2f;
 }
 
-.lotte {
+.LT {
 	background: #d31f40;
 }
 
-.kia {
+.KIA {
 	background: #e20d28;
 }
 
-.samsung {
+.SS {
 	background: #0064b2;
 }
 
-.nc {
+.NC {
 	background: #1f468f;
-}
-
-.div12 {
-	flex-shrink: 0;
-	width: 100px;
-	height: 45px;
-	position: relative;
-	object-fit: cover;
 }
 
 .address {
@@ -193,4 +171,177 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+}
+
+/* 지도 CSS */
+.mapContainer {
+	overflow: hidden;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.map_wrap, .map_wrap * {
+	padding: 0;
+	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+	font-size: 12px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/* 편의사항 필터 위치 */
+#category {
+	margin-right: auto;
+	margin-left: auto;
+	width: 250px;
+	display: flex;
+	align-items: center;
+	border-radius: 5px;
+	border: 1px solid #909090;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+	background: #fff;
+	overflow: hidden;
+	z-index: 2;
+	align-items: center;
+	width: 250px;
+	height:55px;
+}
+
+#category li {
+	float: left;
+	list-style: none;
+	width: 50px;
+	border-right: 1px solid #acacac;
+	padding: 6px 0;
+	text-align: center;
+	cursor: pointer;
+}
+
+#category li.on {
+	background: #eee;
+}
+
+#category li:hover {
+	background: #ffe6e6;
+	border-left: 1px solid #acacac;
+	margin-left: -1px;
+}
+
+#category li:last-child {
+	margin-right: 0;
+	border-right: 0;
+}
+
+#category li span {
+	display: block;
+	margin: 0 auto 3px;
+	width: 27px;
+	height: 28px;
+}
+
+#category li .category_bg {
+	background:
+		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png)
+		no-repeat;
+}
+
+#category li .bank {
+	background-position: -10px 0;
+}
+
+#category li .mart {
+	background-position: -10px -36px;
+}
+
+#category li .pharmacy {
+	background-position: -10px -72px;
+}
+
+#category li .oil {
+	background-position: -10px -108px;
+}
+
+#category li .cafe {
+	background-position: -10px -144px;
+}
+
+#category li .store {
+	background-position: -10px -180px;
+}
+
+#category li.on .category_bg {
+	background-position-x: -46px;
+}
+
+.placeinfo_wrap {
+	position: absolute;
+	bottom: 28px;
+	left: -150px;
+	width: 300px;
+}
+
+.placeinfo {
+	position: relative;
+	width: 100%;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	border-bottom: 2px solid #ddd;
+	padding-bottom: 10px;
+	background: #fff;
+}
+
+.placeinfo:nth-of-type(n) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+}
+
+.placeinfo_wrap .after {
+	content: '';
+	position: relative;
+	margin-left: -12px;
+	left: 50%;
+	width: 22px;
+	height: 12px;
+	background:
+		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+.placeinfo a, .placeinfo a:hover, .placeinfo a:active {
+	color: #fff;
+	text-decoration: none;
+}
+
+.placeinfo a, .placeinfo span {
+	display: block;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.placeinfo span {
+	margin: 5px 5px 0 5px;
+	cursor: default;
+	font-size: 13px;
+}
+
+.placeinfo .title {
+	font-weight: bold;
+	font-size: 14px;
+	border-radius: 6px 6px 0 0;
+	margin: -1px -1px 0 -1px;
+	padding: 10px;
+	color: #fff;
+	background: #d95050;
+	background: #d95050
+		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png)
+		no-repeat right 14px center;
+}
+
+.placeinfo .tel {
+	color: #0f7833;
+}
+
+.placeinfo .jibun {
+	color: #999;
+	font-size: 11px;
+	margin-top: 0;
 }

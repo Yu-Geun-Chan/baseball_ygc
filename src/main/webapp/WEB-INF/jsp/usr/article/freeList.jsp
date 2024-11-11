@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="${board.code} LIST"></c:set>
 <link rel="stylesheet" href="/resource/list.css" />
+<link rel="stylesheet" href="/resource/common.css" />
 
 <%@ include file="../common/head.jspf"%>
 

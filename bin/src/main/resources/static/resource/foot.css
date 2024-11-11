@@ -1,13 +1,11 @@
 @charset "UTF-8";
 
 .footer {
-	background: #f3f4f8;
-	height: 100px;
-	position: absolute;
-	right: 0px;
-	left: 0px;
-	bottom: 0px;
-	overflow: hidden;
+    background: #f3f4f8;
+    height: 100px;
+    position: relative; /* 상대 위치로 변경 */
+    left: 0;
+    right: 0;
 }
 
 .footer-container {
