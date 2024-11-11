@@ -2,10 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="DETAIL"></c:set>
 <%@ include file="../common/toastUiEditorLib.jspf"%>
-<%@ include file="../common/head.jspf"%>
 <!-- daisyUI -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.12.10/full.css" />
 <hr />
+<%@ include file="../common/head.jspf"%>
 
 <!-- <iframe src="http://localhost:8080/usr/article/doIncreaseHitCount?id=757" frameborder="0"></iframe> -->
 <!-- 변수 -->
@@ -64,7 +64,7 @@
 
 function doGoodReaction(articleId) {
 		if(isNaN(params.memberId) == true){
-			if(confirm('로그인 창으로 이동할래?')){
+			if(confirm('로그인을 해야합니다.')){
 // 				console.log(window.location.href);
 // 				console.log(encodeURIComponent(window.location.href));
 				var currentUri = encodeURIComponent(window.location.href);
@@ -125,7 +125,7 @@ function doGoodReaction(articleId) {
 
 function doBadReaction(articleId) {
 	if(isNaN(params.memberId) == true){
-		if(confirm('로그인 창으로 이동할래?')){
+		if(confirm('로그인을 해야합니다.')){
 //				console.log(window.location.href);
 //				console.log(encodeURIComponent(window.location.href));
 			var currentUri = encodeURIComponent(window.location.href);
@@ -233,6 +233,22 @@ function doModifyReply(replyId) {
 
 <div class="main-content">
 	<section class="mt-24 text-xl px-4">
+		<div style="margin-right: calc(50% + 150px);">
+			<button class="btn-back" type="button" onclick="history.back()" style="margin-right: 10px;">뒤로가기</button>
+			<c:if test="${article.userCanModify }">
+				<button class="btn-modify" style="margin-right: 10px;">
+					<a href="../article/modify?id=${article.id }">수정</a>
+				</button>
+			</c:if>
+			<c:if test="${article.userCanDelete }">
+				<button class="btn-delete" style="margin-right: 10px;">
+					<a class="btn-delete" href="../article/doDelete?id=${article.id }">삭제</a>
+				</button>
+			</c:if>
+			<button class="btns" type="button">
+				<a href="../article/freeList">목록</a>
+			</button>
+		</div>
 		<div class="mx-auto">
 			<table class="table" border="1" cellspacing="0" cellpadding="5" style="width: 100%; border-collapse: collapse;">
 				<tbody>
@@ -311,35 +327,9 @@ function doModifyReply(replyId) {
 
 				</tbody>
 			</table>
-			<div class="btns">
-				<button class="btn" type="button" onclick="history.back()">뒤로가기</button>
-				<c:if test="${article.userCanModify }">
-					<a class="btn" href="../article/modify?id=${article.id }">수정</a>
-				</c:if>
-				<c:if test="${article.userCanDelete }">
-					<a class="btn" href="../article/doDelete?id=${article.id }">삭제</a>
-				</c:if>
-
-			</div>
 		</div>
 	</section>
 </div>
-
-<script>
-	function ReplyWrite__submit(form) {
-		console.log(form.body.value);
-		
-		form.body.value = form.body.value.trim();
-		
-		if(form.body.value.length < 3){
-			alert('3글자 이상 입력해');
-			form.body.focus();
-			return;
-		}
-		
-		form.submit();
-	}
-</script>
 
 <!-- 댓글 -->
 <section class="mt-24 text-xl px-4">
@@ -354,14 +344,14 @@ function doModifyReply(replyId) {
 						<th>댓글 내용 입력</th>
 						<td style="text-align: center;">
 							<textarea class="input input-bordered input-sm w-full max-w-xs" name="body" autocomplete="off" type="text"
-								placeholder="내용을 입력해"></textarea>
+								placeholder="내용을 입력하세요."></textarea>
 						</td>
 
 					</tr>
 					<tr>
 						<th></th>
 						<td style="text-align: center;">
-							<button class="btn btn-outline">작성</button>
+							<button class="btn">작성</button>
 						</td>
 
 					</tr>
@@ -371,7 +361,10 @@ function doModifyReply(replyId) {
 	</c:if>
 
 	<c:if test="${!rq.isLogined() }">
-		댓글 작성을 위해 <a class="btn btn-outline btn-primary" href="${rq.loginUri }">로그인</a>이 필요합니다
+		댓글 작성을 위해 
+		<div class="btns" style="width: 70px; height: 40px; display: inline-block; text-align: center; line-height: 40px;">
+			<a href="${rq.loginUri }">로그인</a>
+		</div>이 필요합니다
 	</c:if>
 	<!-- 	댓글 리스트 -->
 	<div class="mx-auto">
@@ -411,7 +404,7 @@ function doModifyReply(replyId) {
 						</td>
 						<td style="text-align: center;">
 							<c:if test="${reply.userCanDelete }">
-								<a class="btn btn-outline btn-xs btn-error" onclick="if(confirm('정말 삭제?') == false) return false;"
+								<a class="btn btn-outline btn-xs btn-error" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
 									href="../reply/doDelete?id=${reply.id }">삭제</a>
 							</c:if>
 						</td>
@@ -420,10 +413,71 @@ function doModifyReply(replyId) {
 
 				<c:if test="${empty replies}">
 					<tr>
-						<td colspan="4" style="text-align: center;">댓글이 없습니다</td>
+						<td colspan="4" style="text-align: center;">댓글이 없습니다.</td>
 					</tr>
 				</c:if>
 			</tbody>
 		</table>
 	</div>
 </section>
+</div>
+
+<script>
+	function ReplyWrite__submit(form) {
+		console.log(form.body.value);
+		
+		form.body.value = form.body.value.trim();
+		
+		if(form.body.value.length < 3){
+			alert('3글자 이상 입력하세요.');
+			form.body.focus();
+			return;
+		}
+		
+		form.submit();
+	}
+</script>
+
+<style>
+.btns {
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	width: 70px;
+	height: 40px;
+	color: 444444;
+	background: #e1e1e1;
+	font-size: 16px;
+}
+
+.btn-modify {
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	width: 70px;
+	height: 40px;
+	color: 444444;
+	background: #e1e1e1;
+	font-size: 16px;
+}
+
+.btn-delete {
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	width: 70px;
+	height: 40px;
+	color: 444444;
+	background: #e1e1e1;
+	font-size: 16px;
+}
+
+.btn-back {
+	border: 0px;
+	color: 999999;
+	width: 70px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 16px;
+}
+</style>
+
+<%@ include file="../common/foot.jspf"%>

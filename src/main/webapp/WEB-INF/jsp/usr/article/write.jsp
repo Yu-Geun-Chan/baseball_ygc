@@ -13,7 +13,7 @@
 		form.title.value = form.title.value.trim();
 
 		if (form.title.value.length == 0) {
-			alert('제목 써');
+			alert('제목을 입력하세요.');
 			return;
 		}
 
@@ -22,7 +22,7 @@
 		const markdown = editor.getMarkdown().trim();
 
 		if (markdown.length == 0) {
-			alert('내용 써');
+			alert('내용을 입력하세요.');
 			return;
 		}
 		
@@ -47,10 +47,15 @@
 
 				<table class="table" border="1" cellspacing="0" cellpadding="5" style="width: 100%; border-collapse: collapse;">
 					<tbody>
-
+						<tr>
+							<th>닉네임</th>
+							<td>
+								<div style="margin-left:-10px;"class="input input-sm w-full max-w-xs">${rq.loginedMember.nickname }</div>
+							</td>
+						</tr>
 						<tr>
 							<th>게시판</th>
-							<td style="text-align: center;">
+							<td>
 								<select name="boardId">
 									<option value="" selected disabled>게시판을 선택해주세요.</option>
 									<option value="1">공지사항</option>
@@ -63,16 +68,15 @@
 
 						<tr>
 							<th>제목</th>
-							<td style="text-align: center;">
-								<input class="input input-bordered input-primary input-sm w-full max-w-xs" name="title" autocomplete="off"
-									type="text" placeholder="제목을 입력해" />
+							<td>
+								<input class="input input-bordered input-sm w-full max-w-xs" name="title" autocomplete="off"
+									type="text" placeholder="제목을 입력하세요."  maxlength="20"/>
 							</td>
-
 						</tr>
 						<tr>
 							<th>첨부 이미지</th>
 							<td>
-								<input id="fileInput" placeholder="이미지를 선택해주세요" type="file" />
+								<input id="fileInput" placeholder="이미지를 선택해주세요." type="file" />
 							</td>
 						</tr>
 						<tr>

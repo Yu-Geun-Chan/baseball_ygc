@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="MODIFY"></c:set>
-<%@ include file="../common/head.jspf"%>
+
 <%@ include file="../common/toastUiEditorLib.jspf"%>
+
+<!-- daisyUI -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.12.10/full.css" />
+
+<%@ include file="../common/head.jspf"%>
 <hr />
 
 <script type="text/javascript">
@@ -27,67 +32,98 @@
 	}
 </script>
 
-<section class="mt-24 text-xl px-4">
-	<div class="mx-auto">
-		<form onsubmit="ArticleModify__submit(this); return false;" action=" ../article/doModify" method="POST">
-			<input type="hidden" name="id" value="${article.id}" /> <input type="hidden" name="body">
-			<table class="table" border="1" cellspacing="0" cellpadding="5" style="width: 100%; border-collapse: collapse;">
-				<tbody>
-					<tr>
-						<th style="text-align: center;">ID</th>
-						<td style="text-align: center;">${article.id}</td>
-					</tr>
-					<tr>
-						<th style="text-align: center;">Registration Date</th>
-						<td style="text-align: center;">${article.regDate.substring(0,10)}</td>
-					</tr>
-					<tr>
-						<th style="text-align: center;">Modified date</th>
-						<td style="text-align: center;">${article.updateDate}</td>
-					</tr>
-					<tr>
-						<th style="text-align: center;">Writer</th>
-						<td style="text-align: center;">${article.extra__writer}</td>
-					</tr>
-					<tr>
-						<th style="text-align: center;">Title</th>
-						<td style="text-align: center;">
-							<input name="title" value="${article.title}" type="text" autocomplete="off" placeholder="새 제목을 입력해"
-								class="input input-bordered input-primary w-full max-w-xs input-sm " />
-						</td>
-					</tr>
-					<tr>
-						<th style="text-align: center;">Body</th>
-						<td style="text-align: center;">
-							<%-- 							<input name="body" value="${article.body}" type="text" autocomplete="off" placeholder="새 내용을 입력해" --%>
-							<!-- 								class="input input-bordered input-primary w-full max-w-xs input-sm " /> -->
-							<div class="toast-ui-editor">
-								<script type="text/x-template">${article.body }
-      </script>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<th></th>
-						<td style="text-align: center;">
-							<button class="btn btn-primary">수정</button>
-						</td>
-					</tr>
+<div class="main-title">
+	<div class="main-title-content">글쓰기</div>
+</div>
 
-				</tbody>
-			</table>
-		</form>
-		<div class="btns">
-			<button class="btn" type="button" onclick="history.back()">뒤로가기</button>
-			<c:if test="${article.userCanModify }">
-				<a class="btn" href="../article/modify?id=${article.id }">수정</a>
-			</c:if>
-			<c:if test="${article.userCanDelete }">
-				<a class="btn" href="../article/doDelete?id=${article.id }">삭제</a>
-			</c:if>
+<div class="main-content">
+	<section class="mt-24 text-xl px-4">
+		<div class="mx-auto">
+			<form onsubmit="ArticleModify__submit(this); return false;" action="../article/doModify" method="POST"
+				enctype="multipart/form-data">
+				<input type="hidden" name="id" value="${article.id}" />
+				<input type="hidden" name="body">
 
+				<table class="table" border="1" cellspacing="0" cellpadding="5" style="width: 100%; border-collapse: collapse;">
+					<tbody>
+						<tr>
+							<th>번호</th>
+							<td>
+								<div style="margin-left: -10px;" class="input input-sm w-full max-w-xs">${article.id }</div>
+							</td>
+						</tr>
+						<tr>
+							<th>작성날짜</th>
+							<td>
+								<div style="margin-left: -10px;" class="input input-sm w-full max-w-xs">${article.regDate }</div>
+							</td>
+
+						</tr>
+						<tr>
+							<th>수정날짜</th>
+							<td>
+								<div style="margin-left: -10px;" class="input input-sm w-full max-w-xs">${article.updateDate }</div>
+							</td>
+
+						</tr>
+
+						<tr>
+							<th>제목</th>
+							<td>
+								<input class="input input-bordered input-sm w-full max-w-xs" value="${article.title}" name="title"
+									autocomplete="off" type="text" placeholder="제목을 입력하세요." maxlength="20" />
+							</td>
+						</tr>
+						<tr>
+							<th>첨부 이미지</th>
+							<td>
+								<input id="fileInput" placeholder="이미지를 선택해주세요." type="file" value="${genfile.originFileName }"/>
+							</td>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<td style="text-align: center;">
+								<div class="toast-ui-editor">
+									<script type="text/x-template">${article.body }</script>
+								</div>
+							</td>
+
+						</tr>
+						<tr>
+							<th></th>
+							<td style="text-align: center; margin-left: calc(50% - 250px);">
+								<button class="btn-modify">수정</button>
+								<button class="btn-back" type="button" onclick="history.back()">뒤로가기</button>
+
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
 		</div>
-	</div>
-</section>
+	</section>
+</div>
+
+<style>
+.btn-modify {
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	width: 70px;
+	height: 40px;
+	color: 444444;
+	background: #e1e1e1;
+}
+
+.btn-back {
+	border: 0px;
+	color: 999999;
+	width: 120px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 16px;
+	margin-left: calc(50%);
+}
+</style>
 
 <%@ include file="../common/foot.jspf"%>
