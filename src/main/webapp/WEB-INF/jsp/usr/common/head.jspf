@@ -45,57 +45,21 @@
 				<div class="menubar">
 					<div class="menu-box">
 						<ul>
-							<li>
-								<a href="#">경기정보</a>
+							<li><a href="#">경기정보</a>
 								<ul>
-									<li>
-										<a href="#">게임 센터</a>
-									</li>
-									<li>
-										<a href="/usr/game/schedule">일정 · 결과</a>
-									</li>
-									<li>
-										<a href="/usr/home/weather">야구장 날씨</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">기록 · 순위</a>
+									<li><a href="/usr/game/schedule">일정 · 결과</a></li>
+									<li><a href="/usr/home/weather">야구장 날씨</a></li>
+							</ul></li>
+							<li><a href=/usr/game/rank>구단 순위</a></li>
+							<li><a href="/usr/player/players">선수</a></li>
+							<li><a href="/usr/home/teamInfo">구장정보</a></li>
+							<li><a href="/usr/article/freeList">게시판</a>
 								<ul>
-									<li>
-										<a href="#">타자 기록</a>
-									</li>
-									<li>
-										<a href="#">투수 기록</a>
-									</li>
-									<li>
-										<a href="/usr/game/rank">구단 순위</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="/usr/player/players">선수</a>
-							</li>
-							<li>
-								<a href="/usr/home/teamInfo">구장정보</a>
-							</li>
-							<li>
-								<a href="/usr/article/freeList">게시판</a>
-								<ul>
-									<li>
-										<a href="/usr/article/noticeList">공지사항</a>
-									</li>
-									<li>
-										<a href="/usr/home/news">금일 KBO 기사</a>
-									</li>
-									<li>
-										<a href="/usr/article/freeList">자유 게시판</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">문의사항</a>
-							</li>
+									<li><a href="/usr/article/noticeList">공지사항</a></li>
+									<li><a href="/usr/home/news">금일 KBO 기사</a></li>
+									<li><a href="/usr/article/freeList">자유 게시판</a></li>
+							</ul></li>
+							<li><a href="#">문의사항</a></li>
 						</ul>
 					</div>
 					<a href="/usr/home/main">
