@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.baseball.service.PlayerService;
 import com.baseball.vo.Player;
+import com.baseball.vo.BatterSeasonStats;
 
 @Controller
 public class UsrPlayerDetailController {
@@ -20,8 +21,10 @@ public class UsrPlayerDetailController {
     public String showPlayerDetail(@PathVariable("id") int id, Model model) {
     	
     	Player findPlayer = playerService.getPlayerById(id);
+    	BatterSeasonStats findPlayerStats = playerService.getPlayerStatsByplayerId(id);
     	
     	model.addAttribute("player", findPlayer);
+    	model.addAttribute("playerStat", findPlayerStats);
     	
         return "/usr/player/detail"; // 선수 상세 정보 페이지 반환
     }

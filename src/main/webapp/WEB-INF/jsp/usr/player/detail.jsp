@@ -11,24 +11,70 @@
 </div>
 
 <div class="main-content">
-    <section class="card-container">
-        <!-- 선수 카드 -->
-        <div class="card-container-left">
-            <div class="card pika animated" id="player-card" style="background-image: url('${player.profileCardImage}');">
-                <div class="front"></div>
-            </div>
-        </div>
+	<section class="card-container">
+		<!-- 선수 카드 -->
+		<div class="card-container-left">
+			<div class="card pika animated" id="player-card" style="background-image: url('${player.profileCardImage}');">
+				<div class="front"></div>
+			</div>
+		</div>
 
-        <!-- 선수 기록 -->
-        <div class="card-container-right">
-            <div class="player-stats">
-                <h3>${player.name}</h3>
-                <p><strong>팀: </strong><span></span>${player.teamName}</p>
-                <p><strong>포지션: </strong>${player.position}</p>
-                <!-- 추가적인 선수 기록들 -->
-            </div>
-        </div>
-    </section>
+		<!-- 선수 기록 -->
+		<div class="card-container-right">
+			<div class="player-stats">
+        		<h2>${player.name}</h2>
+        		<p><strong>생년월일 : </strong>${player.birthDate}</p>
+        		<p><strong>팀 : </strong>${player.teamName}</p>
+        		<p><strong>등번호 : </strong>${player.number}</p>
+        		<p><strong>포지션 : </strong>${player.position}</p>
+        		<p><strong>체격 : </strong>${player.height}cm / ${player.weight}kg</p>
+        		<p><strong>출신교 : </strong>${player.career}</p>
+
+				<!-- 추가적인 선수 기록들 테이블 형식 -->
+				<h3 m>시즌기록</h3>
+				<table class="player-additional-stats">
+				<colgroup>
+				<col width="75">
+				<col width="75">
+				<col width="75">
+				<col width="75">
+				<col width="75">
+				<col width="75">
+				<col width="75">
+				<col width="75">
+				<col width="100">
+				</colgroup>
+					<thead style="font-size:">
+						<tr>
+							<th>경기</th>
+							<th>타수</th>
+							<th>타율</th>
+							<th>안타</th>
+							<th>홈런</th>
+							<th>타점</th>
+							<th>볼넷</th>
+							<th>도루</th>
+							<th>OPS</th>
+						</tr>
+					</thead>
+					<tbody style="text-align:center;">
+						<tr>
+							<td>${playerStat.gamesPlayed}</td>
+							<td>${playerStat.atBat}</td>
+							<td>${String.format("%.3f", playerStat.battingAverage)}</td>
+							<td>${playerStat.hit}</td>
+							<td>${playerStat.homeRun}</td>
+							<td>${playerStat.rbi}</td>
+							<td>${playerStat.walk}</td>
+							<td>${playerStat.stolenBase}</td>
+							<td>${String.format("%.3f", playerStat.ops)}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</section>
 </div>
 
 <script>
@@ -138,73 +184,72 @@ $cards
 }
 
 .card-container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    margin-top: 20px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	margin-top: 20px;
 }
 
 .card-container-left {
-    flex: 1;
-    margin-right: -20%; /* 카드와 선수 기록 사이의 간격 */
+	flex: 1;
+	margin-right: -20%; /* 카드와 선수 기록 사이의 간격 */
 }
 
 .card-container-right {
-    flex: 1;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 130px;
+	flex: 1;
+	padding: 20px;
+	background-color: #f4f4f4;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin-top: 100px;
 }
 
 :root {
-  --color1: rgb(0, 231, 255);
-  --color2: rgb(255, 0, 231);
-  --back: url(https://cdn2.bulbagarden.net/upload/1/17/Cardback.jpg);
-  --pika1: #54a29e;
-  --pika2: #a79d66;
-  --pikafront: url('${player.profileCardImage}');
+	--color1: rgb(0, 231, 255);
+	--color2: rgb(255, 0, 231);
+	--back: url(https://cdn2.bulbagarden.net/upload/1/17/Cardback.jpg);
+	--pika1: #54a29e;
+	--pika2: #a79d66;
+	--pikafront: url('${player.profileCardImage}');
 }
 
 .card {
-  width: 30vw;
-  height: 30vw;
-  position: relative;
-  overflow: hidden;
-  margin-left: 5%;
-  margin-top: 130px;
-  z-index: 10;
-  touch-action: none;
-  border-radius: 5% / 3.5%;
-  box-shadow: 
-    -5px -5px 5px -5px var(--color1), 
-    5px 5px 5px -5px var(--color2), 
-    0 55px 35px -20px rgba(0, 0, 0, 0.5);
-  transition: transform 0.5s ease, box-shadow 0.2s ease;
-  background-color: #040712;
-  background-image: var(--pikafront);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  transform-style: preserve-3d; /* 3D 회전 효과 */
+	width: 30vw;
+	height: 30vw;
+	position: relative;
+	overflow: hidden;
+	margin-left: 5%;
+	margin-top: 130px;
+	z-index: 10;
+	touch-action: none;
+	border-radius: 5%/3.5%;
+	box-shadow: -5px -5px 5px -5px var(--color1), 5px 5px 5px -5px
+		var(--color2), 0 55px 35px -20px rgba(0, 0, 0, 0.5);
+	transition: transform 0.5s ease, box-shadow 0.2s ease;
+	background-color: #040712;
+	background-image: var(--pikafront);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	transform-style: preserve-3d; /* 3D 회전 효과 */
 }
 
 /* 홀로그램 효과를 위한 가상 요소 추가 */
 .card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, rgba(255, 0, 231, 0.4), rgba(0, 231, 255, 0.4), rgba(255, 255, 0, 0.4), rgba(0, 255, 0, 0.4));
-  background-size: 200% 200%;
-  animation: hologramAnimation 2s infinite linear;
-  z-index: 5;
-  pointer-events: none; /* 클릭 방지 */
-  opacity: 0.7;
-  border-radius: 5% / 3.5%;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(45deg, rgba(255, 0, 231, 0.4),
+		rgba(0, 231, 255, 0.4), rgba(255, 255, 0, 0.4), rgba(0, 255, 0, 0.4));
+	background-size: 200% 200%;
+	animation: hologramAnimation 2s infinite linear;
+	z-index: 5;
+	pointer-events: none; /* 클릭 방지 */
+	opacity: 0.7;
+	border-radius: 5%/3.5%;
 }
 
 @keyframes hologramAnimation {
@@ -218,81 +263,78 @@ $cards
     background-position: 200% 0%;
   }
 }
-
 .card .front, .card .back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden; /* 카드 뒷면 숨기기 */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden; /* 카드 뒷면 숨기기 */
 }
 
 .card .front {
-  background-image: url('${player.profileCardImage}');
-  background-size: cover;
-  background-position: center;
+	background-image: url('${player.profileCardImage}');
+	background-size: cover;
+	background-position: center;
 }
 
 .card .back {
-  background-color: #333;
-  color: white;
-  transform: rotateY(180deg); /* 카드 뒷면을 180도 회전 */
-  padding: 20px;
-  box-sizing: border-box;
+	background-color: #333;
+	color: white;
+	transform: rotateY(180deg); /* 카드 뒷면을 180도 회전 */
+	padding: 20px;
+	box-sizing: border-box;
 }
 
 .card:hover {
-  transform: rotateY(180deg); /* 카드 hover 시 180도 회전 */
+	transform: rotateY(180deg); /* 카드 hover 시 180도 회전 */
 }
 
 .card:hover {
-  box-shadow: 
-    -20px -20px 30px -25px var(--color1), 
-    20px 20px 30px -25px var(--color2), 
-    0 0 13px 4px rgba(255,255,255,0.3),
-    0 55px 35px -20px rgba(0, 0, 0, 0.5);
+	box-shadow: -20px -20px 30px -25px var(--color1), 20px 20px 30px -25px
+		var(--color2), 0 0 13px 4px rgba(255, 255, 255, 0.3), 0 55px 35px
+		-20px rgba(0, 0, 0, 0.5);
 }
 
 /* 팀별 카드 색상 */
 .card.LG {
-  background-color: #C30037;
+	background-color: #C30037;
 }
 
 .card.두산 {
-  background-color: #0E0E2A;
+	background-color: #0E0E2A;
 }
 
 .card.키움 {
-  background-color: #85001F;
+	background-color: #85001F;
 }
 
 .card.NC {
-  background-color: #1F468F;
+	background-color: #1F468F;
 }
 
 .card.SSG {
-  background-color: #CD142C;
+	background-color: #CD142C;
 }
 
 .card.한화 {
-  background-color: #EF8A2F;
+	background-color: #EF8A2F;
 }
 
 .card.롯데 {
-  background-color: #D31F40;
+	background-color: #D31F40;
 }
 
 .card.삼성 {
-  background-color: #0064B2;
+	background-color: #0064B2;
 }
 
 .card.KIA {
-  background-color: #E20D28;
+	background-color: #E20D28;
 }
 
 .card.KT {
-  background-color: #000000;
+	background-color: #000000;
 }
 </style>
 

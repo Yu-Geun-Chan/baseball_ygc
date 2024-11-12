@@ -31,59 +31,14 @@ CREATE TABLE player (
 	height	INTEGER(5)	NULL DEFAULT NULL,
 	weight	INTEGER(5)	NULL DEFAULT NULL,
 	profileImage	VARCHAR(255)	NULL	COMMENT 'NULL 허용 사진 없는 경우도 있기 때문에',
+	profileCardImage VARCHAR(255) NULL COMMENT 'NULL 허용 사진 없는 경우도 있기 때문에',
 	career	VARCHAR(255)	NOT NULL
 );
-ALTER TABLE player 
-ADD COLUMN profileCardImage VARCHAR(255) NULL COMMENT 'NULL 허용 사진 없는 경우도 있기 때문에' 
-AFTER profileImage;
 
 CREATE TABLE memberProfileImage (
 	id INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY, 
 	memberId INT(10) UNSIGNED	NOT NULL,
 	imagePath VARCHAR(255)	NOT NULL,
-	regDate	DATETIME	NULL,
-	updateDate	DATETIME	NULL
-);
-
-CREATE TABLE playerProfileImage (
-	id INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY,
-	playerId INT(10) UNSIGNED NOT NULL,
-	imagePath VARCHAR(255) NOT NULL,
-	regDate	DATETIME NULL,
-	updateDate DATETIME	NULL
-);
-
-CREATE TABLE team (
-	id	INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY,
-	`name`	CHAR(20)	NOT NULL
-);
-
-CREATE TABLE stadiumImage (
-	id	INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY,
-	stadiumId	INT(10) UNSIGNED	NOT NULL,
-	imagePath	VARCHAR(255)	NOT NULL,
-	regDate	DATETIME	NULL,
-	updateDate	DATETIME	NULL
-);
-
-CREATE TABLE stadium (
-	id	INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY,
-	teamId	INT(10) UNSIGNED	NOT NULL,
-	`name`	CHAR(20)	NOT NULL,
-	address CHAR(100)	NOT NULL,
-	image	VARCHAR(255)	NULL
-);
-
-CREATE TABLE logoType (
-	id	INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY,
-	teamId	INT(10) UNSIGNED NOT NULL,
-	image	VARCHAR(255)	NULL
-);
-
-CREATE TABLE logoTypeImage (
-	id	INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY,
-	logoTypeId	INT(10) UNSIGNED	NOT NULL,
-	imagePath	VARCHAR(255)	NOT NULL,
 	regDate	DATETIME	NULL,
 	updateDate	DATETIME	NULL
 );
@@ -97,17 +52,6 @@ CREATE TABLE game (
 	awayTeamScore	INT	NOT NULL	DEFAULT 0,
 	homeTeamId INT(10) UNSIGNED	NOT NULL,
 	awayTeamId INT(10) UNSIGNED	NOT NULL
-);
-
-CREATE TABLE atBat (
-	id	INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY,
-	gameId	INT(10) UNSIGNED	NOT NULL,
-	inning	INT	NOT NULL,
-	result	DATETIME	NOT NULL	COMMENT '삼진, 땅볼, 플라이아웃, 안타, 홈런, 실책, 다른사유 등',
-	rbi	INT	NOT NULL	DEFAULT 0,
-	run	INT	NOT NULL	DEFAULT 0,
-	batterId INT(10) UNSIGNED	NOT NULL,
-	pitcherId INT(10) UNSIGNED	NOT NULL
 );
 
 CREATE TABLE article (
@@ -156,8 +100,6 @@ CREATE TABLE board (
 	delDate	DATETIME COMMENT '삭제 날짜'
 );
 
-ALTER TABLE board MODIFY COLUMN delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '삭제 여부 (0=삭제 전, 1=삭제 후)';
-
 CREATE TABLE BatterSeasonStats (
 	id	INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	playerId	INT(10) UNSIGNED NOT NULL,
@@ -178,13 +120,35 @@ CREATE TABLE BatterSeasonStats (
 	strikeout	INT(10) UNSIGNED,
 	hitByPitch	INT(10) UNSIGNED,
 	sacrificeFly INT(10) UNSIGNED,
-	battingAverage	FLOAT UNSIGNED,
+	battingAverage	DECIMAL(5, 3) UNSIGNED,
 	onBasePercentage	FLOAT UNSIGNED,
 	sluggingPercentage	FLOAT UNSIGNED,
-	ops	FLOAT UNSIGNED	NOT NULL,
+	ops	DECIMAL(5, 3) UNSIGNED NOT NULL,
 	doublePlay	INT(10) UNSIGNED,
 	`error`	INT(10) UNSIGNED
 );
+
+## 선수기록 테스트 데이터(노시환)
+INSERT INTO BatterSeasonStats (playerId, teamName, gamesPlayed, atBat, battingAverage, hit, homeRun, rbi, walk, stolenBase, ops)
+SELECT 
+    p.id,             -- Player 테이블에서 id 가져오기
+    p.teamName,             -- Player 테이블에서 teamName 가져오기
+    136,                    -- 고정값 설정
+    526,                    -- 고정값 설정
+    0.272,                  -- 고정값 설정
+    143,                    -- 고정값 설정
+    24,                     -- 고정값 설정
+    89,                     -- 고정값 설정
+    60,                     -- 고정값 설정
+    6,                      -- 고정값 설정
+    0.810                   -- 고정값 설정
+FROM 
+    player p
+WHERE 
+    p.name = '노시환';
+### 여기까지 선수기록 테스트 데이터
+SELECT * FROM BatterSeasonStats
+WHERE playerId = 662;
 
 CREATE TABLE PitcherSeasonStats (
 	id	INT UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY, 
@@ -213,21 +177,6 @@ CREATE TABLE PitcherSeasonStats (
 	balk	INT(10) UNSIGNED,
 	wildPitch	INT(10) UNSIGNED,
 	battersFaced INT(10) UNSIGNED
-);
-
-CREATE TABLE TeamSeasonStats (
-	id	INT(10) UNSIGNED AUTO_INCREMENT	NOT NULL PRIMARY KEY,
-	teamId	INT(10) UNSIGNED	NOT NULL,
-	teamName	VARCHAR(50)	NOT NULL,
-	seasonYear	INT(10) UNSIGNED,
-	win	INT(10) UNSIGNED,
-	lose	INT(10) UNSIGNED,
-	draw	INT(10) UNSIGNED,
-	runsScored	INT(10) UNSIGNED,
-	runsAllowed	INT(10) UNSIGNED,
-	homeRun	INT(10) UNSIGNED,
-	stolenBase	INT(10) UNSIGNED,
-	`error`	INT(10) UNSIGNED
 );
 
 # 파일 테이블 추가

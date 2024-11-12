@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import com.baseball.vo.BatterSeasonStats;
 import com.baseball.vo.Player;
 
 @Mapper
@@ -79,5 +80,10 @@ public interface PlayerRepository {
     @Insert("INSERT INTO player (number, name, teamName, height, weight, position, birthDate, career) " +
             "VALUES (#{number}, #{name}, #{teamName}, #{height}, #{weight}, #{position}, #{birthDate}, #{career})")
     void save(Player player);
+
+    @Select("""
+    		SELECT * FROM BatterSeasonStats WHERE playerId = #{playerId}
+    		""")
+	BatterSeasonStats getPlayerStatsByplayerId(int playerId);
 
 }

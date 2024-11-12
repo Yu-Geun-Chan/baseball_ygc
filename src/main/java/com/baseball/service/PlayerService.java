@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.baseball.repository.PlayerRepository;
+import com.baseball.vo.BatterSeasonStats;
 import com.baseball.vo.Player;
 
 @Service
@@ -47,5 +48,10 @@ public class PlayerService {
             playerRepository.save(player);
         }
     }
+
+	public BatterSeasonStats getPlayerStatsByplayerId(int playerId) {
+		// TODO Auto-generated method stub
+		return playerRepository.getPlayerStatsByplayerId(playerId);
+	}
 
 }
