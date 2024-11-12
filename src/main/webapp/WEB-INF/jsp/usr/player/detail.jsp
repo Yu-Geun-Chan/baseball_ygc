@@ -73,7 +73,6 @@
 				</table>
 			</div>
 		</div>
-
 	</section>
 </div>
 
@@ -192,16 +191,37 @@ $cards
 
 .card-container-left {
 	flex: 1;
-	margin-right: -20%; /* 카드와 선수 기록 사이의 간격 */
+	margin-right: -30%; /* 카드와 선수 기록 사이의 간격 */
 }
 
 .card-container-right {
-	flex: 1;
-	padding: 20px;
-	background-color: #f4f4f4;
-	border-radius: 8px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	margin-top: 100px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 130px;
+    width: 60vw;
+    height: 30vw;
+    display: flex;
+    flex-direction: column; /* 세로 방향으로 정렬 */
+    align-items: center; /* 수평 가운데 정렬 */
+    justify-content: center; /* 수직 가운데 정렬 */
+    overflow: hidden; /* 콘텐츠가 영역을 벗어나지 않도록 설정 */
+}
+
+.player-stats {
+    width: 100%;  /* 전체 너비를 차지하도록 설정 */
+    max-height: 100%; /* 내용이 너무 많으면 스크롤이 생기도록 설정 */
+    overflow-y: auto; /* 세로 스크롤을 추가 */
+    padding-right: 10px; /* 오른쪽에 약간의 패딩을 추가하여 스크롤바가 겹치지 않도록 설정 */
+    margin-bottom: 20px; /* 내용과 테이블 간의 간격 */
+}
+
+table {
+    width: 100%; /* 전체 너비를 차지하도록 설정 */
+    table-layout: fixed; /* 테이블 셀 너비를 균등하게 분배 */
+    border-collapse: collapse; /* 테이블의 경계선이 겹치지 않도록 설정 */
+    text-align: center; /* 테이블 내용 가운데 정렬 */
 }
 
 :root {
