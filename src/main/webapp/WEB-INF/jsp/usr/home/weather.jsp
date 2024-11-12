@@ -8,7 +8,7 @@
 <%@ include file="../common/head.jspf"%>
 
 <div class="main-content">
-	<div id="weather-container"></div>
+    <div id="weather-container"></div>
 </div>
 
 <script>
@@ -26,33 +26,63 @@ const stadiums = [
 
 const apiKey = 'YOUR_API_KEY'; 
 
+// 경기장별 구단 로고
+const teamLogos = {
+    '잠실': ['/images/teamLogos/lg.png', '/images/teamLogos/doosan.png'],
+    '수원': ['/images/teamLogos/kt.png'],
+    '고척': ['/images/teamLogos/kiwoom.png'],
+    '인천': ['/images/teamLogos/ssg.png'],
+    '대전': ['/images/teamLogos/hanhwa.png'],
+    '사직': ['/images/teamLogos/lotte.png'],
+    '창원': ['/images/teamLogos/nc.png'],
+    '대구': ['/images/teamLogos/samsung.png'],
+    '광주': ['/images/teamLogos/kia.png']
+};
+
+// 날씨 상태에 대한 한글 변환 매핑
+const weatherDescriptions = {
+    'Clear': '맑음',
+    'Clouds': '흐림',
+    'Rain': '비',
+    'Drizzle': '이슬비',
+    'Thunderstorm': '뇌우',
+    'Snow': '눈',
+    'Mist': '옅은 안개',
+    'Smoke': '연기',
+    'Haze': '실안개',
+    'Dust': '먼지',
+    'Fog': '짙은 안개',
+    'Sand': '모래 바람',
+    'Ash': '화산재',
+    'Squall': '돌풍',
+    'Tornado': '토네이도'
+};
+
 $(document).ready(function() {
-    let weatherResults = new Array(stadiums.length); // 날씨 정보를 저장할 배열
+    let weatherResults = new Array(stadiums.length);
 
     $.each(stadiums, function(index, stadium) {
         $.ajax({
             url: `https://api.openweathermap.org/data/2.5/weather`,
             type: 'GET',
             data: {
-                lat: stadium.lat, // 위도 값
-                lon: stadium.lon, // 경도 값
-                appid: apiKey,    // API 키
-                units: 'metric',  // 섭씨 온도
-                lang: 'kr'        // 한국어 응답
+                lat: stadium.lat,
+                lon: stadium.lon,
+                appid: apiKey,
+                units: 'metric',
+                lang: 'kr'
             },
             success: function(data) {
                 const weatherInfo = {
                     name: stadium.name,
                     temp: data.main.temp,
                     description: data.weather.length > 0 ? data.weather[0].description : '정보 없음',
+                    main: data.weather.length > 0 ? data.weather[0].main : '정보 없음',
                     humidity: data.main.humidity,
                     windSpeed: data.wind.speed
                 };
-                // 인덱스를 사용해 결과를 저장
-                // -> 날씨가 나오는 지역의 순서를 고정시키기 위해
-                weatherResults[index] = weatherInfo; 
+                weatherResults[index] = weatherInfo;
 
-                // 모든 요청이 끝났을 때 결과를 출력
                 if (weatherResults.every(result => result !== undefined)) {
                     displayWeather(weatherResults);
                 }
@@ -64,23 +94,32 @@ $(document).ready(function() {
     });
 
     function displayWeather(results) {
-        // 날씨 정보를 화면에 출력
-        $('#weather-container').empty(); // 기존 내용 비우기
+        $('#weather-container').empty();
         results.forEach(result => {
+            let logos = '';
+            if (teamLogos[result.name]) {
+                teamLogos[result.name].forEach(logoSrc => {
+                    logos += `<img class="image" src="` + logoSrc + `" alt="` + result.name + ` 로고" width="70"> `;
+                });
+            }
+
+            // 날씨 상태를 한글로 변환
+            const weatherStatus = weatherDescriptions[result.main] || '정보 없음';
+
             const weatherHtml = `
                 <div class="stadium-weather">
+                    <div class="team-logos">` + logos + `</div>
                     <h3>` + result.name + `</h3>
                     <p>온도: ` + result.temp + ` °C</p>
-                    <p>날씨: ` + result.description + `</p>
+                    <p>날씨: ` + weatherStatus + `</p> <!-- 한글 날씨 상태 표시 -->
                     <p>습도: ` + result.humidity + `%</p>
                     <p>풍속: ` + result.windSpeed + ` m/s</p>
                 </div>
             `;
-            $('#weather-container').append(weatherHtml); // 결과를 DOM에 추가
+            $('#weather-container').append(weatherHtml);
         });
     }
 });
-
 </script>
 
 <%@ include file="../common/foot.jspf"%>

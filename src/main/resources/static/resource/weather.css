@@ -8,6 +8,10 @@
 	text-align:center;
 }
 
+.weather-icon {
+    font-size: 48px; /* 아이콘 크기 조정 */
+}
+
 .stadium-weather {
 	border: 1px solid #ccc;
 	padding: 10px;
@@ -16,6 +20,11 @@
 	display: inline-block;
 	vertical-align: top;
 	text-align: center;
+}
+
+.team-logos img {
+	margin-right: 5px;
+	vertical-align: middle;
 }
 
 .stadium-weather h3 {
