@@ -81,6 +81,7 @@ public interface PlayerRepository {
             "VALUES (#{number}, #{name}, #{teamName}, #{height}, #{weight}, #{position}, #{birthDate}, #{career})")
     void save(Player player);
 
+    // 해당하는 선수의 기록 확인
     @Select("""
     		SELECT * FROM BatterSeasonStats WHERE playerId = #{playerId}
     		""")

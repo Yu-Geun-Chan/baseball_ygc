@@ -31,7 +31,7 @@
         		<p><strong>출신교 : </strong>${player.career}</p>
 
 				<!-- 추가적인 선수 기록들 테이블 형식 -->
-				<h3 m>시즌기록</h3>
+				<h3>시즌기록</h3>
 				<table class="player-additional-stats">
 				<colgroup>
 				<col width="75">
@@ -61,13 +61,15 @@
 						<tr>
 							<td>${playerStat.gamesPlayed}</td>
 							<td>${playerStat.atBat}</td>
-							<td>${String.format("%.3f", playerStat.battingAverage)}</td>
+							<!-- 값이 없으면 안나오게 삼항연산자로 처리 -->
+							<td>${playerStat.battingAverage != null ? String.format("%.3f", playerStat.battingAverage) : ""}</td>
 							<td>${playerStat.hit}</td>
 							<td>${playerStat.homeRun}</td>
 							<td>${playerStat.rbi}</td>
 							<td>${playerStat.walk}</td>
 							<td>${playerStat.stolenBase}</td>
-							<td>${String.format("%.3f", playerStat.ops)}</td>
+							<!-- 값이 없으면 안나오게 삼항연산자로 처리 -->
+							<td>${playerStat.ops != null ? String.format("%.3f", playerStat.ops) : ""}</td>
 						</tr>
 					</tbody>
 				</table>

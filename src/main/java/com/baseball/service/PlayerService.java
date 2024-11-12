@@ -50,7 +50,6 @@ public class PlayerService {
     }
 
 	public BatterSeasonStats getPlayerStatsByplayerId(int playerId) {
-		// TODO Auto-generated method stub
 		return playerRepository.getPlayerStatsByplayerId(playerId);
 	}
 
