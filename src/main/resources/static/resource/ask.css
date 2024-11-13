@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+.main-title {
+	width: 250px;
+	height: 40px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+}
+
+.main-title-content {
+	color: #000000;
+	text-align: center;
+	line-height: 18px;
+	font-weight: 700;
+	font-size: 35px;
+	width: 250px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.btns {
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	width: 70px;
+	height: 40px;
+	color: 444444;
+	background: #e1e1e1;
+	font-size: 16px;
+}
+
+.btn-write {
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	width: 100px;
+	height: 40px;
+	color: 444444;
+	background: #e1e1e1;
+	margin-left: 86.47px;
+}
+
+.btn-back {
+	border: 0px;
+	color: 999999;
+	width: 120px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 16px;
+	margin-left:20px;
+}
+
+.write-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0px;
+	align-items: flex-start;
+	justify-content: flex-start;
+	width: 1000px;
+	margin-top: 50px;
+	margin-left: calc(50% - 450px);
+}
+
+.form {
+	margin-bottom: 20px;
+}
+
+.name {
+	margin-left: 35px;
+}
+
+.text {
+	margin-left: 38px;
+}
+
+.email, .nickname {
+	margin-left: 20px;
+}
+
+.form_nickname {
+	display: inline-block;
+}
+
+.form_text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.form_summit {
+	width:867.43px;
+	display: flex;
+	justify-content: space-between;
+}
