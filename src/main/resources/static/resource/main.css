@@ -71,9 +71,9 @@ h1 {
 		url(https://images.unsplash.com/photo-1642489069222-3b8f36c0e89e?q=80&w=1892&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
 }
 
-#gameInfo {
+#weather {
 	background-image:
-		url(https://images.unsplash.com/photo-1529768167801-9173d94c2a42?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+		url(https://images.unsplash.com/photo-1516242981651-2ee338449dea?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
 }
 
 #players {

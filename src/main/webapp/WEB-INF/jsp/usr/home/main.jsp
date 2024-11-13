@@ -51,8 +51,8 @@
 					<a href="../game/schedule" id="gameSchedule" class="item">
 						<h1>경기 일정</h1>
 					</a>
-					<a href="#" id="gameInfo" class="item">
-						<h1>경기 정보</h1>
+					<a href="../home/weather" id="weather" class="item">
+						<h1>야구장 날씨</h1>
 					</a>
 					<a href="../player/players" id="players" class="item">
 						<h1>선수 조회</h1>
@@ -87,5 +87,4 @@
     });
 </script>
 
-
-		<%@ include file="../common/foot.jspf"%>
+<%@ include file="../common/foot.jspf"%>
