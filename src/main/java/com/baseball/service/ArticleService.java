@@ -67,7 +67,7 @@ public class ArticleService {
 		return articleRepository.getArticles();
 	}
 	
-	// 사용자가  쓴 게시글 가져오는 로작
+	// 사용자가 쓴 게시글 가져오는 로직
 	public List<Article> getForPrintArticlesByUser(int boardId, int itemsInAPage, int page, String searchKeywordTypeCode, String searchKeyword, int userId) {
         int limitFrom = (page - 1) * itemsInAPage;
         int limitTake = itemsInAPage;
@@ -154,6 +154,11 @@ public class ArticleService {
 
 		return ResultData.from("S-1", "좋아요 감소", "affectedRow", affectedRow);
 	}
+	
+    public List<Article> getArticlesByUserId(int memberId) {
+        return articleRepository.getArticlesById(memberId);
+    }
+	
 
 	public ResultData decreaseBadReactionPoint(int relId) {
 		int affectedRow = articleRepository.decreaseBadReactionPoint(relId);
@@ -175,6 +180,14 @@ public class ArticleService {
 
 	public int getBadRP(int relId) {
 		return articleRepository.getBadRP(relId);
+	}
+
+	public Object getArticlesById(int loginedMemberId) {
+		return articleRepository.getArticlesById(loginedMemberId);
+	}
+
+	public Object getArticleCountByMemberId(Integer loginedMemberId) {
+		return articleRepository.getArticleCountByMemberId(loginedMemberId);
 	}
 
 }

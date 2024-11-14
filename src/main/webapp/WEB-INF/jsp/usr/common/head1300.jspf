@@ -59,7 +59,7 @@
 									<li><a href="/usr/home/news">금일 KBO 기사</a></li>
 									<li><a href="/usr/article/freeList">자유 게시판</a></li>
 							</ul></li>
-							<li><a href="#">문의사항</a></li>
+							<li><a href="/usr/home/ask"">문의사항</a></li>
 						</ul>
 					</div>
 					<a href="/usr/home/main">

@@ -26,6 +26,7 @@ import com.baseball.vo.ResultData;
 import com.baseball.vo.Rq;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UsrArticleController {
@@ -273,34 +274,20 @@ public class UsrArticleController {
 	}
 	
 	@RequestMapping("/usr/article/myList")
-    public String showMyArticles(HttpServletRequest req, Model model,
-                                  @RequestParam(defaultValue = "1") int boardId,
-                                  @RequestParam(defaultValue = "1") int page,
-                                  @RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
-                                  @RequestParam(defaultValue = "") String searchKeyword) throws IOException {
+	public String showMyArticles(HttpServletRequest req, Model model) throws IOException {
+	    // 세션에서 loginedMemberId를 가져옵니다.
+	    HttpSession session = req.getSession();
+	    Integer loginedMemberId = (Integer) session.getAttribute("loginedMemberId");  // 세션에서 로그인된 사용자 ID 가져오기
 
-        Board board = boardService.getBoardById(boardId);
-        int loginedUserId = (int) req.getAttribute("loginedMemberId");
-        int articlesCount = articleService.getArticlesCountByUser(boardId, searchKeywordTypeCode, searchKeyword, loginedUserId);
-        
-        int itemsInAPage = 10;
-        int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
-        
-        List<Article> articles = articleService.getForPrintArticlesByUser(boardId, itemsInAPage, page, searchKeywordTypeCode, searchKeyword, loginedUserId);
+	    if (loginedMemberId == null) {
+	        // 로그인되지 않은 경우 로그인 페이지로 리디렉션
+	        return "usr/member/login";
+	    }
 
-        if (board == null) {
-            return rq.historyBackOnView("없는 게시판임");
-        }
+	    // 로그인된 사용자 ID로 작성한 글 목록을 가져옵니다.
+	    model.addAttribute("articles", articleService.getArticlesById(loginedMemberId));
+	    model.addAttribute("articlesCount", articleService.getArticleCountByMemberId(loginedMemberId));
+	    return "usr/article/myList"; // 사용자 글 목록을 표시하는 JSP 파일로 연결
+	}
 
-        model.addAttribute("articles", articles);
-        model.addAttribute("articlesCount", articlesCount);
-        model.addAttribute("pagesCount", pagesCount);
-        model.addAttribute("board", board);
-        model.addAttribute("page", page);
-        model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
-        model.addAttribute("searchKeyword", searchKeyword);
-        model.addAttribute("boardId", boardId);
-
-        return "usr/article/myList";
-    }
 }

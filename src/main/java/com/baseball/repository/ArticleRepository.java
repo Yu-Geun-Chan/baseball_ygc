@@ -125,6 +125,9 @@ public interface ArticleRepository {
 			</script>
 			""")
 	public int getArticleCount(int boardId, String searchKeywordTypeCode, String searchKeyword);
+	
+    @Select("SELECT * FROM article WHERE memberId = #{memberId}")
+    public List<Article> getArticlesById(int memberId);
 
 	@Select("""
 			<script>
@@ -264,5 +267,10 @@ public interface ArticleRepository {
 			FROM article
 			""")
 	public int getCurrentArticleId();
+
+	@Select("""
+			SELECT COUNT(*) FROM article WHERE memberId = #{loginedMemberId}
+			""")
+	public Object getArticleCountByMemberId(Integer loginedMemberId);
 
 }
