@@ -246,4 +246,13 @@ public class UsrMemberController {
 		return Ut.jsReplace(notifyTempLoginPwByEmailRd.getResultCode(), notifyTempLoginPwByEmailRd.getMsg(),
 				afterFindLoginPwUri);
 	}
+	
+	@RequestMapping("/usr/member/doDelete")
+	public String doDelete(@RequestParam int id) {
+		
+		rq.logout();
+		memberService.doDeleteMember(id);
+
+		return "redirect:/usr/member/login";
+	}
 }

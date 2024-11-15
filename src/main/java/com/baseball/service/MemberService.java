@@ -131,5 +131,9 @@ public class MemberService {
 
 		return ResultData.from("S-1", "회원정보 수정 완료");
 	}
+	
+	public void doDeleteMember(int memberId) {
+		memberRepository.doDeleteMember(memberId);
+	}
 
 }

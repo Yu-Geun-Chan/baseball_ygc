@@ -69,7 +69,10 @@
 			<div class="notice-content">회원정보</div>
 		</div>
 		<div class="btns btns-leave">
-			<a href="../member/doDelete" class="btns-content">회원탈퇴</a>
+			<form action="/usr/member/doDelete" method="post" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+				<input type="hidden" name="id" value="${rq.loginedMember.id}">
+				<button class="btns-content" type="submit">회원탈퇴</button>
+			</form>
 		</div>
 		<div class="btns btns-back">
 			<a href="javascript:history.back();" class="btns-content">뒤로가기</a>

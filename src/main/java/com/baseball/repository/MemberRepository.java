@@ -2,6 +2,7 @@ package com.baseball.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -168,4 +169,7 @@ public interface MemberRepository {
 			</script>
 			""")
 	void deleteMember(int id);
+	
+	@Delete("DELETE FROM member WHERE id = #{memberId}")
+	public void doDeleteMember(int memberId);
 }
