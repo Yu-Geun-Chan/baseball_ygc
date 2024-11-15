@@ -69,7 +69,7 @@
 					<a href="../article/freeList" id="article" class="item">
 						<h1>자유게시판</h1>
 					</a>
-					<a href="#" id="ask" class="item">
+					<a href="../home/ask" id="ask" class="item">
 						<h1>문의사항</h1>
 					</a>
 				</div>

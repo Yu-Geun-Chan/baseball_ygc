@@ -13,6 +13,8 @@
 
 <iframe name="frAttachFiles" style="display: none;"></iframe>
 
+<div>${loginedMember.id}</div>
+
 <div class="main-content">
 	<div class="main-title">
 		<h1 class="main-title-content">문의사항</h1>
