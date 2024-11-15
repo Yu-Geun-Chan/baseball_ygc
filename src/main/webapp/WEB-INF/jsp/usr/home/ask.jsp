@@ -37,8 +37,8 @@
 			</div>
 			<div class="form form_text">
 				<div class="form_text_content">내용</div>
-				<textarea style="width: 800px; min-height: 300px;" class="text input input-bordered input-sm"
-					name="body" autocomplete="off" type="text" placeholder="내용을 입력하세요."></textarea>
+				<input style="width: 800px; min-height: 300px;" class="text input input-bordered input-sm"
+					name="body" autocomplete="off" type="text" placeholder="내용을 입력하세요." required>
 			</div>
 			<div class="form_summit" style="margin-top: 30px;">
 				<button class="btn-write" type="submit">문의하기</button>
