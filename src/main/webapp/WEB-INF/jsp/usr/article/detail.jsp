@@ -68,8 +68,6 @@
 function doGoodReaction(articleId) {
 		if(isNaN(params.memberId) == true){
 			if(confirm('로그인을 해야합니다.')){
-// 				console.log(window.location.href);
-// 				console.log(encodeURIComponent(window.location.href));
 				var currentUri = encodeURIComponent(window.location.href);
 				window.location.href = '../member/login?afterLoginUri=' + currentUri;
 			}
@@ -344,7 +342,6 @@ function doModifyReply(replyId) {
 							<td style="text-align: center;">${reply.badReactionPoint}</td>
 							<td style="text-align: center;">
 								<c:if test="${reply.userCanModify }">
-									<%-- 								<a class="btn btn-outline btn-xs btn-success" href="../reply/modify?id=${reply.id }">수정</a> --%>
 									<button onclick="toggleModifybtn('${reply.id}');" id="modify-btn-${reply.id }" style="white-space: nowrap;"
 										class="btn btn-outline btn-xs btn-success">수정</button>
 									<button onclick="doModifyReply('${reply.id}');" style="white-space: nowrap; display: none;"
