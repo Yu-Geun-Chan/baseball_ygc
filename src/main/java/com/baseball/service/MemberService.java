@@ -133,7 +133,11 @@ public class MemberService {
 	}
 	
 	public void doDeleteMember(int memberId) {
-		memberRepository.doDeleteMember(memberId);
+	    Member member = memberRepository.getMemberById(memberId);
+	    if (member == null || member.isDelStatus()) {
+	        throw new IllegalStateException("존재하지 않거나 이미 삭제된 회원입니다.");
+	    }
+	    memberRepository.doDeleteMember(memberId);
 	}
 
 }

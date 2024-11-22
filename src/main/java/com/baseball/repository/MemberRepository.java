@@ -170,6 +170,12 @@ public interface MemberRepository {
 			""")
 	void deleteMember(int id);
 	
-	@Delete("DELETE FROM member WHERE id = #{memberId}")
+    @Update("""
+		    UPDATE `member`
+		    SET updateDate = NOW(),
+                delStatus = 1,
+		        delDate = NOW()
+		    WHERE id = #{memberId}
+			""")
 	public void doDeleteMember(int memberId);
 }

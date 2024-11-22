@@ -248,11 +248,13 @@ public class UsrMemberController {
 	}
 	
 	@RequestMapping("/usr/member/doDelete")
-	public String doDelete(@RequestParam int id) {
-		
-		rq.logout();
-		memberService.doDeleteMember(id);
+	public String doDelete() {
+	    int loginedMemberId = rq.getLoginedMemberId();
 
-		return "redirect:/usr/member/login";
+	    // 현재 로그인한 사용자의 계정만 삭제 가능
+	    memberService.doDeleteMember(loginedMemberId);
+	    rq.logout();
+
+	    return "redirect:/usr/member/login";
 	}
 }
