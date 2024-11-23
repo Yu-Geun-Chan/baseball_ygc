@@ -68,12 +68,23 @@
 		<div class="notice">
 			<div class="notice-content">회원정보</div>
 		</div>
-		<div class="btns btns-leave">
-			<form action="/usr/member/doDelete" method="post" onsubmit="return confirm('정말 삭제하시겠습니까?');">
-				<input type="hidden" name="id" value="${rq.loginedMember.id}">
-				<button class="btns-content" type="submit">회원탈퇴</button>
-			</form>
-		</div>
+		<c:if test="${rq.loginedMember.delStatus == 0}">
+			<div class="btns btns-leave">
+				<form action="/usr/member/doDelete" method="post" onsubmit="return confirmDelete();">
+					<input type="hidden" name="id" value="${rq.loginedMember.id}">
+					<button class="btns-content" type="submit">회원탈퇴</button>
+				</form>
+			</div>
+		</c:if>
+		<c:if test="${rq.loginedMember.delStatus == 1}">
+			<div class="btns btns-leave">
+				<form action="/usr/member/doRestore" method="post" onsubmit="return confirmCancel();">
+					<input type="hidden" name="id" value="${rq.loginedMember.id}">
+					<button class="btns-content" type="submit">탈퇴취소</button>
+				</form>
+			</div>
+		</c:if>
+
 		<div class="btns btns-back">
 			<a href="javascript:history.back();" class="btns-content">뒤로가기</a>
 		</div>
@@ -85,5 +96,22 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	function confirmDelete() {
+		if (confirm('정말 탈퇴하시겠습니까?')) {
+			alert('탈퇴되었습니다.');
+			return true; // confirm 후 계속 진행
+		}
+		return false; // confirm이 취소되면 제출을 막음
+	}
+	function confirmCancel() {
+		if (confirm('정말 취소하시겠습니까?')) {
+			alert('취소되었습니다.');
+			return true; // confirm 후 계속 진행
+		}
+		return false; // confirm이 취소되면 제출을 막음
+	}
+</script>
 
 <%@ include file="../common/foot.jspf"%>

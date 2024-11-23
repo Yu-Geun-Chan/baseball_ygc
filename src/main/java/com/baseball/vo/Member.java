@@ -1,5 +1,7 @@
 package com.baseball.vo;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,8 +22,9 @@ public class Member {
 	private String cellphoneNum;
 	private String email;
 	private String profileImage;
-	private boolean delStatus;
+	private int delStatus;
 	private String delDate;
+	 private LocalDateTime deletePendingDate;
 
 	// 응원 선수
 	private int	favoritePlayerId;

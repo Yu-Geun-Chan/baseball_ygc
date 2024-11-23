@@ -61,7 +61,7 @@ public class UsrMemberController {
 			return Ut.jsHistoryBack("F-4", Ut.f("비밀번호가 일치하지 않습니다."));
 		}
 
-		if (member.isDelStatus() == true) {
+		if (member.getDelStatus() == 2) {
 			return Ut.jsReplace("사용이 정지된 계정입니다.", "/");
 		}
 
@@ -247,14 +247,24 @@ public class UsrMemberController {
 				afterFindLoginPwUri);
 	}
 	
-	@RequestMapping("/usr/member/doDelete")
-	public String doDelete() {
-	    int loginedMemberId = rq.getLoginedMemberId();
+    // 회원이 직접 탈퇴처리
+    @RequestMapping("/usr/member/doDelete")
+    public String doDelete() {
+        int loginedMemberId = rq.getLoginedMemberId();
 
-	    // 현재 로그인한 사용자의 계정만 삭제 가능
-	    memberService.doDeleteMember(loginedMemberId);
-	    rq.logout();
+        // 7일 유예 기간 설정
+        memberService.doDeleteMember(loginedMemberId, 7);
 
-	    return "redirect:/usr/member/login";
-	}
+        return "redirect:/usr/member/info";
+    }
+
+    // 회원이 탈퇴처리 취소
+    @RequestMapping("/usr/member/doRestore")
+    public String doRestore() {
+        int loginedMemberId = rq.getLoginedMemberId();
+
+        memberService.restoreMember(loginedMemberId);
+
+        return "redirect:/usr/member/info";
+    }
 }
