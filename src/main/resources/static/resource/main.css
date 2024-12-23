@@ -6,6 +6,26 @@ body {
 	background-position: center;
 }
 
+/*스크롤바 스타일 통일*/
+.carousel::-webkit-scrollbar {
+	width: 12px;
+	height: 12px; /* 가로 스크롤바에도 적용 */
+}
+
+.carousel::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+	background-color: #1b1b78;
+	border-radius: 10px;
+	border: 3px solid #f1f1f1;
+}
+
+body::-webkit-scrollbar-corner {
+	background: #f1f1f1;
+}
+
 h1 {
 	font-weight: 100;
 }
