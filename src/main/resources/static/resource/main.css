@@ -6,10 +6,10 @@ body {
 	background-position: center;
 }
 
-/*스크롤바 스타일 통일*/
+/* 메인페이지 스크롤바 CSS */
 .carousel::-webkit-scrollbar {
-	width: 12px;
-	height: 12px; /* 가로 스크롤바에도 적용 */
+	width: 8px;
+	height: 8px; /* 가로 스크롤바에도 적용 */
 }
 
 .carousel::-webkit-scrollbar-track {
@@ -17,12 +17,12 @@ body {
 }
 
 .carousel::-webkit-scrollbar-thumb {
-	background-color: #1b1b78;
-	border-radius: 10px;
-	border: 3px solid #f1f1f1;
+	background-color: black;
+	border-radius: 5px;
+	border: 2px solid black;
 }
 
-body::-webkit-scrollbar-corner {
+.carousel::-webkit-scrollbar-corner {
 	background: #f1f1f1;
 }
 
