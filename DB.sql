@@ -67,7 +67,6 @@ CREATE TABLE reactionPoint (
 	memberId	INT(10) UNSIGNED	NOT NULL,
 	relTypeCode	CHAR(50)	NOT NULL,
 	relId	INT(10)	NOT NULL,
-	`body`	TEXT	NOT NULL,
 	regDate	DATETIME	NOT NULL,
 	updateDate	DATETIME	NOT NULL,
 	`point`	INT(10)	NOT NULL
